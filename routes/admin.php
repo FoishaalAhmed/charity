@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VolunteerController;
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 'auth']], function () {
 
@@ -29,6 +30,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::resource('authors', AuthorController::class);
     Route::resource('events', EventController::class);
     Route::resource('teams', TeamController::class);
+    Route::resource('volunteers', VolunteerController::class);
     Route::resource('faqs', FaqController::class);
     Route::resource('pages', PageController::class);
     Route::resource('users', UserController::class);

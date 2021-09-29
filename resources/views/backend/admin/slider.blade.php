@@ -47,8 +47,10 @@
                                     <!-- /.form-group -->
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label class="control-label">{{ __('Detail') }}</label>
-                                            <textarea id="summernote" name="detail"> {{ $slider->detail }} </textarea>
+                                            <label class="control-label">{{ __('Video') }}</label>
+                                            <input type="text" name="video" class="form-control"
+                                                placeholder="{{ __('Video') }}" autocomplete="off"
+                                                value="{{ $slider->video }}" />
                                         </div>
                                     </div>
                                     <!-- /.form-group -->
@@ -60,7 +62,7 @@
                                             <div class="text-center">
                                                 <img class="profile-user-img img-fluid img-circle"
                                                     src="{{ asset($slider->photo) }}" alt="User profile picture"
-                                                    id="galleryPhoto">
+                                                    id="sliderPhoto">
                                             </div>
                                             <br>
                                             <input type="file" name="photo" onchange="readPicture(this)"
@@ -105,8 +107,10 @@
                                     <!-- /.form-group -->
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label class="control-label">{{ __('Detail') }}</label>
-                                            <textarea id="summernote" name="detail"> {{ old('detail') }} </textarea>
+                                            <label class="control-label">{{ __('Video') }}</label>
+                                            <input type="text" name="video" class="form-control"
+                                                placeholder="{{ __('Video') }}" autocomplete="off"
+                                                value="{{ old('video') }}" />
                                         </div>
                                     </div>
                                     <!-- /.form-group -->
@@ -118,7 +122,7 @@
                                             <div class="text-center">
                                                 <img class="profile-user-img img-fluid img-circle"
                                                     src="//placehold.it/200x200" alt="User profile picture"
-                                                    id="galleryPhoto">
+                                                    id="sliderPhoto">
                                             </div>
                                             <br>
                                             <input type="file" name="photo" onchange="readPicture(this)"
@@ -144,9 +148,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 15%">{{ __('Title One') }}</th>
-                                        <th style="width: 15%">{{ __('Title Two') }}</th>
-                                        <th style="width: 45%">{{ __('Detail') }}</th>
+                                        <th style="width: 25%">{{ __('Title One') }}</th>
+                                        <th style="width: 25%">{{ __('Title Two') }}</th>
+                                        <th style="width: 25%">{{ __('Video Link') }}</th>
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
@@ -157,7 +161,7 @@
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title_one }}</td>
                                             <td>{{ $item->title_two }}</td>
-                                            <td>{!! Str::limit($item->detail, 200) !!}</td>
+                                            <td>{{ $item->video }}</td>
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height:50px;">
@@ -200,7 +204,7 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#galleryPhoto')
+                    $('#sliderPhoto')
                         .attr('src', e.target.result)
                         .width(100)
                         .height(100);
@@ -208,11 +212,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
-        $(function() {
-            // Summernote
-            $('#summernote').summernote();
-        })
     </script>
 
 @endsection

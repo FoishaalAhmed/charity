@@ -10,7 +10,7 @@ class Slider extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title_one', 'title_two', 'detail', 'photo',
+        'title_one', 'title_two', 'video', 'photo',
     ];
 
     public function storeSlider(Object $request)
@@ -28,7 +28,7 @@ class Slider extends Model
 
         $this->title_one = $request->title_one;
         $this->title_two = $request->title_two;
-        $this->detail    = $request->detail;
+        $this->video    = $request->video;
         $storeSlider     = $this->save();
 
         $storeSlider
@@ -53,7 +53,7 @@ class Slider extends Model
 
         $slider->title_one = $request->title_one;
         $slider->title_two = $request->title_two;
-        $slider->detail    = $request->detail;
+        $slider->video    = $request->video;
         $updateSlider      = $slider->save();
 
         $updateSlider
