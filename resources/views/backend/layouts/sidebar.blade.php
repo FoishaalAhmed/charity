@@ -24,11 +24,9 @@
                 </a>
             </li>
             @hasrole('Admin')
-            
-            <li class="nav-item @if (request()->is('admin/users') ||
-                request()->is('admin/users/*')) {{ 'menu-open' }} @endif">
-                <a href="#" class="nav-link @if (request()->is('admin/users') ||
-                    request()->is('admin/users/*')) {{ 'active' }} @endif">
+
+            <li class="nav-item @if (request()->is('admin/users') || request()->is('admin/users/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/users') || request()->is('admin/users/*')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Users
@@ -50,10 +48,108 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item @if (request()->is('admin/pages') ||
-                request()->is('admin/pages/*')) {{ 'menu-open' }} @endif">
-                <a href="#" class="nav-link @if (request()->is('admin/pages') ||
-                    request()->is('admin/pages/*')) {{ 'active' }} @endif">
+            <li class="nav-item">
+                <a href="{{ route('admin.categories.index') }}" class="nav-link @if (request()->is('admin/categories')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-list"></i>
+                    <p>
+                        Category
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item @if (request()->is('admin/events') || request()->is('admin/events/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/events') || request()->is('admin/events/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-calendar-week"></i>
+                    <p>
+                        Events
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.events.create') }}" class="nav-link @if (request()->is('admin/events/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>New Event</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.events.index') }}" class="nav-link @if (request()->is('admin/events')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Events</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @if (request()->is('admin/blogs') || request()->is('admin/blogs/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/blogs') || request()->is('admin/blogs/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-blog"></i>
+                    <p>
+                        Blogs
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.blogs.create') }}" class="nav-link @if (request()->is('admin/blogs/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>New Blog</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.blogs.index') }}" class="nav-link @if (request()->is('admin/blogs')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>blogs</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @if (request()->is('admin/teams') || request()->is('admin/teams/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/teams') || request()->is('admin/teams/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-user-secret"></i>
+                    <p>
+                        Teams
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.teams.create') }}" class="nav-link @if (request()->is('admin/teams/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>New Team</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.teams.index') }}" class="nav-link @if (request()->is('admin/teams')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Teams</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @if (request()->is('admin/volunteers') || request()->is('admin/volunteers/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/volunteers') || request()->is('admin/volunteers/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-user-secret"></i>
+                    <p>
+                        Volunteers
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.volunteers.create') }}" class="nav-link @if (request()->is('admin/volunteers/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>New Volunteer</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.volunteers.index') }}" class="nav-link @if (request()->is('admin/volunteers')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Volunteers</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @if (request()->is('admin/pages') || request()->is('admin/pages/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/pages') || request()->is('admin/pages/*')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-file"></i>
                     <p>
                         Pages

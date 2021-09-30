@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Team Update')
+@section('title', 'New Blog')
 @section('backend-content')
     <!-- Main content -->
     <section class="content">
@@ -7,11 +7,11 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('Team Update') }}</h3>
+                    <h3 class="card-title">{{ __('New Blog') }}</h3>
                     <div class="card-tools">
-                        <a href="{{ route('admin.teams.index') }}" class="btn btn-sm bg-teal"><i
+                        <a href="{{ route('admin.blogs.index') }}" class="btn btn-sm bg-teal"><i
                                 class="fas fa-list-alt"></i>
-                            {{ __('Teams') }}</a>
+                            {{ __('Blogs') }}</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -23,20 +23,23 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     @include('includes.error')
-                    <form action="{{ route('admin.teams.update', $team->id) }}" method="post" id="TeamForm"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('admin.blogs.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Name') }}</label>
-                                                <input type="text" name="name" class="form-control"
-                                                    placeholder="{{ __('Name') }}" required="" autocomplete="off"
-                                                    value="{{ $team->name }}" />
+                                                <label>{{ __('Category') }}</label>
+                                                <select name="category_id" id="category_id" class="form-control select2"
+                                                    required="" style="width: 100%">
+                                                    <option value="">{{ __('Select Category') }}</option>
+                                                    @foreach ($categories as $item)
+                                                        <option value="{{ $item->id }}" @if (old('category_id') == $item->id) {{ 'selected' }}  @endif>
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
@@ -45,10 +48,10 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Position') }}</label>
-                                                <input type="text" name="position" class="form-control"
-                                                    placeholder="{{ __('Position') }}" required="" autocomplete="off"
-                                                    value="{{ $team->position }}" />
+                                                <label>{{ __('Title') }}</label>
+                                                <input type="text" name="title" class="form-control"
+                                                    placeholder="{{ __('Title') }}" required="" autocomplete="off"
+                                                    value="{{ old('title') }}" />
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
@@ -57,46 +60,20 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Priority') }}</label>
-                                                <input type="text" name="priority" class="form-control"
-                                                    placeholder="{{ __('Priority') }}" required="" autocomplete="off"
-                                                    value="{{ $team->priority }}" />
+                                                <label>{{ __('Date') }}</label>
+                                                <input type="text" name="date" class="form-control"
+                                                    placeholder="{{ __('Date') }}" required="" autocomplete="off"
+                                                    value="{{ old('date') }}" id="date" />
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Facebook') }}</label>
-                                                <input type="text" name="facebook" class="form-control"
-                                                    placeholder="{{ __('Facebook') }}" autocomplete="off"
-                                                    value="{{ $team->facebook }}" id="facebook" />
-                                            </div>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label>{{ __('Twitter') }}</label>
-                                                <input type="text" name="twitter" class="form-control"
-                                                    placeholder="{{ __('Twitter') }}" autocomplete="off"
-                                                    value="{{ $team->twitter }}" />
-                                            </div>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label>{{ __('Instagram') }}</label>
-                                                <input type="text" name="instagram" class="form-control"
-                                                    placeholder="{{ __('Instagram') }}" autocomplete="off"
-                                                    value="{{ $team->instagram }}" />
+                                                <label>{{ __('Content') }}</label>
+                                                <textarea id="summernote" name="content">{{ old('content') }}</textarea>
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
@@ -108,9 +85,8 @@
                                 <div class="card card-primary card-outline">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img class="profile-user-img img-fluid img-circle"
-                                                src="{{ asset($team->photo) }}" alt="User profile picture"
-                                                id="teamPhoto">
+                                            <img class="profile-user-img img-fluid img-circle" src="//placehold.it/200x200"
+                                                alt="User profile picture" id="eventPhoto">
 
                                         </div>
                                         <br>
@@ -121,8 +97,8 @@
                             </div>
                             <div class="col-md-12">
                                 <center>
-                                    <button type="reset" class="btn btn-sm bg-red">{{ __('Cancel') }}</button>
-                                    <button type="submit" class="btn btn-sm bg-blue">{{ __('Update') }}</button>
+                                    <button type="reset" class="btn btn-sm bg-red">{{ __('Reset') }}</button>
+                                    <button type="submit" class="btn btn-sm bg-blue">{{ __('Save') }}</button>
                                 </center>
                             </div>
                         </div>
@@ -144,14 +120,26 @@
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#teamPhoto')
+                    $('#eventPhoto')
                         .attr('src', e.target.result)
                         .width(100)
                         .height(100);
                 };
-
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+        $(function() {
+
+            $('#date').datepicker({
+                autoclose: true,
+                changeYear: true,
+                changeMonth: true,
+                dateFormat: "dd-mm-yy",
+                yearRange: "-0:+10"
+            });
+
+            $('#summernote').summernote();
+        });
     </script>
 @endsection

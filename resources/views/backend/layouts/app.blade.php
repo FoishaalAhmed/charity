@@ -23,6 +23,8 @@
     <link rel="stylesheet"
         href="{{ asset('public/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('public/backend/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet"
@@ -201,6 +203,8 @@
 
     <!-- Summernote -->
     <script src="{{ asset('public/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
     <script>
         $(function() {
