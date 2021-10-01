@@ -79,6 +79,30 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item @if (request()->is('admin/causes') || request()->is('admin/causes/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/causes') || request()->is('admin/causes/*')) {{ 'active' }} @endif">
+                    <i class="fas fa-user-injured nav-icon"></i>
+                    <p>
+                        Causes
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.causes.create') }}" class="nav-link @if (request()->is('admin/causes/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+
+                            <p>New Cause</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.causes.index') }}" class="nav-link @if (request()->is('admin/causes')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Causes</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item @if (request()->is('admin/blogs') || request()->is('admin/blogs/*')) {{ 'menu-open' }} @endif">
                 <a href="#" class="nav-link @if (request()->is('admin/blogs') || request()->is('admin/blogs/*')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-blog"></i>
@@ -180,14 +204,30 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('admin.partners.index') }}" class="nav-link @if (request()->is('admin/partners')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-handshake"></i>
+                    <p>
+                        Partner
+                    </p>
+                </a>
+            </li>
+            {{-- <li class="nav-item">
                 <a href="{{ route('admin.generals.index') }}" class="nav-link @if (request()->is('admin/generals')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-cogs"></i>
                     <p>
                         General
                     </p>
                 </a>
-            </li>
+            </li> --}}
 
+            <li class="nav-item">
+                <a href="{{ route('admin.queries.index') }}" class="nav-link @if (request()->is('admin/queries') || request()->is('admin/queries/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon far fa-question-circle"></i>
+                    <p>
+                        Queries
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('admin.faqs.index') }}" class="nav-link @if (request()->is('admin/faqs')) {{ 'active' }} @endif">
                     <i class="nav-icon far fa-question-circle"></i>

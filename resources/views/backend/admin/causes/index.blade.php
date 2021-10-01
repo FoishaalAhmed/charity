@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Blog List')
+@section('title', 'Cause List')
 
 @section('backend-content')
     <!-- Main content -->
@@ -11,10 +11,10 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('Blog List') }}</h3>
+                            <h3 class="card-title">{{ __('Cause List') }}</h3>
                             <div class="card-tools">
-                                <a href="{{ route('admin.blogs.create') }}" class="btn btn-sm bg-teal"><i
-                                        class="fas fa-plus-square"></i> {{ __('Create Blog') }}</a>
+                                <a href="{{ route('admin.causes.create') }}" class="btn btn-sm bg-teal"><i
+                                        class="fas fa-plus-square"></i> {{ __('Create Cause') }}</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -29,30 +29,30 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 30%">{{ __('Title') }}</th>
-                                        <th style="width: 10%">{{ __('Date') }}</th>
-                                        <th style="width: 35%">{{ __('Content') }}</th>
+                                        <th style="width: 50%">{{ __('Title') }}</th>
+                                        <th style="width: 10%">{{ __('Last Date') }}</th>
+                                        <th style="width: 15%">{{ __('Amount') }}</th>
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($blogs as $item)
+                                    @foreach ($causes as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
-                                            <td>{!! Str::limit($item->content, 100) !!}</td>
+                                            <td>{{ date('d-m-Y', strtotime($item->last_date)) }}</td>
+                                            <td>{{ $item->amount }}</td>
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height: 50px;">
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm bg-blue"
-                                                    href="{{ route('admin.blogs.edit', [$item->id]) }}"><span
+                                                    href="{{ route('admin.causes.edit', [$item->id]) }}"><span
                                                         class="fas fa-edit"></span></a>
 
-                                                <form action="{{ route('admin.blogs.destroy', [$item->id]) }}"
+                                                <form action="{{ route('admin.causes.destroy', [$item->id]) }}"
                                                     method="post" style="display: none;"
                                                     id="delete-form-{{ $item->id }}">
                                                     @csrf

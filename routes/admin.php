@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CauseController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GeneralController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -37,9 +39,10 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::resource('pages', PageController::class);
     Route::resource('users', UserController::class);
     Route::resource('blogs', BlogController::class);
+    Route::resource('partners', PartnerController::class)->except(['create', 'edit', 'show']);
     Route::resource('categories', CategoryController::class)->except(['create', 'edit', 'show']);
     Route::resource('sliders', SliderController::class)->except(['create', 'show']);
     Route::resource('generals', GeneralController::class);
-    Route::resource('portfolios', PortfolioController::class);
+    Route::resource('causes', CauseController::class);
     Route::resource('services', ServiceController::class);
 });

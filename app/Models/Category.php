@@ -10,6 +10,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blog');
+    }
+
     protected $fillable = [
         'name',
     ];
