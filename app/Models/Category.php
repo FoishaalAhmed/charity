@@ -15,6 +15,11 @@ class Category extends Model
         return $this->hasMany('App\Models\Blog');
     }
 
+    public function causes()
+    {
+        return $this->hasMany('App\Models\Cause');
+    }
+
     protected $fillable = [
         'name',
     ];

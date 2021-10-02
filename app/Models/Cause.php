@@ -9,6 +9,16 @@ class Cause extends Model
 {
     use HasFactory;
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function donations()
+    {
+        return $this->hasMany('App\Models\Donation');
+    }
+
     protected $fillable = [
         'category_id', 'title', 'last_date', 'description', 'photo', 'amount',
     ];
