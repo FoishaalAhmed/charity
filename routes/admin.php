@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolunteerController;
 
@@ -29,9 +30,8 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::get('queries', [QueryController::class, 'index'])->name('queries.index');
     Route::get('queries/show/{id}', [QueryController::class, 'show'])->name('queries.show');
     Route::delete('queries/destroy/{id}', [QueryController::class, 'destroy'])->name('queries.destroy');
-    Route::post('events/delete', [EventController::class, 'delete'])->name('events.photo.delete');
 
-    Route::resource('authors', AuthorController::class);
+    Route::resource('testimonials', TestimonialController::class);
     Route::resource('events', EventController::class);
     Route::resource('teams', TeamController::class);
     Route::resource('volunteers', VolunteerController::class);

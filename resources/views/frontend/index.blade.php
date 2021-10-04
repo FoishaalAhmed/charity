@@ -765,7 +765,5 @@
             </div>
         </section>
         <!-- Our Partners End -->
-
-
     </main>
 @endsection

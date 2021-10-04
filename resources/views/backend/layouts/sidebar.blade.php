@@ -126,6 +126,30 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item @if (request()->is('admin/testimonials') || request()->is('admin/testimonials/*')) {{ 'menu-open' }} @endif">
+                <a href="#" class="nav-link @if (request()->is('admin/testimonials') || request()->is('admin/testimonials/*')) {{ 'active' }} @endif">
+                    <i class="nav-icon fas fa-sticky-note"></i>
+                    <p>
+                        Testimonials
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.testimonials.create') }}"
+                            class="nav-link @if (request()->is('admin/testimonials/create')) {{ 'active' }} @endif">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>New Testimonial</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.testimonials.index') }}" class="nav-link @if (request()->is('admin/testimonials')) {{ 'active' }} @endif">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Testimonials</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item @if (request()->is('admin/teams') || request()->is('admin/teams/*')) {{ 'menu-open' }} @endif">
                 <a href="#" class="nav-link @if (request()->is('admin/teams') || request()->is('admin/teams/*')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-user-secret"></i>
@@ -211,14 +235,14 @@
                     </p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{ route('admin.generals.index') }}" class="nav-link @if (request()->is('admin/generals')) {{ 'active' }} @endif">
                     <i class="nav-icon fas fa-cogs"></i>
                     <p>
                         General
                     </p>
                 </a>
-            </li> --}}
+            </li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.queries.index') }}" class="nav-link @if (request()->is('admin/queries') || request()->is('admin/queries/*')) {{ 'active' }} @endif">
