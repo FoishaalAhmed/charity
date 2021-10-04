@@ -27,10 +27,10 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Sl') }}</th>
-                                        <th>{{ __('Name') }}</th>
-                                        <th>{{ __('Value') }}</th>
-                                        <th>{{ __('Action') }}</th>
+                                        <th style="width: 5%">{{ __('Sl') }}</th>
+                                        <th style="width: 25%">{{ __('Name') }}</th>
+                                        <th style="width: 60%">{{ __('Value') }}</th>
+                                        <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,11 +52,11 @@
                                                     {{ method_field('DELETE') }}
                                                 </form>
                                                 <a class="btn btn-sm bg-red" href="" onclick="if(confirm('Are You Sure To Delete?')){
-                                                        event.preventDefault();
-                                                        getElementById('delete-form-{{ $general->id }}').submit();
-                                                        }else{
-                                                        event.preventDefault();
-                                                        }"><span class="fas fa-trash"></span></a>
+                                                            event.preventDefault();
+                                                            getElementById('delete-form-{{ $general->id }}').submit();
+                                                            }else{
+                                                            event.preventDefault();
+                                                            }"><span class="fas fa-trash"></span></a>
                                             </td>
                                         </tr>
                                     @endforeach

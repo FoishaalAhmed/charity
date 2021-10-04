@@ -35,6 +35,9 @@
     <!-- Home SLider CSS -->
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/home-main.css') }}">
 
+    <!-- Jquery Library JS -->
+    <script src="{{ asset('public/frontend/assets/library/jquery/jquery.min.js') }}"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -64,24 +67,24 @@
                 <div class="row align-items-center">
                     <div class="col d-flex align-items-center contact-info">
                         <div>
-                            <i data-feather="phone"></i> <a href="tel:+8801626001500">+8801626001500</a>
+                            <i data-feather="phone"></i> <a
+                                href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a>
                         </div>
                         <div>
                             <i data-feather="mail"></i> <a
-                                href="mailto:info@ictbanglabd.com">info@ictbanglabd.com.com</a>
+                                href="mailto:{{ $contact->email }}">{{ $contact->email }}</a>
                         </div>
                         <div>
-                            <i data-feather="clock"></i> Mon-Fri / 9:00 AM - 19:00 PM
+                            <i data-feather="clock"></i> {{ $working_hour->value }}
                         </div>
                     </div>
 
                     <div class="col-md-auto">
                         <div class="social-icons">
-                            <a href="#"><i class="icofont-facebook"></i></a>
-                            <a href="#"><i class="icofont-twitter"></i></a>
-                            <a href="#"><i class="icofont-instagram"></i></a>
-                            <a href="#"><i class="icofont-behance"></i></a>
-                            <a href="#"><i class="icofont-youtube-play"></i></a>
+                            <a href="{{ $contact->facebook }}"><i class="icofont-facebook"></i></a>
+                            <a href="{{ $contact->twitter }}"><i class="icofont-twitter"></i></a>
+                            <a href="{{ $contact->instagram }}"><i class="icofont-instagram"></i></a>
+                            <a href="{{ $contact->youtube }}"><i class="icofont-youtube-play"></i></a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +95,7 @@
         <nav class="navbar navbar-expand-lg header-fullpage">
             <div class="container text-nowrap">
                 <div class="d-flex align-items-center w-100 col p-0 logo-brand">
-                    <a class="navbar-brand rounded-bottom light-bg" href="index.html">
+                    <a class="navbar-brand rounded-bottom light-bg" href="{{ URL::to('/') }}">
                         <img src="{{ asset('public/frontend/assets/images/logo_white.svg') }}" alt="">
                     </a>
                 </div>
@@ -100,7 +103,7 @@
                 <div class="d-inline-flex request-btn order-lg-last col-auto p-0 align-items-center">
                     <a class="btn-outline-primary btn ml-3" href="#" id="search_home"><i data-feather="search"></i></a>
 
-                    <a class="nav-link btn btn-default ml-3 donate-btn" href="donation-page.html">Donate</a>
+                    <a class="nav-link btn btn-default ml-3 donate-btn" href="{{ route('donations') }}">Donate</a>
 
                     <!-- Toggle Button Start -->
                     <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
@@ -117,46 +120,24 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="index.html" id="dropdown03"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                                <li><a class="dropdown-item" href="index.html">Home Layout 1</a></li>
-                                <li><a class="dropdown-item" href="index-2.html">Home Layout 2</a></li>
-                                <li><a class="dropdown-item" href="index-3.html">Home Layout 3</a></li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a class="dropdown-toggle-mob dropdown-item dropdown-submenu" href="#"
-                                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Third Level Menu <i
-                                            class="icofont-rounded-right float-right"></i></a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a href="#" class="dropdown-item">Action</a></li>
-                                        <li><a href="#" class="dropdown-item">Another action</a></li>
-                                        <li><a href="#" class="dropdown-item">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a class="nav-link" href="{{ URL::to('/') }}" id="dropdown03" aria-haspopup="true"
+                                aria-expanded="false">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about-us.html">About Us</a>
+                            <a class="nav-link" href="{{ route('about') }}">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="index.html" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Causes <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="causes-list.html">Causes List</a></li>
-                                <li><a class="dropdown-item" href="causes-single.html">Causes Single</a></li>
-                            </ul>
+                            <a class="nav-link" href="{{ route('causes') }}" aria-haspopup="true"
+                                aria-expanded="false">Causes</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="index.html" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Pages <i
                                     class="icofont-rounded-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="volunteers.html">Volunteers</a></li>
                                 <li><a class="dropdown-item" href="become-volunteers.html">Become Volunteers</a></li>
-                                <li><a class="dropdown-item" href="donation-page.html">Donation Page</a></li>
+                                <li><a class="dropdown-item" href="{{ route('donations') }}">Donation Page</a></li>
                                 <li><a class="dropdown-item" href="shortcodes-element.html">Shortcode Elements</a></li>
                                 <li><a class="dropdown-item" href="typography.html">Typography</a></li>
                                 <li><a class="dropdown-item" href="our-faqs.html">Our Faq's</a></li>
@@ -164,27 +145,15 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="index.html" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Events <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="events-list.html">Events List</a></li>
-                                <li><a class="dropdown-item" href="events-alternate.html">Events Alternate</a></li>
-                                <li><a class="dropdown-item" href="events-single.html">Events Single</a></li>
-                            </ul>
+                            <a class="nav-link" href="{{ route('events') }}" aria-haspopup="true"
+                                aria-expanded="false">Events</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="index.html" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-rounded-down"></i></a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="blog-standard.html">Blog Standard</a></li>
-                                <li><a class="dropdown-item" href="blog-grid.html">Blog Grid</a></li>
-                                <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-                            </ul>
+                            <a class="nav-link dropdown-toggle-mob" href="{{ route('blogs') }}" aria-haspopup="true"
+                                aria-expanded="false">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.html">Contact</a>
+                            <a class="nav-link" href="{{ route('contacts') }}">Contact</a>
                         </li>
 
                     </ul>
@@ -207,36 +176,41 @@
                     <div class="logo-footer">
                         <img src="{{ asset('public/frontend/assets/images/logo_white.svg') }}" alt="">
                     </div>
-                    <p>This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet</p>
+                    <p>
+                        @if ($footer_text != null)
+                            {{ $footer_text->value }}
+                        @else
+                            {{ 'This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet' }}
+                        @endif
+                    </p>
 
                     <div class="footer-widget-contact">
                         <ul class="list-unstyled">
                             <li>
                                 <div><i data-feather="map-pin"></i> </div>
-                                <div>Envato Pty Ltd, 13/2 Elizabeth St Melbourne VIC 3000, Australia</div>
+                                <div>{{ $contact->address }}</div>
                             </li>
                             <li>
                                 <div><i data-feather="phone"></i> </div>
-                                <div><a href="tel:+1234567899">+1234567899</a></div>
+                                <div><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></div>
                             </li>
                             <li>
                                 <div><i data-feather="mail"></i> </div>
-                                <div><a href="mailto:info@hoperaise.com">info@hoperaise.com</a></div>
+                                <div><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></div>
                             </li>
                             <li>
                                 <div><i data-feather="clock"></i> </div>
-                                <div>Mon-Fri / 9:00 AM - 19:00 PM</div>
+                                <div>{{ $working_hour->value }}</div>
                             </li>
                         </ul>
                     </div>
 
                     <div class="social-icons">
                         <ul class="list-unstyled list-group list-group-horizontal">
-                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                            <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                            <li><a href="#"><i class="icofont-behance"></i></a></li>
-                            <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                            <li><a href="{{ $contact->facebook }}"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="{{ $contact->twitter }}"><i class="icofont-twitter"></i></a></li>
+                            <li><a href="{{ $contact->instagram }}"><i class="icofont-instagram"></i></a></li>
+                            <li><a href="{{ $contact->youtube }}"><i class="icofont-youtube-play"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -274,7 +248,7 @@
                             <div class="give-us-call">
                                 <i data-feather="phone"></i>
                                 <h4>Give us a call</h4>
-                                <h3><a href="tel:+1234567899">+1234567899</a></h3>
+                                <h3><a href="tel:{{ $contact->pphone }}">{{ $contact->pphone }}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -324,9 +298,6 @@
     <!-- Back To Top Start -->
     <a id="mkdf-back-to-top" href="#" class="off"><i data-feather="corner-right-up"></i></a>
     <!-- Back To Top End -->
-
-    <!-- Jquery Library JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap JS -->
     <script src="{{ asset('public/frontend/assets/library/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Feather Icon JS -->
@@ -356,6 +327,12 @@
 
     <!-- Home Slider (Only For Home pages) -->
     <script src="{{ asset('public/frontend/assets/js/home-slider.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/countdown.js') }}"></script>
+
+    @section('footer')
+
+    @show
+
 </body>
 
 </html>

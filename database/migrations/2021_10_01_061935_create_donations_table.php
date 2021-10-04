@@ -19,10 +19,10 @@ class CreateDonationsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->index();
-            $table->string('country')->index();
-            $table->string('zip');
+            $table->string('country')->index()->nullable();
+            $table->string('zip')->nullable();
             $table->string('amount');
-            $table->string('payment_method')->index();
+            $table->string('payment_method')->index()->nullable();
             $table->tinyInteger('status')->index()->default(0);
             $table->timestamps();
         });

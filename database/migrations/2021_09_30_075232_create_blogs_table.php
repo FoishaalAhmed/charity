@@ -20,6 +20,7 @@ class CreateBlogsTable extends Migration
             $table->date('date');
             $table->longText('content');
             $table->string('photo', 100);
+            $table->integer('view');
             $table->timestamps();
         });
     }

@@ -32,7 +32,7 @@ class Contact extends Model
         $contact = $this::findOrFail($id);
         $contact->email     = $request->email;
         $contact->phone     = $request->phone;
-        $contact->map       = $request->phone;
+        $contact->map       = $request->map;
         $contact->facebook  = $request->facebook;
         $contact->twitter   = $request->twitter;
         $contact->instagram = $request->instagram;

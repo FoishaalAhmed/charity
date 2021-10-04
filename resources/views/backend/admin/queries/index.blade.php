@@ -29,7 +29,9 @@
                     <th style="width: 5%">{{__('Sl')}}</th>
                     <th style="width: 15%">{{__('Name')}}</th>
                     <th style="width: 15%">{{__('E-mail')}}</th>
-                    <th style="width: 55%">{{__('Message')}}</th>
+                    <th style="width: 10%">{{__('Phone')}}</th>
+                    <th style="width: 15%">{{__('Subject')}}</th>
+                    <th style="width: 30%">{{__('Message')}}</th>
                     <th style="width: 10%">{{__('Action')}}</th>
                   </tr>
                   </thead>
@@ -39,6 +41,8 @@
                             <td>{{$loop->index + 1}}</td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
+                            <td>{{$item->phone}}</td>
+                            <td>{{$item->subject}}</td>
                             <td>{{Str::limit($item->message, 150)}}</td>
                             <td>
                                 <a class="btn btn-sm bg-blue" href="{{route('admin.queries.show',[$item->id])}}"><span class="fas fa-eye"></span></a>

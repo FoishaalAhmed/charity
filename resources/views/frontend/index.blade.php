@@ -54,64 +54,74 @@
                                 </div>
                                 <small>Total Funds Committed</small>
                                 <span class="counter">{{ $fundAmount }}</span>
-                            </div>
 
-                            <form class="form-style">
+                            </div>
+                            @include('includes.error')
+                            @if (session()->has('message'))
+                                <div class="alert alert-success"> {{ session('message') }} </div>
+                            @endif
+                            <form class="form-style" action="{{ route('donations.store') }}" method="post">
+                                @csrf
                                 <h3 class="h3-sm fw-7 txt-white mb-3">Easy Donation</h3>
                                 <div class="form-group">
-                                    <label for="name"><strong>Full Name</strong></label>
-                                    <input type="text" class="form-control form-light" id="name" placeholder="e.g John Doe">
+                                    <label for="name"><strong>First Name</strong></label>
+                                    <input type="text" name="first_name" class="form-control form-light" id="name"
+                                        placeholder="e.g John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name"><strong>Last Name</strong></label>
+                                    <input type="text" name="last_name" class="form-control form-light" id="name"
+                                        placeholder="e.g Doe">
                                 </div>
                                 <div class="form-group">
                                     <label for="email"><strong>Email Address</strong></label>
                                     <input type="email" class="form-control form-light" id="email"
-                                        placeholder="e.g example@sitename.com">
+                                        placeholder="e.g example@sitename.com" name="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="state"><strong>Select Causes</strong></label>
-                                    <select class="theme-combo home-charity" id="state" name="state" style="height: 400px">
+                                    <select class="theme-combo home-charity" id="state" name="cause_id"
+                                        style="height: 400px">
                                         <option>Select Causes</option>
-                                        <option value="Charity For Food">Charity For Food</option>
-                                        <option value="Charity For Education">Charity For Education</option>
-                                        <option value="Charity For Medical">Charity For Medical</option>
-                                        <option value="Charity For Water">Charity For Water</option>
-                                        <option value="Charity For Natural Disaster">Charity For Natural Disaster</option>
+                                        @foreach ($allCauses as $item)
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <div><label for="customRadioInline1"><strong>Amount</strong></label></div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="customRadioInline1" name="amount"
+                                            class="custom-control-input" value="10">
                                         <label class="custom-control-label" for="customRadioInline1">$10</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="customRadioInline2" name="amount"
+                                            class="custom-control-input" value="20">
                                         <label class="custom-control-label" for="customRadioInline2">$20</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline3" name="customRadioInline1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="customRadioInline3" name="amount"
+                                            class="custom-control-input" value="50">
                                         <label class="custom-control-label" for="customRadioInline3">$50</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline4" name="customRadioInline1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="customRadioInline4" name="amount"
+                                            class="custom-control-input" value="100">
                                         <label class="custom-control-label" for="customRadioInline4">$100</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline5" name="customRadioInline1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="customRadioInline5" name="amount"
+                                            class="custom-control-input" value="500">
                                         <label class="custom-control-label" for="customRadioInline5">$500</label>
                                     </div>
 
                                     <div class="mt-3">
                                         <input type="text" class="form-control form-light" id="custom"
-                                            placeholder="Custom Amount">
+                                            placeholder="Custom Amount" name="custom_amount">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div><label for="paymentForm"><strong>Payment Method</strong></label></div>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" id="paymentForm" name="paymentForm"
@@ -128,7 +138,7 @@
                                             class="custom-control-input">
                                         <label class="custom-control-label" for="paymentForm3">Credit Card</label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <button type="submit" class="btn btn-default mt-3 btn-block">Donate now</button>
                             </form>
 
@@ -196,8 +206,7 @@
                             <small>Welcome To Raise Hope</small>
                             Small Actions Lead To Big changes
                         </h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            the industry's standard dummy text ever since the 1500s</p>
+                        <p>{{ $about_text->value }}</p>
                     </div>
                 </div>
             </div>
@@ -212,7 +221,7 @@
                         <!-- Icon Boxes Image Style -->
                         <div class="icon-box-with-img">
                             <div class="img">
-                                <a href="causes-single.html"><img
+                                <a href="#"><img
                                         src="{{ asset('public/frontend/assets/images/causes/causes_img_1.jpg') }}"
                                         alt=""></a>
                             </div>
@@ -220,7 +229,7 @@
                                 <h3>Help For Education</h3>
                                 <p>A wonderful serenity has taken possession of my entire soul</p>
                                 <div class="text-md-right">
-                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                    <a href="#" class="read-more-line"><span>Read More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +240,7 @@
                         <!-- Icon Boxes Image Style -->
                         <div class="icon-box-with-img">
                             <div class="img">
-                                <a href="causes-single.html"><img
+                                <a href="#"><img
                                         src="{{ asset('public/frontend/assets/images/causes/causes_img_4.jpg') }}"
                                         alt=""></a>
                             </div>
@@ -239,7 +248,7 @@
                                 <h3>Help For Humanity</h3>
                                 <p>A wonderful serenity has taken possession of my entire soul</p>
                                 <div class="text-md-right">
-                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                    <a href="#" class="read-more-line"><span>Read More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +263,7 @@
                         <!-- Icon Boxes Image Style -->
                         <div class="icon-box-with-img">
                             <div class="img">
-                                <a href="causes-single.html"><img
+                                <a href="#"><img
                                         src="{{ asset('public/frontend/assets/images/causes/causes_img_3.jpg') }}"
                                         alt=""></a>
                             </div>
@@ -262,7 +271,7 @@
                                 <h3>Help For Water</h3>
                                 <p>A wonderful serenity has taken possession of my entire soul</p>
                                 <div class="text-md-right">
-                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                    <a href="#" class="read-more-line"><span>Read More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +283,7 @@
                         <!-- Icon Boxes Image Style -->
                         <div class="icon-box-with-img">
                             <div class="img">
-                                <a href="causes-single.html"><img
+                                <a href="#"><img
                                         src="{{ asset('public/frontend/assets/images/causes/causes_img_5.jpg') }}"
                                         alt=""></a>
                             </div>
@@ -282,7 +291,7 @@
                                 <h3>Help For Food</h3>
                                 <p>A wonderful serenity has taken possession of my entire soul</p>
                                 <div class="text-md-right">
-                                    <a href="causes-single.html" class="read-more-line"><span>Read More</span></a>
+                                    <a href="#" class="read-more-line"><span>Read More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -342,7 +351,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="causes-list.html" class="btn btn-outline-dark">View All Causes</a>
+                        <a href="{{ route('causes') }}" class="btn btn-outline-dark">View All Causes</a>
                     </div>
                 </div>
 
@@ -353,7 +362,9 @@
                         <div class="item">
                             <div class="causes-wrap">
                                 <div class="img-wrap">
-                                    <a href="causes-single.html"><img src="{{ asset($item->photo) }}" alt=""></a>
+                                    <a
+                                        href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                            src="{{ asset($item->photo) }}" alt=""></a>
                                     <div class="raised-progress">
                                         <div class="skillbar-wrap">
                                             <div class="clearfix">
@@ -371,10 +382,14 @@
                                 </div>
 
                                 <div class="content-wrap">
-                                    <h3><a href="causes-single.html">{{ $item->title }}</a></h3>
+                                    <h3><a
+                                            href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                    </h3>
                                     <p>{!! Str::limit($item->description, 120) !!}</p>
                                     <div class="btn-wrap">
-                                        <a class="btn-primary btn" href="causes-single.html">Donate Now</a>
+                                        <a class="btn-primary btn"
+                                            href="{{ route('donations.cause', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Donate
+                                            Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -395,9 +410,13 @@
                     <div class="col-lg-7">
                         <h1 class="heading-main light-mode orange">
                             <small>Help Other People</small>
-                            We Dream to Create A Bright Future Of The Underprivileged Children
+                            @if ($help != null)
+                                {{ $help->value }}
+                            @else
+                                {{ 'We Dream to Create A Bright Future Of The Underprivileged Children' }}
+                            @endif
                         </h1>
-                        <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
                     </div>
                 </div>
             </div>
@@ -458,7 +477,13 @@
                                 <i class="charity-volunteer_people"></i>
                                 <div class="text">
                                     <h3>Work As An Intern</h3>
-                                    <p>Sed quia consequuntur agni dolores eos qui ratoluptatem sequi nesciun porquis</p>
+                                    <p>
+                                        @if ($intern != null)
+                                            {{ $intern->value }}
+                                        @else
+                                            {{ 'Sed quia consequuntur agni dolores eos qui ratoluptatem sequi nesciun porquis' }}
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
 
@@ -466,7 +491,7 @@
                                 <a class="btn btn-default mr-3" href="become-volunteers.html">Join Now</a>
                                 <div class="about-phone">
                                     <i data-feather="phone-call"></i>
-                                    Conatct Us <br> +1234567899
+                                    Conatct Us <br> {{ $contact->phone }}
                                 </div>
                             </div>
 
@@ -503,9 +528,12 @@
                                         {{ date('d', strtotime($item->date)) }}
                                         <span>{{ date('M', strtotime($item->date)) }}</span>
                                     </div>
-                                    <a href="events-single.html"><img src="{{ asset($item->photo) }}" alt=""></a>
+                                    <a
+                                        href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                            src="{{ asset($item->photo) }}" alt=""></a>
                                     <div class="content-wrap">
-                                        <h3><a href="events-single.html">{{ $item->title }}</a>
+                                        <h3><a
+                                                href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
                                         </h3>
                                         <div class="event-details">
                                             <div><i data-feather="clock"></i> {{ date('h:i A', strtotime($item->time)) }}
@@ -522,7 +550,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="events-alternate.html" class="btn btn-outline-dark">View All Events</a>
+                    <a href="{{ route('events') }}" class="btn btn-outline-dark">View All Events</a>
                 </div>
             </div>
         </section>
@@ -559,7 +587,7 @@
                                 <h4>{{ $item->name }}</h4>
                                 <h5>Volunteer</h5>
                                 <div class="text-md-right">
-                                    <a href="javascript:" class="read-more-line"><span>Read More</span></a>
+                                    {{-- <a href="javascript:" class="read-more-line"><span>Read More</span></a> --}}
                                 </div>
                             </div>
                         </div>
@@ -580,83 +608,29 @@
                 <div class="owl-carousel owl-theme nav-light" id="home-second-testimonials">
 
                     <!-- Client Testimonials Alternate Slider Item -->
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-11 mx-auto">
-                                    <div class="client-testimonial-alternate">
-                                        <div class="client-inner-content">
-                                            <i class="charity-quotes"></i>
-                                            <p>Gracious is a nonproﬁt organization supported by community leaders, corporate
-                                                sponsors, churches,
-                                                helpless etc. and concerned citizens</p>
-                                        </div>
-                                        <div class="client-testimonial-icon">
-                                            <img src="{{ asset('public/frontend/assets/images/team_1.jpg') }}" alt="">
-                                            <div class="text">
-                                                <div class="name">Josefin Fashkin</div>
-                                                <div class="post">Senior Activist</div>
+                    @foreach ($testimonials as $item)
+                        <div class="item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-11 mx-auto">
+                                        <div class="client-testimonial-alternate">
+                                            <div class="client-inner-content">
+                                                <i class="charity-quotes"></i>
+                                                <p>{!! $item->message !!}</p>
+                                            </div>
+                                            <div class="client-testimonial-icon">
+                                                <img src="{{ asset($item->photo) }}" alt="">
+                                                <div class="text">
+                                                    <div class="name">{{ $item->name }}</div>
+                                                    <div class="post">{{ $item->position }}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Client Testimonials Alternate Slider Item -->
-
-                    <!-- Client Testimonials Alternate Slider Item -->
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-11 mx-auto">
-                                    <div class="client-testimonial-alternate">
-                                        <div class="client-inner-content">
-                                            <i class="charity-quotes"></i>
-                                            <p>Gracious is a nonproﬁt organization supported by community leaders, corporate
-                                                sponsors, churches,
-                                                helpless etc. and concerned citizens</p>
-                                        </div>
-                                        <div class="client-testimonial-icon">
-                                            <img src="{{ asset('public/frontend/assets/images/team_2.jpg') }}" alt="">
-                                            <div class="text">
-                                                <div class="name">Josefin Fashkin</div>
-                                                <div class="post">Senior Activist</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Client Testimonials Alternate Slider Item -->
-
-                    <!-- Client Testimonials Alternate Slider Item -->
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-11 mx-auto">
-                                    <div class="client-testimonial-alternate">
-                                        <div class="client-inner-content">
-                                            <i class="charity-quotes"></i>
-                                            <p>Gracious is a nonproﬁt organization supported by community leaders, corporate
-                                                sponsors, churches,
-                                                helpless etc. and concerned citizens</p>
-                                        </div>
-                                        <div class="client-testimonial-icon">
-                                            <img src="{{ asset('public/frontend/assets/images/team_1.jpg') }}" alt="">
-                                            <div class="text">
-                                                <div class="name">Josefin Fashkin</div>
-                                                <div class="post">Senior Activist</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Client Testimonials Alternate Slider Item -->
-
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -682,15 +656,19 @@
                                 <div class="item">
                                     <div class="post-wrap">
                                         <div class="post-img">
-                                            <a href="blog-single.html"><img src="{{ asset($item->photo) }}" alt=""></a>
+                                            <a
+                                                href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                                    src="{{ asset($item->photo) }}" alt=""></a>
                                         </div>
                                         <div class="post-content">
                                             <div class="post-date">{{ date('d, M, Y', strtotime($item->date)) }}
                                             </div>
-                                            <h3 class="post-title"><a href="blog-single.html">{{ $item->title }}</a>
+                                            <h3 class="post-title"><a
+                                                    href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
                                             </h3>
                                             <div class="text-md-right">
-                                                <a href="blog-single.html" class="read-more-line"><span>Read
+                                                <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                    class="read-more-line"><span>Read
                                                         More</span></a>
                                             </div>
                                         </div>
@@ -707,8 +685,7 @@
         <!-- Google Map Style Start -->
         <section class="wide-tb-100 pb-0">
             <div class="map-frame">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"></iframe>
+                <iframe src="{{ $contact->map }}"></iframe>
             </div>
             <div class="container">
                 <div class="row">
@@ -721,10 +698,17 @@
                             <div class="text-callout">
                                 <div class="d-sm-flex align-items-center">
                                     <div class="heading">
-                                        <h2>Let Us Come Together To Make A Difference</h2>
+                                        <h2>
+                                            @if ($donation_text != null)
+                                                {{ $donation_text->value }}
+                                            @else
+                                                {{ 'Let Us Come Together To Make A Difference' }}
+                                            @endif
+
+                                        </h2>
                                     </div>
                                     <div class="icon">
-                                        <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
                                     </div>
                                 </div>
                             </div>
