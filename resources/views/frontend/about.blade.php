@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="d-flex">
-                            <a class="btn btn-default mr-3" href="become-volunteers.html">Join Now</a>
+                            <a class="btn btn-default mr-3" href="{{ route('volunteers.become') }}">Join Now</a>
                             <div class="about-phone">
                                 <i data-feather="phone-call"></i>
                                 Conatct Us <br> {{ $contact->phone }}
@@ -208,7 +208,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="volunteers.html" class="btn btn-outline-dark">View All Members</a>
+                        <a href="{{ route('volunteers') }}" class="btn btn-outline-dark">View All Members</a>
                     </div>
                 </div>
 

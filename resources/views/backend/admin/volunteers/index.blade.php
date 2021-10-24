@@ -28,9 +28,12 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="width: 10%">{{ __('Sl') }}</th>
+                                        <th style="width: 5%">{{ __('Sl') }}</th>
                                         <th style="width: 25%">{{ __('Name') }}</th>
-                                        <th style="width: 15%">{{ __('Photo') }}</th>
+                                        <th style="width: 20%">{{ __('E-mail') }}</th>
+                                        <th style="width: 20%">{{ __('Phone') }}</th>
+                                        <th style="width: 10%">{{ __('Photo') }}</th>
+                                        <th style="width: 10%">{{ __('Status') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -39,10 +42,17 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->phone }}</td>
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height: 50px;">
                                             </td>
+                                            <td>@if ($item->status == 0)
+                                                {{ 'Inactive' }}
+                                            @else
+                                                {{ 'Active' }}
+                                            @endif</td>
                                             <td>
                                                 <a class="btn btn-sm bg-blue"
                                                     href="{{ route('admin.volunteers.edit', [$item->id]) }}"><span
@@ -55,11 +65,11 @@
                                                     {{ method_field('DELETE') }}
                                                 </form>
                                                 <a class="btn btn-sm bg-red" href="" onclick="if(confirm('Are You Sure To Delete?')){
-                                                        event.preventDefault();
-                                                        getElementById('delete-form-{{ $item->id }}').submit();
-                                                        }else{
-                                                        event.preventDefault();
-                                                        }"><span class="fas fa-trash"></span></a>
+                                                            event.preventDefault();
+                                                            getElementById('delete-form-{{ $item->id }}').submit();
+                                                            }else{
+                                                            event.preventDefault();
+                                                            }"><span class="fas fa-trash"></span></a>
                                             </td>
                                         </tr>
                                     @endforeach

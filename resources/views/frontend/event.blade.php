@@ -80,7 +80,7 @@
                         </h1>
                     </div>
                     <div class="col-sm-12">
-                        <a href="donation-page.html" class="btn btn-primary">Donate Now</a>
+                        <a href="{{ route('donations') }}" class="btn btn-primary">Donate Now</a>
                     </div>
                 </div>
             </div>

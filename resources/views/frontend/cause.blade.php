@@ -60,7 +60,7 @@
                                     <p>{!! Str::limit($item->description, 120) !!}</p>
                                     <div class="btn-wrap">
                                         <a class="btn-primary btn"
-                                            href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Donate
+                                            href="{{ route('donations.cause', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Donate
                                             Now</a>
                                     </div>
                                 </div>

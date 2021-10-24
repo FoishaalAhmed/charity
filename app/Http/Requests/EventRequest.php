@@ -29,7 +29,7 @@ class EventRequest extends FormRequest
             'date'   => 'required|date',
             'time'   => 'required',
             'center' => 'required|string|max: 255',
-            'map'    => 'nullable|string|max: 255',
+            'map'    => 'nullable|string',
             'detail' => 'required|string',
         ];
 

@@ -1,7 +1,37 @@
 @extends('layouts.app')
+@section('header')
+    <meta property="og:url"
+        content="{{ route('blogs.show', [$blog->id, strtolower(str_replace(' ', '-', $blog->title))]) }}" />
+    <meta property="og:description"
+        content="Econ Bangladesh working in Bangladesh for compacting human development, disaster management of Bangladesh. They are also participating in their activities around human rights, social justice, and other social supporting works." />
+    <meta name="author" content="Econ Bangladesh :: ইকন বাংলাদেশ">
+    <meta property="fb:app_id" content="1312338905884313">
+    <meta property="og:site_name" content="Econ Bangladesh :: ইকন বাংলাদেশ">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ $blog->title }}" />
+    <meta property="og:description" content="{{ $blog->content }}" />
 
+    <meta property="og:image" content="{{ asset($blog->photo) }}" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="keywords" content="Econ Bangladesh, non-governmental organization, non-profit organization, private voluntary organization, non-governmental development organization
+    government-organized NGO, civil society, community-based organization, people's organization, grassroots organizationorganization of the community, democracy
+    education, enterprise development, environment
+    health, housing, human rights, infrastructure, political franchise
+    poverty alleviation, professionals, women, youth, community, 
+    religion, volunteers, students, charity, civil society, empowerment
+    grassroots, independence, morality, social capital, sustainability, ইকন বাংলাদেশ">
+
+    <meta name="description" content="{{ $blog->content }}">
+
+    {{-- <meta name="tags" content="{{ $news->tags }}"> --}}
+
+    <meta property="og:locale" content="en_US">
+@endsection
 @section('title', "$blog->title")
 @section('content')
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=1312338905884313&autoLogAppEvents=1" nonce="kpMAW9kq"></script>
     <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
@@ -48,25 +78,9 @@
                                 </div>
 
                                 <div class="share-this-wrap">
-                                    <div class="share-line">
-                                        <div class="pr-4">
-                                            <strong>Share This</strong>
-                                        </div>
-                                        <div class="pl-4">
-                                            <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item"><a href="#"><i
-                                                            class="icofont-facebook"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="#"><i
-                                                            class="icofont-instagram"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="icofont-behance"></i></a>
-                                                </li>
-                                                <li class="list-inline-item"><a href="#"><i
-                                                            class="icofont-youtube-play"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+
+                                    <div class="addthis_inline_share_toolbox"></div>
+
                                 </div>
 
                             </div>
@@ -138,31 +152,33 @@
                             <h1 class="heading-main mb-4">
                                 <small>Leave a Reply</small>
                             </h1>
+                            
+                            <div class="fb-comments" data-href="{{Request::url()}}" data-width="" data-numposts="10"></div>
 
-                            <form class="comment-form">
-                                <div class="row">
-                                    <div class="col-md-12 mb-0">
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="5"
-                                                placeholder="Your Comments"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-0">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-0">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <button type="submit" class="btn btn-default text-nowrap">Post Comment</button>
-                                </div>
+                            <!--<form class="comment-form">-->
+                            <!--    <div class="row">-->
+                            <!--        <div class="col-md-12 mb-0">-->
+                            <!--            <div class="form-group">-->
+                            <!--                <textarea class="form-control" rows="5"-->
+                            <!--                    placeholder="Your Comments"></textarea>-->
+                            <!--            </div>-->
+                            <!--        </div>-->
+                            <!--        <div class="col-md-6 mb-0">-->
+                            <!--            <div class="form-group">-->
+                            <!--                <input type="text" class="form-control" id="name" placeholder="Your Name">-->
+                            <!--            </div>-->
+                            <!--        </div>-->
+                            <!--        <div class="col-md-6 mb-0">-->
+                            <!--            <div class="form-group">-->
+                            <!--                <input type="email" class="form-control" id="email" placeholder="Your Email">-->
+                            <!--            </div>-->
+                            <!--        </div>-->
+                            <!--    </div>-->
+                            <!--    <div class="mt-3">-->
+                            <!--        <button type="submit" class="btn btn-default text-nowrap">Post Comment</button>-->
+                            <!--    </div>-->
 
-                            </form>
+                            <!--</form>-->
                             <!-- Leave a Reply -->
                         </div>
 
@@ -279,7 +295,7 @@
                                                     {{ 'Let Us Come Together To Make A Difference' }}
                                                 @endif
                                             </h3>
-                                            <a href="donation-page.html" class="btn btn-secondary">Donate Now</a>
+                                            <a href="{{ route('donations') }}" class="btn btn-secondary">Donate Now</a>
                                         </div>
                                     </div>
                                 </div>

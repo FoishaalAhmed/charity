@@ -45,6 +45,30 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
+                                                <label>{{ __('E-mail') }}</label>
+                                                <input type="email" name="email" class="form-control"
+                                                    placeholder="{{ __('E-mail') }}" required="" autocomplete="off"
+                                                    value="{{ $volunteer->email }}" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Phone') }}</label>
+                                                <input type="text" name="phone" class="form-control"
+                                                    placeholder="{{ __('Phone') }}" autocomplete="off"
+                                                    value="{{ $volunteer->phone }}" id="phone" required="" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
                                                 <label>{{ __('Facebook') }}</label>
                                                 <input type="text" name="facebook" class="form-control"
                                                     placeholder="{{ __('Facebook') }}" autocomplete="off"
@@ -73,6 +97,48 @@
                                                 <input type="text" name="instagram" class="form-control"
                                                     placeholder="{{ __('Instagram') }}" autocomplete="off"
                                                     value="{{ $volunteer->instagram }}" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Reference Contact') }}</label>
+                                                <input type="text" name="reference" class="form-control"
+                                                    placeholder="{{ __('Reference Contact') }}" autocomplete="off"
+                                                    value="{{ $volunteer->reference }}" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Status') }}</label>
+                                                <select name="status" class="form-control" id="status" style="width: 100%"
+                                                    required>
+                                                    <option value="0" @if ($volunteer->status == 0) {{ 'selected' }}
+                                                        
+                                                    @endif >{{ __('Inactive') }}</option>
+                                                    <option value="1" @if ($volunteer->status == 1) {{ 'selected' }}
+                                                        
+                                                    @endif >{{ __('Active') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Comment') }}</label>
+                                                <textarea name="comment" class="form-control"
+                                                    placeholder="{{ __('Comment') }}" autocomplete="off" id=""
+                                                    rows="3">{{ $volunteer->comment }}</textarea>
                                             </div>
                                         </div>
                                         <!-- /.form-group -->

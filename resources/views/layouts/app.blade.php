@@ -10,6 +10,8 @@
 
     <!-- xxx Change With Your Information xxx -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+    @section('header')
+    @endsection
     <title>@yield('title')</title>
     <meta name="author" content="Mannat Studio">
     <meta name="description" content="Gracious is a Responsive HTML5 Template for Charity and NGO related services.">
@@ -96,7 +98,7 @@
             <div class="container text-nowrap">
                 <div class="d-flex align-items-center w-100 col p-0 logo-brand">
                     <a class="navbar-brand rounded-bottom light-bg" href="{{ URL::to('/') }}">
-                        <img src="{{ asset('public/frontend/assets/images/logo_white.svg') }}" alt="">
+                        <img src="{{ asset('public/images/logo.jpg') }}" alt="" style="width: 100px">
                     </a>
                 </div>
                 <!-- Topbar Buttons Start -->
@@ -132,16 +134,31 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Pages <i
+                                aria-haspopup="true" aria-expanded="false">Research Studies <i
                                     class="icofont-rounded-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="volunteers.html">Volunteers</a></li>
-                                <li><a class="dropdown-item" href="become-volunteers.html">Become Volunteers</a></li>
-                                <li><a class="dropdown-item" href="{{ route('donations') }}">Donation Page</a></li>
-                                <li><a class="dropdown-item" href="shortcodes-element.html">Shortcode Elements</a></li>
-                                <li><a class="dropdown-item" href="typography.html">Typography</a></li>
-                                <li><a class="dropdown-item" href="our-faqs.html">Our Faq's</a></li>
-                                <li><a class="dropdown-item" href="404-page.html">404 Page</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('research', 'completed-studies') }}">Completed Studies</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('research', 'ongoing-activities') }}">Ongoing Activities</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('research', 'dissemination-activities') }}">Dissemination
+                                        Activities</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">More Info <i
+                                    class="icofont-rounded-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('teams') }}">Teams</a></li>
+                                <li><a class="dropdown-item" href="{{ route('volunteers') }}">Volunteers</a></li>
+                                <li><a class="dropdown-item" href="{{ route('volunteers.become') }}">Become
+                                        Volunteers</a></li>
+                                <li><a class="dropdown-item" href="{{ route('donations') }}">Donation</a></li>
+                                <li><a class="dropdown-item" href="{{ route('faqs') }}">Our Faq's</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -263,11 +280,13 @@
             <div class="container pos-rel">
                 <div class="row text-md-start text-center">
                     <div class="col-sm-12 col-md-auto copyright-text">
-                        © Copyright <span class="txt-blue">Gracious</span> 2020. | Created by <a
-                            href="https://themeforest.net/user/mannatstudio" rel="nofollow">MannatStudio</a>
+                        © Copyright <span class="txt-blue">Econs Bangladesh</span> 2021. | Created by <a
+                            href="https://ictbanglabd.com/contact" rel="nofollow">ICTBANGLABD</a>
                     </div>
                     <div class="col-sm-12 col-md-auto ml-md-auto text-md-right text-center copyright-links">
-                        <a href="#">Terms & Condition</a> | <a href="#">Privacy Policy</a> | <a href="#">Legal</a>
+                        <a href="{{ route('pages', 'terms-condition') }}">Terms & Condition</a> | <a
+                            href="{{ route('pages', 'privacy-policy') }}">Privacy Policy</a> | <a
+                            href="{{ route('pages', 'legal') }}">Legal</a>
                     </div>
                 </div>
             </div>
@@ -277,14 +296,16 @@
 
     <!-- Search Popup Start -->
     <div class="overlay overlay-hugeinc">
-        <form class="form-inline mt-2 mt-md-0">
+        <form class="form-inline mt-2 mt-md-0" method="get" action="{{ route('search') }}">
+            @csrf
             <div class="form-inner">
                 <div class="form-inner-div d-inline-flex align-items-center no-gutters">
                     <div class="col-auto">
                         <i class="icofont-search"></i>
                     </div>
                     <div class="col">
-                        <input class="form-control w-100 p-0" type="text" placeholder="Search" aria-label="Search">
+                        <input class="form-control w-100 p-0" type="text" placeholder="Search" aria-label="Search"
+                            name="search">
                     </div>
                     <div class="col-auto">
                         <a href="#" class="overlay-close link-oragne"><i class="icofont-close-line"></i></a>
@@ -328,6 +349,8 @@
     <!-- Home Slider (Only For Home pages) -->
     <script src="{{ asset('public/frontend/assets/js/home-slider.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/countdown.js') }}"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61652da90564a690"></script>
 
     @section('footer')
 

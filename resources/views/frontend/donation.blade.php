@@ -25,7 +25,7 @@
         <section class="wide-tb-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-12 col-md-12">
                         <h1 class="heading-main">
                             <small>Donation</small>
                             Don't Let Poverty Destroy Someone's Dreams
@@ -73,7 +73,7 @@
                                             <div class="mt-3">
                                                 <input type="text" class="form-control" name="custom_amount" id="custom"
                                                     placeholder="Custom Amount">
-                                                <input type="text" name="cause_id" value="{{ $id }}">
+                                                <input type="hidden" name="cause_id" value="{{ $id }}">
                                             </div>
                                         </div>
                                     </div>
@@ -408,7 +408,7 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    {{-- <div class="col-lg-4 col-md-12">
                         <div class="faqs-sidebar pos-rel">
                             <div class="bg-overlay blue opacity-80"></div>
                             <form>
@@ -428,7 +428,7 @@
                                 <button type="submit" class="btn btn-default mt-3">Ask It Now</button>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -442,11 +442,15 @@
                     <div class="col-lg-7">
                         <h1 class="heading-main light-mode">
                             <small>Help Other People</small>
-                            We Dream to Create A Bright Future Of The Underprivileged Children
+                            @if ($help != null)
+                                {{ $help->value }}
+                            @else
+                                {{ 'We Dream to Create A Bright Future Of The Underprivileged Children' }}
+                            @endif
                         </h1>
                     </div>
                     <div class="col-sm-12 text-md-right">
-                        <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
                     </div>
                 </div>
             </div>
@@ -467,43 +471,13 @@
                         <div class="owl-carousel owl-theme" id="home-clients">
 
                             <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="assets/images/clients/client1.png" alt="">
+                            @foreach ($partners as $item)
+                                <div class="item">
+                                    <div class="clients-logo">
+                                        <img src="{{ asset($item->logo) }}" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="assets/images/clients/client2.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="assets/images/clients/client3.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="assets/images/clients/client4.png" alt="">
-                                </div>
-                            </div>
-                            <!-- Client Logo -->
-
-                            <!-- Client Logo -->
-                            <div class="item">
-                                <div class="clients-logo">
-                                    <img src="assets/images/clients/client5.png" alt="">
-                                </div>
-                            </div>
+                            @endforeach
                             <!-- Client Logo -->
 
                         </div>

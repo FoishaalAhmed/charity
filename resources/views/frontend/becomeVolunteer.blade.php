@@ -62,28 +62,34 @@
                             <div class="inner-form">
                                 <h1 class="heading-main light-mode">
                                     <small>Become A Volunteer</small>
+                                    <div id="sucessmessage"> </div>
                                 </h1>
                                 <div class="form">
-                                    <form>
+                                    <form action="{{ route('became.volunteer') }}" method="POST" id="volunteer-form">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="fullname"><strong>Full Name</strong></label>
-                                            <input type="text" class="form-control form-light" id="fullname">
+                                            <input type="text" class="form-control form-light" id="fullname" name="name">
                                         </div>
                                         <div class="form-group">
                                             <label for="email"><strong>Email Address</strong></label>
-                                            <input type="email" class="form-control form-light" id="email">
+                                            <input type="email" class="form-control form-light" id="email" name="email">
                                         </div>
                                         <div class="form-group">
                                             <label for="phone"><strong>Phone Number</strong></label>
-                                            <input type="tel" class="form-control form-light" id="phone">
+                                            <input type="tel" class="form-control form-light" id="phone" name="phone">
                                         </div>
                                         <div class="form-group">
                                             <label for="refrence"><strong>Refrence Contact</strong></label>
-                                            <input type="tel" class="form-control form-light" id="refrence">
+                                            <input type="tel" class="form-control form-light" id="refrence"
+                                                name="reference">
                                         </div>
                                         <div class="form-group">
                                             <label for="msg"><strong>Your Comments</strong></label>
-                                            <textarea class="form-control form-light" rows="5" id="msg"></textarea>
+                                            <textarea class="form-control form-light" rows="5" id="msg"
+                                                name="comment"></textarea>
+                                            <input type="hidden" class="form-control form-light" id="status" name="status"
+                                                value="0">
                                         </div>
                                         <button type="submit" class="btn btn-outline-light mt-3">Send Request</button>
                                     </form>
@@ -151,4 +157,50 @@
 
 
     </main>
+@endsection
+
+@section('footer')
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}'
+                }
+            });
+
+            $('#volunteer-form').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+
+                    url: "{{ route('became.volunteer') }}",
+                    method: 'POST',
+                    data: formData,
+                    dataType: 'json',
+
+                    success: function(data) {
+                        if (data.error.length > 0) {
+                            var error_html = '';
+                            for (var count = 0; count < data.error.length; count++) {
+                                error_html += '<div class="alert alert-danger">' + data.error[
+                                    count] + '</div>';
+                            }
+
+                            $('#sucessmessage').html(error_html);
+                        } else {
+
+                            $('#sucessmessage').html(data.success);
+                            $('#volunteer-form')[0].reset();
+                        }
+
+                    },
+
+                    error: function(error) {
+
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

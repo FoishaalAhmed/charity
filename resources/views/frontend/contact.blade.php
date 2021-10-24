@@ -143,7 +143,7 @@
                                         </h2>
                                     </div>
                                     <div class="icon">
-                                        <a href="donation-page.html" class="btn btn-default">Donate Now</a>
+                                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
                                     </div>
                                 </div>
                             </div>

@@ -29,9 +29,14 @@ class Volunteer extends Model
         }
 
         $this->name      = $request->name;
+        $this->email     = $request->email;
+        $this->phone     = $request->phone;
         $this->facebook  = $request->facebook;
         $this->twitter   = $request->twitter;
         $this->instagram = $request->instagram;
+        $this->reference = $request->reference;
+        $this->comment = $request->comment;
+        $this->status = $request->status;
         $storeVolunteer       = $this->save();
 
         $storeVolunteer

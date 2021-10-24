@@ -20,7 +20,7 @@
                                             {{ $item->title_two }}
                                         </h1>
                                         <div class="owl-slide-animated owl-slide-cta">
-                                            <a class="btn btn-default mr-3" href="#" role="button">Join Us
+                                            <a class="btn btn-default mr-3" href="{{ route('donations') }}" role="button">Join Us
                                                 Now</a>
                                             <a class="slider-link popup-video"
                                                 href="http://player.vimeo.com/video/{{ $item->video }}">Watch the video <i
@@ -183,7 +183,7 @@
                                 <!-- Map Icons Start -->
                             </div>
 
-                            <a href="become-volunteers.html" class="btn btn-outline-default">Become a Volunteer</a>
+                            <a href="{{ route('volunteers.become') }}" class="btn btn-outline-default">Become a Volunteer</a>
                         </div>
                     </div>
 
@@ -488,7 +488,7 @@
                             </div>
 
                             <div class="d-flex">
-                                <a class="btn btn-default mr-3" href="become-volunteers.html">Join Now</a>
+                                <a class="btn btn-default mr-3" href="{{ route('volunteers.become') }}">Join Now</a>
                                 <div class="about-phone">
                                     <i data-feather="phone-call"></i>
                                     Conatct Us <br> {{ $contact->phone }}
@@ -567,7 +567,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="volunteers.html" class="btn btn-outline-dark">View All Members</a>
+                        <a href="{{ route('volunteers') }}" class="btn btn-outline-dark">View All Members</a>
                     </div>
                 </div>
 

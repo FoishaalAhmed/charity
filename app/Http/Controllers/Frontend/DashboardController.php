@@ -23,12 +23,12 @@ class DashboardController extends Controller
         $fundAmount = Donation::where('status', 1)->selectRaw('sum(amount) as total')->first()->total;
         $page1 = Page::where('id', 2)->first();
         $page2 = Page::where('id', 4)->first();
-        $volunteerCount = Volunteer::count();
+        $volunteerCount = Volunteer::where('status', 1)->count();
         $eventCount = Event::count();
         $donarCount = Donation::where('status', 1)->count();
         $causes = Cause::withSum('donations', 'amount')->latest()->take(6)->get();
         $events = Event::take(8)->get();
-        $volunteers = Volunteer::take(4)->latest()->get();
+        $volunteers = Volunteer::where('status', 1)->latest()->take(4)->get();
         $blogs = Blog::take(6)->latest()->get();
         $partners = Partner::latest()->get();
         $help = General::where('name', 'help')->first();
