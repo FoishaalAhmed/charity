@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthorController;
+use App\Http\Controllers\Admin\AdvisorController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CauseController;
@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolunteerController;
+use App\Http\Controllers\Admin\ExpertController;
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 'auth']], function () {
 
@@ -31,8 +32,10 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::delete('queries/destroy/{id}', [QueryController::class, 'destroy'])->name('queries.destroy');
 
     Route::resource('testimonials', TestimonialController::class);
+    Route::resource('experts', ExpertController::class);
     Route::resource('events', EventController::class);
     Route::resource('teams', TeamController::class);
+    Route::resource('advisors', AdvisorController::class);
     Route::resource('volunteers', VolunteerController::class);
     Route::resource('faqs', FaqController::class);
     Route::resource('pages', PageController::class);

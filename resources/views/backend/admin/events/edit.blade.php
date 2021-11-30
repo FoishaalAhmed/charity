@@ -158,7 +158,7 @@
                 changeYear: true,
                 changeMonth: true,
                 dateFormat: "dd-mm-yy",
-                yearRange: "-0:+10"
+                yearRange: "-100:+10"
             });
 
             $('.timepicker').timepicker({
@@ -172,7 +172,7 @@
                 scrollbar: true
             });
 
-            $('#summernote').summernote();
+            CKEDITOR.replace('summernote')
         });
     </script>
 @endsection

@@ -21,11 +21,12 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $blog->increment('view');
+        $category = Category::where('id', $blog->category_id)->first();
         $blogs = Blog::orderBy('view', 'desc')->take(2)->get();
         $categories = Category::select('id', 'name')->orderBy('name', 'asc')->get();
         $causes = Cause::withSum('donations', 'amount')->latest()->take(3)->get();
         $donation_text = General::where('name', 'donation text')->first();
-        return view('frontend.blogDetail', compact('blog', 'categories', 'blogs', 'causes', 'donation_text'));
+        return view('frontend.blogDetail', compact('blog', 'categories', 'blogs', 'causes', 'donation_text', 'category'));
     }
 
     public function category($category_id, $name)

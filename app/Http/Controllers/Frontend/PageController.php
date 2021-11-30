@@ -12,7 +12,7 @@ use App\Models\General;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Testimonial;
-use App\Models\Volunteer;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -27,9 +27,9 @@ class PageController extends Controller
         $since = General::where('name', 'since')->first();
         $about_text = General::where('name', 'about-text')->first();
         $question_text = General::where('name', 'frequently-ask-question-text')->first();
-        $volunteers = Volunteer::where('status', 1)->latest()->take(4)->get();
+        $volunteers = Team::orderBy('priority', 'asc')->take(4)->get();
         $faqs = Faq::latest()->take(3)->get();
-        $volunteerCount = Volunteer::where('status', 1)->count();
+        $volunteerCount = Team::count();
         $eventCount = Event::count();
         $donarCount = Donation::where('status', 1)->count();
         $fundAmount = Donation::where('status', 1)->selectRaw('sum(amount) as total')->first()->total;

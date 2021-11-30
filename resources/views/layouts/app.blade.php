@@ -105,7 +105,7 @@
                 <div class="d-inline-flex request-btn order-lg-last col-auto p-0 align-items-center">
                     <a class="btn-outline-primary btn ml-3" href="#" id="search_home"><i data-feather="search"></i></a>
 
-                    <a class="nav-link btn btn-default ml-3 donate-btn" href="{{ route('donations') }}">Donate</a>
+                    <!--<a class="nav-link btn btn-default ml-3 donate-btn" href="{{ route('donations') }}">Donate</a>-->
 
                     <!-- Toggle Button Start -->
                     <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
@@ -126,11 +126,25 @@
                                 aria-expanded="false">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about') }}">About Us</a>
+                            <a class="nav-link" href=""></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href=""
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About <i
+                                    class="icofont-rounded-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('pages', 'mission') }}">Our Mission</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('pages', 'vision') }}">Our Vision</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('pages', 'history') }}">Our History</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ route('causes') }}" aria-haspopup="true"
-                                aria-expanded="false">Causes</a>
+                                aria-expanded="false">Services</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
@@ -143,12 +157,33 @@
                                 <li><a class="dropdown-item"
                                         href="{{ route('research', 'ongoing-activities') }}">Ongoing Activities</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="{{ route('research', 'dissemination-activities') }}">Dissemination
-                                        Activities</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href="{{ route('blogs') }}" aria-haspopup="true"
+                                aria-expanded="false">Publication</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href="{{ route('references') }}" aria-haspopup="true"
+                                aria-expanded="false">Client References</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href=""
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teams <i
+                                    class="icofont-rounded-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('teams', ['category' => 'Management']) }}">Management Teams</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('teams',['category' => 'Researcher']) }}">Researcher Teams</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('teams', ['category' => 'Advisors']) }}">Advisor Teams</a></li>
+                            </ul>
+                        </li>
+                        {{-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle-mob" href="{{ route('teams') }}" aria-haspopup="true"
+                                aria-expanded="false">Teams</a>
+                        </li> --}}
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">More Info <i
                                     class="icofont-rounded-down"></i></a>
@@ -160,18 +195,15 @@
                                 <li><a class="dropdown-item" href="{{ route('donations') }}">Donation</a></li>
                                 <li><a class="dropdown-item" href="{{ route('faqs') }}">Our Faq's</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('events') }}" aria-haspopup="true"
-                                aria-expanded="false">Events</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ route('blogs') }}" aria-haspopup="true"
-                                aria-expanded="false">Blog</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacts') }}">Contact</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('events') }}" aria-haspopup="true"
+                                aria-expanded="false">Events & News</a>
+                        </li>
+
 
                     </ul>
                     <!-- Main Navigation End -->
@@ -252,20 +284,23 @@
                         <div class="col-md-4">
                             <div class="footer-widget-menu">
                                 <ul class="list-unstyled">
-                                    <li><a href="#"><i class="icofont-simple-right"></i> <span>About Us</span></a></li>
-                                    <li><a href="#"><i class="icofont-simple-right"></i> <span>Our History</span></a>
+                                    <li><a href="{{ route('about') }}"><i class="icofont-simple-right"></i> <span>About Us</span></a></li>
+                                    <li><a href="{{ route('pages', 'history') }}"><i class="icofont-simple-right"></i> <span>Our History</span></a>
                                     </li>
-                                    <li><a href="#"><i class="icofont-simple-right"></i> <span>Our Services</span></a>
+                                    <li><a href="{{ route('pages', 'vision') }}"><i class="icofont-simple-right"></i> <span>Our Vision</span></a>
                                     </li>
-                                    <li><a href="#"><i class="icofont-simple-right"></i> <span>Meet Doctors</span></a>
+                                    <li><a href="{{ route('pages', 'mission') }}"><i class="icofont-simple-right"></i> <span>Our Mission</span></a>
                                     </li>
+                                    <li><a href="{{ route('causes') }}"><i class="icofont-simple-right"></i> <span>Our Services</span></a>
+                                    </li>
+                                    
                                 </ul>
                             </div>
 
                             <div class="give-us-call">
                                 <i data-feather="phone"></i>
                                 <h4>Give us a call</h4>
-                                <h3><a href="tel:{{ $contact->pphone }}">{{ $contact->pphone }}</a></h3>
+                                <h3><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -341,8 +376,6 @@
     <script src="{{ asset('public/frontend/assets/library/jquery-easing/jquery.easing.min.js') }}"></script>
     <!-- Counter JS -->
     <script src="{{ asset('public/frontend/assets/library/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <!-- Form Validation JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery-validate/jquery.validate.min.js') }}"></script>
     <!-- Theme Custom -->
     <script src="{{ asset('public/frontend/assets/js/site-custom.js') }}"></script>
 

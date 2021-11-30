@@ -17,14 +17,14 @@ Route::get('/', [FrontendDashboardController::class, 'index']);
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/page/{slug}', [PageController::class, 'page'])->name('pages');
-Route::get('/causes', [CauseController::class, 'index'])->name('causes');
-Route::get('/causes/{id}/{title}', [CauseController::class, 'detail'])->name('causes.show');
+Route::get('/services', [CauseController::class, 'index'])->name('causes');
+Route::get('/services/{id}/{title}', [CauseController::class, 'detail'])->name('causes.show');
 Route::get('/category-causes/{category_id}/{name}', [CauseController::class, 'category'])->name('causes.category');
 Route::get('/events', [EventController::class, 'index'])->name('events');
 Route::get('/events/{id}/{title}', [EventController::class, 'detail'])->name('events.show');
 Route::get('/research/{type}', [EventController::class, 'research'])->name('research');
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
-Route::get('/blogs/{id}/{title}', [BlogController::class, 'detail'])->name('blogs.show');
+Route::get('/publications', [BlogController::class, 'index'])->name('blogs');
+Route::get('/publications/{id}/{title}', [BlogController::class, 'detail'])->name('blogs.show');
 Route::get('/category-blogs/{category_id}/{name}', [BlogController::class, 'category'])->name('blogs.category');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
 Route::post('/send-query', [ContactController::class, 'query'])->name('send.query');
@@ -36,6 +36,7 @@ Route::get('/become-volunteers', [VolunteerController::class, 'volunteer'])->nam
 Route::post('/become-volunteer', [VolunteerController::class, 'become'])->name('became.volunteer');
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 Route::get('/faqs', [TeamController::class, 'faq'])->name('faqs');
+Route::get('/references', [TeamController::class, 'reference'])->name('references');
 
 Route::group(['middleware' => ['auth']], function () {
 

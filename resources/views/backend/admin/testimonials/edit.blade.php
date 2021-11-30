@@ -7,11 +7,11 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('Testimonial Update') }}</h3>
+                    <h3 class="card-title">{{ __('Client Reference Update') }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('admin.testimonials.index') }}" class="btn btn-sm bg-teal"><i
                                 class="fas fa-list-alt"></i>
-                            {{ __('Testimonials') }}</a>
+                            {{ __('Client Contact List') }}</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -57,7 +57,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Message') }}</label>
+                                                <label>{{ __('Address & Contact') }}</label>
                                                 <textarea id="summernote"
                                                     name="message"> {{ $testimonial->message }} </textarea>
                                             </div>
@@ -103,7 +103,7 @@
     <script>
         $(function() {
             // Summernote
-            $('#summernote').summernote();
+            CKEDITOR.replace('summernote')
         })
 
         function readPicture(input) {

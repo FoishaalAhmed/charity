@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'New Cause')
+@section('title', 'New Service')
 @section('backend-content')
     <!-- Main content -->
     <section class="content">
@@ -7,11 +7,11 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('New Cause') }}</h3>
+                    <h3 class="card-title">{{ __('New Service') }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('admin.causes.index') }}" class="btn btn-sm bg-teal"><i
                                 class="fas fa-list-alt"></i>
-                            {{ __('Causes') }}</a>
+                            {{ __('Services') }}</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Category') }}</label>
@@ -44,8 +44,8 @@
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
+                                    <!-- /.col --> --}}
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Title') }}</label>
@@ -57,7 +57,7 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Last Date') }}</label>
@@ -68,8 +68,8 @@
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
+                                    <!-- /.col --> --}}
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Amount') }}</label>
@@ -80,7 +80,7 @@
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- /.col --> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -152,7 +152,7 @@
                 yearRange: "-0:+10"
             });
 
-            $('#summernote').summernote();
+            CKEDITOR.replace('summernote')
         });
     </script>
 @endsection

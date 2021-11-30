@@ -179,8 +179,9 @@
 @section('footer')
 
     <script>
-        $(function() {
-            $('#summernote').summernote();
+
+        $(function () {
+            CKEDITOR.replace('summernote')
         });
     </script>
 

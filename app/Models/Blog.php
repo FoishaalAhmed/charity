@@ -15,7 +15,7 @@ class Blog extends Model
     }
 
     protected $fillable = [
-        'category_id', 'title', 'date', 'content', 'photo',
+        'category_id', 'title', 'link', 'date', 'content', 'photo',
     ];
 
     public function storeBlog(Object $request)
@@ -33,9 +33,10 @@ class Blog extends Model
         }
 
         $this->title = $request->title;
-        $this->date = date('Y-m-d', strtotime($request->date));
+        $this->year = $request->year;
         $this->category_id = $request->category_id;
         $this->content = $request->content;
+        $this->link = $request->link;
         $storeBlog = $this->save();
 
         $storeBlog
@@ -60,7 +61,8 @@ class Blog extends Model
         }
 
         $blog->title = $request->title;
-        $blog->date = date('Y-m-d', strtotime($request->date));
+        $blog->link = $request->link;
+        $blog->year = $request->year;
         $blog->content = $request->content;
         $blog->category_id = $request->category_id;
         $updateBlog = $blog->save();

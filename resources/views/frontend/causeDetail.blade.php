@@ -16,12 +16,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <meta name="keywords" content="Econ Bangladesh, non-governmental organization, non-profit organization, private voluntary organization, non-governmental development organization
-    government-organized NGO, civil society, community-based organization, people's organization, grassroots organizationorganization of the community, democracy
-    education, enterprise development, environment
-    health, housing, human rights, infrastructure, political franchise
-    poverty alleviation, professionals, women, youth, community, 
-    religion, volunteers, students, charity, civil society, empowerment
-    grassroots, independence, morality, social capital, sustainability, ইকন বাংলাদেশ">
+        government-organized NGO, civil society, community-based organization, people's organization, grassroots organizationorganization of the community, democracy
+        education, enterprise development, environment
+        health, housing, human rights, infrastructure, political franchise
+        poverty alleviation, professionals, women, youth, community, 
+        religion, volunteers, students, charity, civil society, empowerment
+        grassroots, independence, morality, social capital, sustainability, ইকন বাংলাদেশ">
 
     <meta name="description" content="{{ $cause->description }}">
 
@@ -33,7 +33,9 @@
 @section('title', "$cause->title")
 @section('content')
     <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=1312338905884313&autoLogAppEvents=1" nonce="kpMAW9kq"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=1312338905884313&autoLogAppEvents=1"
+        nonce="kpMAW9kq"></script>
     <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
@@ -42,7 +44,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('causes') }}">Causes</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('causes') }}">Services</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $cause->title }}</li>
                     </ol>
                 </nav>
@@ -68,11 +70,11 @@
                             <!-- Causes Single Wrap -->
                             <div class="causes-wrap single">
                                 <div class="img-wrap">
-                                    <span class="tag-single">{{ $category->name }}</span>
-                                    <img src="{{ $cause->photo }}" alt="">
+                                    {{-- <span class="tag-single">{{ $category->name }}</span> --}}
+                                    <img src="{{ asset($cause->photo) }}" alt="">
                                 </div>
 
-                                <div class="content-wrap-single">
+                                {{-- <div class="content-wrap-single">
                                     <div class="featured-cause-timer">
                                         <h3><strong class="txt-orange">৳{{ $donations_sum_amount }}</strong> pledged
                                             of <strong class="txt-blue">৳{{ $cause->amount }}</strong></h3>
@@ -116,107 +118,79 @@
                             <a class="btn-outline-default btn" href="{{ route('donations.cause', [$cause->id, strtolower(str_replace(' ', '-', $cause->title))]) }}">Donate Now</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="content-wrap-single border-top">
+                                <div class="content-wrap-single border-top">
 
-                    {!! $cause->description !!}
-                </div>
+                                    {!! $cause->description !!}
+                                </div>
 
-                <div class="share-this-wrap">
-                        <div class="addthis_inline_share_toolbox"></div>
-                </div>
+                                <div class="share-this-wrap">
+                                    <div class="addthis_inline_share_toolbox"></div>
+                                </div>
 
-            </div>
-            <!-- Causes Single Wrap -->
+                            </div>
+                            <!-- Causes Single Wrap -->
 
-            <!-- Leave a Reply -->
-            <h1 class="heading-main mb-4">
-                <small>Leave a Reply</small>
-            </h1>
-            
-            <div class="fb-comments" data-href="{{Request::url()}}" data-width="" data-numposts="10"></div>
+                            <!-- Leave a Reply -->
+                            <h1 class="heading-main mb-4">
+                                <small>Leave a Reply</small>
+                            </h1>
 
-            <!--<form class="comment-form">-->
-            <!--    <div class="row">-->
-            <!--        <div class="col-md-12 mb-0">-->
-            <!--            <div class="form-group">-->
-            <!--                <textarea class="form-control" rows="5" placeholder="Your Comments"></textarea>-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="col-md-6 mb-0">-->
-            <!--            <div class="form-group">-->
-            <!--                <input type="text" class="form-control" id="name" placeholder="Your Name">-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="col-md-6 mb-0">-->
-            <!--            <div class="form-group">-->
-            <!--                <input type="email" class="form-control" id="email" placeholder="Your Email">-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--    <div class="d-md-flex justify-content-between align-items-center mt-3">-->
-            <!--        <div class="custom-control custom-checkbox">-->
-            <!--            <input type="checkbox" class="custom-control-input" id="customCheck1">-->
-            <!--            <label class="custom-control-label" for="customCheck1">Save my name, email, and-->
-            <!--                website in this browser for the next-->
-            <!--                time I comment.</label>-->
-            <!--        </div>-->
-            <!--        <button type="submit" class="btn btn-default text-nowrap">Post Comment</button>-->
-            <!--    </div>-->
+                            <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="10">
+                            </div>
 
-            <!--</form>-->
-            <!-- Leave a Reply -->
-            </div>
 
-            </div>
-            <div class="col-lg-3 col-md-12">
-                <aside class="row sidebar-widgets">
-                    <!-- Sidebar Primary Start -->
-                    <div class="sidebar-primary col-lg-12 col-md-6">
-                        <!-- Widget Wrap -->
-                        <div class="widget-wrap">
-                            <h3 class="widget-title">Recent Causes</h3>
+                        </div>
 
-                            <!-- Causes Wrap -->
-                            @foreach ($causes as $item)
-                                <div class="causes-wrap">
-                                    <div class="img-wrap">
-                                        <a
-                                            href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
-                                                src="{{ asset($item->photo) }}" alt=""></a>
-                                        <div class="raised-progress">
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <aside class="row sidebar-widgets">
+                            <!-- Sidebar Primary Start -->
+                            <div class="sidebar-primary col-lg-12 col-md-6">
+                                <!-- Widget Wrap -->
+                                <div class="widget-wrap">
+                                    <h3 class="widget-title">Recent Services</h3>
+
+                                    <!-- Causes Wrap -->
+                                    @foreach ($causes as $item)
+                                        <div class="causes-wrap">
+                                            <div class="img-wrap">
+                                                <a
+                                                    href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                                        src="{{ asset($item->photo) }}" alt=""></a>
+                                                {{-- <div class="raised-progress">
                                             <div class="skillbar-wrap">
                                                 <div class="clearfix">
                                                     <span
                                                         class="txt-orange">৳{{ $item->donations_sum_amount }}</span>
-                                                    raised of <span class="txt-green">৳{{ $item->amount }}</span>
+                                                    raised of <span class="txt-green">৳{{ $item->amount }}</span> 
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div> --}}
+                                            </div>
 
-                                    <div class="content-wrap">
-                                        <h3><a
-                                                href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Supply
-                                                Water For Good Health</a></h3>
-                                        <div class="text-md-right">
-                                            <a href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
-                                                class="read-more-line"><span>Read
-                                                    More</span></a>
-                                        </div>
-                                    </div>
+                                            <div class="content-wrap">
+                                                <h3><a
+                                                        href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                </h3>
+                                                <div class="text-md-right">
+                                                    <a href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                        class="read-more-line"><span>Read
+                                                            More</span></a>
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                    @endforeach
+                                    <!-- Causes Wrap -->
                                 </div>
-                            @endforeach
-                            <!-- Causes Wrap -->
-                        </div>
-                        <!-- Widget Wrap -->
-                    </div>
-                    <!-- Sidebar Primary End -->
+                                <!-- Widget Wrap -->
+                            </div>
+                            <!-- Sidebar Primary End -->
 
-                    <!-- Sidebar Secondary Start -->
-                    <div class="sidebar-secondary col-lg-12 col-md-6">
+                            <!-- Sidebar Secondary Start -->
+                            {{-- <div class="sidebar-secondary col-lg-12 col-md-6">
 
                         <!-- Widget Wrap -->
                         <div class="widget-wrap">
@@ -232,11 +206,11 @@
                             </div>
                         </div>
                         <!-- Widget Wrap -->
+                    </div> --}}
+                            <!-- Sidebar Secondary End -->
+                        </aside>
                     </div>
-                    <!-- Sidebar Secondary End -->
-                </aside>
-            </div>
-            </div>
+                </div>
             </div>
         </section>
         <!-- About Us Style Start -->

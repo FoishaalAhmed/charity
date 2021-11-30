@@ -104,7 +104,7 @@
                             @foreach ($partners as $item)
                                 <div class="item">
                                     <div class="clients-logo">
-                                        <img src="{{ asset($item->logo) }}" alt="">
+                                        <img src="{{ asset($item->logo) }}" alt="" style="height: 100px">
                                     </div>
                                 </div>
                             @endforeach

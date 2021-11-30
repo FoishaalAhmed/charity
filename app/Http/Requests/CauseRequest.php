@@ -26,9 +26,9 @@ class CauseRequest extends FormRequest
         $rules = [
 
             'title'       => 'required|string|max: 255',
-            'category_id' => 'required|numeric',
-            'amount' => 'required|numeric',
-            'last_date'        => 'required|date',
+            'category_id' => 'nullable|numeric',
+            'amount' => 'nullable|numeric',
+            'last_date'        => 'nullable|date',
             'description' => 'required|string',
         ];
 

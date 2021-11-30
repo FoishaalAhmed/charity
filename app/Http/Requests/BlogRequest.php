@@ -27,7 +27,7 @@ class BlogRequest extends FormRequest
 
             'title'       => 'required|string|max: 255',
             'category_id' => 'required|numeric',
-            'date'        => 'required|date',
+            'year'        => 'required|numeric',
             'content'     => 'required|string',
         ];
 

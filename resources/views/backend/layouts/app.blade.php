@@ -206,6 +206,8 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
+    <script src="https://cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
+
     <script>
         $(function() {
 

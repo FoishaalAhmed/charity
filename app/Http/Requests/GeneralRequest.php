@@ -17,7 +17,7 @@ class GeneralRequest extends FormRequest
     {
         $rules = [
 
-            'value' => 'required|string|max:255',
+            'value' => 'required|string|max:1000',
         ];
 
         if ($this->getMethod() == 'POST') {

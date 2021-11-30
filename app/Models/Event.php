@@ -73,7 +73,7 @@ class Event extends Model
     {
         $event = $this::findOrFail($id);
         if (file_exists($event->photo)) unlink($event->photo);
-        $destroyEvent = $this->delete();
+        $destroyEvent = $event->delete();
 
         $destroyEvent
             ? session()->flash('message', 'Event Deleted Successfully!')

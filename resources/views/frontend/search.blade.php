@@ -27,7 +27,7 @@
                 <div class="container">
                     <h1 class="heading-main">
                         <small>Help Us Now</small>
-                        More Recent Causes
+                        More Recent Services
                     </h1>
                     <div class="row">
                         @foreach ($causes as $item)
@@ -38,7 +38,7 @@
                                         <a
                                             href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
                                                 src="{{ asset($item->photo) }}" alt=""></a>
-                                        <div class="raised-progress">
+                                        {{-- <div class="raised-progress">
                                             <div class="skillbar-wrap">
                                                 <div class="clearfix">
                                                     ৳{{ $item->donations_sum_amount }} raised of ৳{{ $item->amount }}
@@ -51,7 +51,7 @@
                                                     <div class="skillbar-bar"></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <div class="content-wrap">
@@ -61,8 +61,8 @@
                                         <p>{!! Str::limit($item->description, 120) !!}</p>
                                         <div class="btn-wrap">
                                             <a class="btn-primary btn"
-                                                href="{{ route('donations.cause', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Donate
-                                                Now</a>
+                                                href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">Read
+                                                More</a>
                                         </div>
                                     </div>
 
@@ -231,7 +231,7 @@
                             @foreach ($partners as $item)
                                 <div class="item">
                                     <div class="clients-logo">
-                                        <img src="{{ asset($item->logo) }}" alt="">
+                                        <img src="{{ asset($item->logo) }}" alt="" style="height: 100px">
                                     </div>
                                 </div>
                             @endforeach

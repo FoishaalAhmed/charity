@@ -91,7 +91,7 @@
     <script>
         $(function() {
             // Summernote
-            $('#summernote').summernote();
+            CKEDITOR.replace('summernote')
         })
 
         function readPicture(input) {

@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Cause List')
+@section('title', 'Service List')
 
 @section('backend-content')
     <!-- Main content -->
@@ -11,10 +11,10 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('Cause List') }}</h3>
+                            <h3 class="card-title">{{ __('Service List') }}</h3>
                             <div class="card-tools">
                                 <a href="{{ route('admin.causes.create') }}" class="btn btn-sm bg-teal"><i
-                                        class="fas fa-plus-square"></i> {{ __('Create Cause') }}</a>
+                                        class="fas fa-plus-square"></i> {{ __('Create Service') }}</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -29,9 +29,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 50%">{{ __('Title') }}</th>
-                                        <th style="width: 10%">{{ __('Last Date') }}</th>
-                                        <th style="width: 15%">{{ __('Amount') }}</th>
+                                        <th style="width: 75%">{{ __('Title') }}</th>
+                                        {{-- <th style="width: 10%">{{ __('Last Date') }}</th> --}}
+                                        {{-- <th style="width: 15%">{{ __('Amount') }}</th> --}}
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
@@ -41,8 +41,8 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($item->last_date)) }}</td>
-                                            <td>{{ $item->amount }}</td>
+                                            {{-- <td>{{ date('d-m-Y', strtotime($item->last_date)) }}</td> --}}
+                                            {{-- <td>{{ $item->amount }}</td> --}}
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height: 50px;">

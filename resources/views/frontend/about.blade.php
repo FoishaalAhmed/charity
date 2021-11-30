@@ -20,54 +20,30 @@
 
     <!-- Main Body Content Start -->
     <main id="body-content">
+        @if ($about)
+            <!-- About Us Style Start -->
+            <section class="wide-tb-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="text-center">
 
-        <!-- About Us Style Start -->
-        <section class="wide-tb-100">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 col-md-12">
-                        <div class="text-center">
-                            <img src="{{ asset($about->photo) }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-12">
-                        <h1 class="heading-main">
-                            <small>About Us</small>
-                            {{ $about->name }}
-                        </h1>
-
-                        <p>{!! $about->content !!}</p>
-
-                        <div class="icon-box-1 my-4">
-                            <i class="charity-volunteer_people"></i>
-                            <div class="text">
-                                <h3>Work As An Intern</h3>
-                                <p>
-                                    @if ($intern != null)
-                                        {{ $intern->value }}
-                                    @else
-                                        {{ 'Sed quia consequuntur agni dolores eos qui ratoluptatem sequi nesciun porquis' }}
-                                    @endif
-                                </p>
+                                <img src="{{ asset($about->photo) }}" alt="">
                             </div>
                         </div>
+                        <div class="col-lg-12 col-md-12">
+                            <h1 class="heading-main">
+                                {{ $about->name }}
+                            </h1>
 
-                        <div class="d-flex">
-                            <a class="btn btn-default mr-3" href="{{ route('volunteers.become') }}">Join Now</a>
-                            <div class="about-phone">
-                                <i data-feather="phone-call"></i>
-                                Conatct Us <br> {{ $contact->phone }}
-                            </div>
+                            <p>{!! $about->content !!}</p>
                         </div>
-
-
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- About Us Style Start -->
-
-        <!-- Get to Know Us Style Start -->
+            </section>
+            <!-- About Us Style Start -->
+        @endif
+        {{-- <!-- Get to Know Us Style Start -->
         <section class="wide-tb-100 bg-white mb-spacer-md">
             <div class="container">
                 <div class="row">
@@ -195,20 +171,73 @@
                 </div>
             </div>
         </section>
-        <!-- Get to Know Us Style End -->
+        <!-- Get to Know Us Style End --> --}}
 
-        <!-- Team Member Style Start -->
+        {{-- <!-- Team Member Style Start -->
+        <div class="container">
+            <h1 class="heading-main">
+                <!-- my work start -->
+                <section class="">
+                    <div class="container">
+                        <div class="ourteam">
+                            <i class=" fas fa-user-friends text-dark"></i>
+                            <h1>OUR EXPERT VOLUNTEER</h1>
+                            <h4>T E A M &nbsp; M E M B E R</h4>
+                        </div>
+                    </div>
+                </section>
+                <!--    my card design -->
+                <!--EXPERT VOLUNTEER  card start-->
+                <section>
+                    <div class="carddesign  mt-5 ">
+                        <hr class="hrrclass">
+                    </div>
+                    <div class="row mt-5">
+                        @foreach ($volunteers as $item)
+                            <div class="col-lg-3 ">
+                                <div class="card  text-light ">
+                                    <img class="card-img-top " src="{{ asset($item->photo) }}" alt="image">
+                                    <div class="card-body">
+                                    </div>
+                                </div>
+                                <div class="card-text">
+                                    <h5>{{ $item->name }}</h5>
+                                    <h6>{{ $item->position }}</h6>
+                                </div>
+                                <div class="card-text2">
+                                    <h6> {!! $item->detail !!}
+                                    </h6>
+                                    <div id="demo{{ $item->id }}" class="collapse">
+                                        <h6>{!! $item->more_detail !!}
+                                        </h6>
+                                    </div>
+                                    <a href="#demo{{ $item->id }}" data-toggle="collapse"
+                                        style="font-size: 0.8rem;color:#D59B2D;" ;>Read More..</a>
+                                </div>
+                                <div class="card-icon">
+                                    <a href="{{ $item->facebook }}"> <i class="fab fa-facebook-f "></i>&nbsp;</a>&nbsp;
+                                    <a href="{{ $item->twitter }}"> <i
+                                            class="far fa-twitter "></i>&nbsp;</i>&nbsp;</a>&nbsp;
+                                    <a href="{{ $item->instagram }}"> <i
+                                            class="fab fa-instagram "></i></i>&nbsp;</a>&nbsp;
+                                </div>
+                                <!-- 2n EXPERT VOLUNTEER -->
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+        </div>
         <section class="wide-tb-100 team-bg mb-spacer-md">
             <div class="container">
                 <div class="row justify-content-between align-items-end">
                     <div class="col-lg-4 col-md-6">
                         <h1 class="heading-main">
                             <small>Team Member</small>
-                            Our Expert Volunteer
+                            Our Expert Member
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="{{ route('volunteers') }}" class="btn btn-outline-dark">View All Members</a>
+                        <a href="{{ route('teams') }}" class="btn btn-outline-dark">View All Members</a>
                     </div>
                 </div>
 
@@ -226,10 +255,11 @@
                                     <img src="{{ asset($item->photo) }}" alt="" class="rounded-circle">
                                 </div>
                                 <h4>{{ $item->name }}</h4>
-                                <h5>Volunteer</h5>
-                                <div class="text-md-right">
-                                    <a href="javascript:" class="read-more-line"><span>Read More</span></a>
-                                </div>
+                                <h5>{{ $item->position }}</h5>
+                                <p>{!! $item->detail !!}</p>
+                                <!--<div class="text-md-right">-->
+                                <!--    <a href="javascript:" class="read-more-line"><span>Read More</span></a>-->
+                                <!--</div>-->
                             </div>
                         </div>
                     @endforeach
@@ -237,7 +267,7 @@
                 </div>
             </div>
         </section>
-        <!-- Team Member Style End -->
+        <!-- Team Member Style End --> --}}
 
         <!-- Faq's Style Start -->
         <section class="wide-tb-100 pattern-orange pt-0 mb-spacer-md">
@@ -333,7 +363,7 @@
         </section>
         <!-- Faq's Style End -->
 
-        <!-- Testimonials Style Start -->
+        {{-- <!-- Testimonials Style Start -->
         <section class="wide-tb-100">
             <div class="container">
                 <h1 class="heading-main">
@@ -367,7 +397,7 @@
                 </div>
             </div>
         </section>
-        <!-- Testimonials Style End -->
+        <!-- Testimonials Style End --> --}}
 
         <!-- Callout Style Start -->
         <section class="wide-tb-150 bg-scroll bg-img-6 pos-rel callout-style-1">
@@ -409,7 +439,7 @@
                             @foreach ($partners as $item)
                                 <div class="item">
                                     <div class="clients-logo">
-                                        <img src="{{ asset($item->logo) }}" alt="">
+                                        <img src="{{ asset($item->logo) }}" alt="" style="height: 100px;">
                                     </div>
                                 </div>
                             @endforeach

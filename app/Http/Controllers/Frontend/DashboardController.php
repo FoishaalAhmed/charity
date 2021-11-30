@@ -11,9 +11,8 @@ use App\Models\General;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Slider;
+use App\Models\Team;
 use App\Models\Testimonial;
-use App\Models\Volunteer;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -23,12 +22,12 @@ class DashboardController extends Controller
         $fundAmount = Donation::where('status', 1)->selectRaw('sum(amount) as total')->first()->total;
         $page1 = Page::where('id', 2)->first();
         $page2 = Page::where('id', 4)->first();
-        $volunteerCount = Volunteer::where('status', 1)->count();
+        $volunteerCount = Team::count();
         $eventCount = Event::count();
         $donarCount = Donation::where('status', 1)->count();
         $causes = Cause::withSum('donations', 'amount')->latest()->take(6)->get();
         $events = Event::take(8)->get();
-        $volunteers = Volunteer::where('status', 1)->latest()->take(4)->get();
+        $volunteers = Team::orderBy('priority', 'asc')->take(4)->get();
         $blogs = Blog::take(6)->latest()->get();
         $partners = Partner::latest()->get();
         $help = General::where('name', 'help')->first();

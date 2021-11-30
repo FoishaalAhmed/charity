@@ -33,6 +33,24 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
+                                                <label>{{ __('Category') }}</label>
+                                                <select name="category" class="form-control" id="category" required=""
+                                                    style="width: 100%">
+                                                    <option value="Management" @if ($team->category == 'Management') {{ 'selected' }}  @endif>
+                                                        {{ __('Management') }}</option>
+                                                    <option value="Researcher" @if ($team->category == 'Researcher') {{ 'selected' }} @endif>
+                                                        {{ __('Researcher') }}</option>
+                                                    <option value="Advisors" @if ($team->category == 'Advisors') {{ 'selected' }} @endif>
+                                                        {{ __('Advisors') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
                                                 <label>{{ __('Name') }}</label>
                                                 <input type="text" name="name" class="form-control"
                                                     placeholder="{{ __('Name') }}" required="" autocomplete="off"
@@ -102,6 +120,28 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>{{ __('Short Detail') }}</label>
+                                                    <textarea id="summernote"
+                                                        name="detail"> {{ $team->detail }} </textarea>
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>{{ __('Long Detail') }}</label>
+                                                    <textarea id="summernote1"
+                                                        name="more_detail"> {{ $team->more_detail }} </textarea>
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -139,6 +179,12 @@
 @section('footer')
 
     <script>
+        $(function() {
+            // Summernote
+            CKEDITOR.replace('summernote')
+            CKEDITOR.replace('summernote1')
+        })
+
         function readPicture(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

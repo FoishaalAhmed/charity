@@ -20,14 +20,18 @@
 
     <!-- Main Body Content Start -->
     <main id="body-content">
-
+        <style>
+        /*    .modal-backdrop {*/
+        /*       background-color: red;*/
+        /*    }*/
+        </style>
         <!-- Blog Post Start -->
         <section class="wide-tb-100">
             <div class="container">
                 <div class="row">
                     <!-- Blog Wrap -->
                     @foreach ($researches as $item)
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <button type="submit" class="btn btn-default mt-3 btn-block" data-toggle="modal"
                                 data-target="#myModal" data-category="{{ $item->name }}"
                                 data-detail="{{ $item->detail }}"> {{ $item->name }}</button>
@@ -35,7 +39,7 @@
                     @endforeach
 
                     <!-- The Modal -->
-                    <div class="modal fade" id="myModal">
+                    <div class="modal fade modal-success" id="myModal">
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
 

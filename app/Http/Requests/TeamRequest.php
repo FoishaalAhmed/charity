@@ -22,7 +22,7 @@ class TeamRequest extends FormRequest
      * @return array
      */
     public function rules()
-    { 
+    {
         $rules = [
 
             'name' => 'required|string|max:255',
@@ -31,6 +31,7 @@ class TeamRequest extends FormRequest
             'facebook' => 'nullable|string|max:255',
             'twitter' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
+            'detail' => 'nullable|string',
         ];
 
         if ($this->getMethod() == 'POST') {
@@ -44,6 +45,5 @@ class TeamRequest extends FormRequest
                 'photo'    => 'mimes:jpeg,jpg,png,gif,webp|max:100|nullable',
             ];
         }
-        
     }
 }

@@ -16,12 +16,13 @@
                                 <div class="col-10 col-md-6 static">
                                     <div class="owl-slide-text">
                                         <h3 class="owl-slide-animated owl-slide-title">{{ $item->title_one }}</h3>
-                                        <h1 class="owl-slide-animated owl-slide-subtitle">
+                                        <h3 class="owl-slide-animated owl-slide-subtitle">
                                             {{ $item->title_two }}
-                                        </h1>
+                                        </h3>
                                         <div class="owl-slide-animated owl-slide-cta">
-                                            <a class="btn btn-default mr-3" href="{{ route('donations') }}" role="button">Join Us
-                                                Now</a>
+                                            <!--<a class="btn btn-default mr-3" href="{{ route('donations') }}"-->
+                                            <!--    role="button">Join Us-->
+                                            <!--    Now</a>-->
                                             <a class="slider-link popup-video"
                                                 href="http://player.vimeo.com/video/{{ $item->video }}">Watch the video <i
                                                     class="charity-play_button"></i></a>
@@ -43,158 +44,159 @@
     <main id="body-content" class="body-non-overflow">
 
         <!-- Donation Style Start -->
-        <section class="bg-white">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 col-md-12 order-lg-last">
-                        <div class="home-second-donation-form">
-                            <div class="funds-committed">
-                                <div class="gift-icon">
-                                    <i class="charity-gift_box"></i>
-                                </div>
-                                <small>Total Funds Committed</small>
-                                <span class="counter">{{ $fundAmount }}</span>
+        <!--<section class="bg-white">-->
+        <!--    <div class="container">-->
+        <!--        <div class="row align-items-center">-->
+        <!--            <div class="col-lg-5 col-md-12 order-lg-last">-->
+        <!--                <div class="home-second-donation-form">-->
+        <!--                    <div class="funds-committed">-->
+        <!--                        <div class="gift-icon">-->
+        <!--                            <i class="charity-gift_box"></i>-->
+        <!--                        </div>-->
+        <!--                        <small>Total Funds Committed</small>-->
+        <!--                        <span class="counter">{{ $fundAmount }}</span>-->
 
-                            </div>
-                            @include('includes.error')
-                            @if (session()->has('message'))
-                                <div class="alert alert-success"> {{ session('message') }} </div>
-                            @endif
-                            <form class="form-style" action="{{ route('donations.store') }}" method="post">
-                                @csrf
-                                <h3 class="h3-sm fw-7 txt-white mb-3">Easy Donation</h3>
-                                <div class="form-group">
-                                    <label for="name"><strong>First Name</strong></label>
-                                    <input type="text" name="first_name" class="form-control form-light" id="name"
-                                        placeholder="e.g John">
-                                </div>
-                                <div class="form-group">
-                                    <label for="name"><strong>Last Name</strong></label>
-                                    <input type="text" name="last_name" class="form-control form-light" id="name"
-                                        placeholder="e.g Doe">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email"><strong>Email Address</strong></label>
-                                    <input type="email" class="form-control form-light" id="email"
-                                        placeholder="e.g example@sitename.com" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="state"><strong>Select Causes</strong></label>
-                                    <select class="theme-combo home-charity" id="state" name="cause_id"
-                                        style="height: 400px">
-                                        <option>Select Causes</option>
-                                        @foreach ($allCauses as $item)
-                                            <option value="{{ $item->id }}">{{ $item->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div><label for="customRadioInline1"><strong>Amount</strong></label></div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="amount"
-                                            class="custom-control-input" value="10">
-                                        <label class="custom-control-label" for="customRadioInline1">$10</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="amount"
-                                            class="custom-control-input" value="20">
-                                        <label class="custom-control-label" for="customRadioInline2">$20</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline3" name="amount"
-                                            class="custom-control-input" value="50">
-                                        <label class="custom-control-label" for="customRadioInline3">$50</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline4" name="amount"
-                                            class="custom-control-input" value="100">
-                                        <label class="custom-control-label" for="customRadioInline4">$100</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline5" name="amount"
-                                            class="custom-control-input" value="500">
-                                        <label class="custom-control-label" for="customRadioInline5">$500</label>
-                                    </div>
+        <!--                    </div>-->
+        <!--                    @include('includes.error')-->
+        <!--                    @if (session()->has('message'))-->
+        <!--                        <div class="alert alert-success"> {{ session('message') }} </div>-->
+        <!--                    @endif-->
+        <!--                    <form class="form-style" action="{{ route('donations.store') }}" method="post">-->
+        <!--                        @csrf-->
+        <!--                        <h3 class="h3-sm fw-7 txt-white mb-3">Easy Donation</h3>-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="name"><strong>First Name</strong></label>-->
+        <!--                            <input type="text" name="first_name" class="form-control form-light" id="name"-->
+        <!--                                placeholder="e.g John">-->
+        <!--                        </div>-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="name"><strong>Last Name</strong></label>-->
+        <!--                            <input type="text" name="last_name" class="form-control form-light" id="name"-->
+        <!--                                placeholder="e.g Doe">-->
+        <!--                        </div>-->
+        <!--                        <div class="form-group">-->
+        <!--                            <label for="email"><strong>Email Address</strong></label>-->
+        <!--                            <input type="email" class="form-control form-light" id="email"-->
+        <!--                                placeholder="e.g example@sitename.com" name="email">-->
+        <!--                        </div>-->
+        <!--                        {{-- <div class="form-group">-->
+        <!--                            <label for="state"><strong>Select Causes</strong></label>-->
+        <!--                            <select class="theme-combo home-charity" id="state" name="cause_id"-->
+        <!--                                style="height: 400px">-->
+        <!--                                <option>Select Causes</option>-->
+        <!--                                @foreach ($allCauses as $item)-->
+        <!--                                    <option value="{{ $item->id }}">{{ $item->title }}</option>-->
+        <!--                                @endforeach-->
+        <!--                            </select>-->
+        <!--                        </div> --}}-->
+        <!--                        <div class="form-group">-->
+        <!--                            <div><label for="customRadioInline1"><strong>Amount</strong></label></div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="customRadioInline1" name="amount"-->
+        <!--                                    class="custom-control-input" value="10">-->
+        <!--                                <label class="custom-control-label" for="customRadioInline1">$10</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="customRadioInline2" name="amount"-->
+        <!--                                    class="custom-control-input" value="20">-->
+        <!--                                <label class="custom-control-label" for="customRadioInline2">$20</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="customRadioInline3" name="amount"-->
+        <!--                                    class="custom-control-input" value="50">-->
+        <!--                                <label class="custom-control-label" for="customRadioInline3">$50</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="customRadioInline4" name="amount"-->
+        <!--                                    class="custom-control-input" value="100">-->
+        <!--                                <label class="custom-control-label" for="customRadioInline4">$100</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="customRadioInline5" name="amount"-->
+        <!--                                    class="custom-control-input" value="500">-->
+        <!--                                <label class="custom-control-label" for="customRadioInline5">$500</label>-->
+        <!--                            </div>-->
 
-                                    <div class="mt-3">
-                                        <input type="text" class="form-control form-light" id="custom"
-                                            placeholder="Custom Amount" name="custom_amount">
-                                    </div>
-                                </div>
-                                {{-- <div class="form-group">
-                                    <div><label for="paymentForm"><strong>Payment Method</strong></label></div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="paymentForm" name="paymentForm"
-                                            class="custom-control-input">
-                                        <label class="custom-control-label" for="paymentForm">Test Donation</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="paymentForm2" name="paymentForm"
-                                            class="custom-control-input">
-                                        <label class="custom-control-label" for="paymentForm2">Offline Donation</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="paymentForm3" name="paymentForm"
-                                            class="custom-control-input">
-                                        <label class="custom-control-label" for="paymentForm3">Credit Card</label>
-                                    </div>
-                                </div> --}}
-                                <button type="submit" class="btn btn-default mt-3 btn-block">Donate now</button>
-                            </form>
+        <!--                            <div class="mt-3">-->
+        <!--                                <input type="text" class="form-control form-light" id="custom"-->
+        <!--                                    placeholder="Custom Amount" name="custom_amount">-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        {{-- <div class="form-group">-->
+        <!--                            <div><label for="paymentForm"><strong>Payment Method</strong></label></div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="paymentForm" name="paymentForm"-->
+        <!--                                    class="custom-control-input">-->
+        <!--                                <label class="custom-control-label" for="paymentForm">Test Donation</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="paymentForm2" name="paymentForm"-->
+        <!--                                    class="custom-control-input">-->
+        <!--                                <label class="custom-control-label" for="paymentForm2">Offline Donation</label>-->
+        <!--                            </div>-->
+        <!--                            <div class="custom-control custom-radio custom-control-inline">-->
+        <!--                                <input type="radio" id="paymentForm3" name="paymentForm"-->
+        <!--                                    class="custom-control-input">-->
+        <!--                                <label class="custom-control-label" for="paymentForm3">Credit Card</label>-->
+        <!--                            </div>-->
+        <!--                        </div> --}}-->
+        <!--                        <button type="submit" class="btn btn-default mt-3 btn-block">Donate now</button>-->
+        <!--                    </form>-->
 
-                        </div>
-                    </div>
-
-                    <!-- Spacer For Medium -->
-                    <div class="w-100 d-none d-sm-none d-md-block d-lg-none spacer-60"></div>
-                    <!-- Spacer For Medium -->
-
-                    <div class="col-lg-7 col-md-12">
-                        <div>
-                            @if ($page1 != null)
-                                <h1 class="heading-main">
-                                    <small>Welcome To Raise Hope</small>
-                                    {{ $page1->name }}
-                                </h1>
-                                <p>{!! $page1->content !!}</p>
-                            @endif
-
-                            <div class="row my-5 home-second-welcome">
-                                <!-- Map Icons Start -->
-                                <div class="col-sm-6 mb-md-0">
-                                    <div class="icon-box-1">
-                                        <i class="charity-volunteer_people"></i>
-                                        <div class="text">
-                                            <h3>{{ $volunteerCount }} <br> <span>Volunteers</span></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Map Icons Start -->
-
-                                <!-- Map Icons Start -->
-                                <div class="col-sm-6">
-                                    <div class="icon-box-1">
-                                        <i class="charity-donate_money"></i>
-                                        <div class="text">
-                                            <h3>{{ $donarCount }} <br> <span>Trusted Funds</span></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Map Icons Start -->
-                            </div>
-
-                            <a href="{{ route('volunteers.become') }}" class="btn btn-outline-default">Become a Volunteer</a>
-                        </div>
-                    </div>
+        <!--                </div>-->
+        <!--            </div>-->
 
                     <!-- Spacer For Medium -->
-                    <div class="w-100 d-none d-sm-none d-md-block d-lg-none spacer-60"></div>
+        <!--            <div class="w-100 d-none d-sm-none d-md-block d-lg-none spacer-60"></div>-->
+                    <!-- Spacer For Medium -->
+
+        <!--            <div class="col-lg-7 col-md-12">-->
+        <!--                <div>-->
+        <!--                    @if ($page1 != null)-->
+        <!--                        <h1 class="heading-main">-->
+        <!--                            <small>Welcome To Raise Hope</small>-->
+        <!--                            {{ $page1->name }}-->
+        <!--                        </h1>-->
+        <!--                        <p>{!! $page1->content !!}</p>-->
+        <!--                    @endif-->
+
+        <!--                    <div class="row my-5 home-second-welcome">-->
+                                <!-- Map Icons Start -->
+        <!--                        <div class="col-sm-6 mb-md-0">-->
+        <!--                            <div class="icon-box-1">-->
+        <!--                                <i class="charity-volunteer_people"></i>-->
+        <!--                                <div class="text">-->
+        <!--                                    <h3>{{ $volunteerCount }} <br> <span>Teams</span></h3>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+                                <!-- Map Icons Start -->
+
+                                <!-- Map Icons Start -->
+        <!--                        <div class="col-sm-6">-->
+        <!--                            <div class="icon-box-1">-->
+        <!--                                <i class="charity-donate_money"></i>-->
+        <!--                                <div class="text">-->
+        <!--                                    <h3>{{ $donarCount }} <br> <span>Trusted Funds</span></h3>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+                                <!-- Map Icons Start -->
+        <!--                    </div>-->
+
+        <!--                    {{-- <a href="{{ route('volunteers.become') }}" class="btn btn-outline-default">Become a-->
+        <!--                        Volunteer</a> --}}-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+                    <!-- Spacer For Medium -->
+        <!--            <div class="w-100 d-none d-sm-none d-md-block d-lg-none spacer-60"></div>-->
                     <!-- Spacer For Medium -->
 
 
-                </div>
-            </div>
-        </section>
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</section>-->
         <!-- Donation Style Start -->
 
         <!-- Welcome Home Style Start -->
@@ -217,26 +219,31 @@
             <div class="container">
                 <div class="welcome-icon"><i class="charity-love_hearts"></i></div>
                 <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <!-- Icon Boxes Image Style -->
-                        <div class="icon-box-with-img">
-                            <div class="img">
-                                <a href="#"><img
-                                        src="{{ asset('public/frontend/assets/images/causes/causes_img_1.jpg') }}"
-                                        alt=""></a>
-                            </div>
-                            <div class="text">
-                                <h3>Help For Education</h3>
-                                <p>A wonderful serenity has taken possession of my entire soul</p>
-                                <div class="text-md-right">
-                                    <a href="#" class="read-more-line"><span>Read More</span></a>
+                    @foreach ($causes as $item)
+
+                        <div class="col-sm-6 col-md-6 col-lg-3">
+                            <!-- Icon Boxes Image Style -->
+                            <div class="icon-box-with-img" style="margin-bottom: 10px">
+                                <div class="img">
+                                    <a
+                                        href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                            src="{{ asset($item->photo) }}" alt="" ></a>
+                                </div>
+                                <div class="text">
+                                    <h3>{{ $item->title }}</h3>
+                                    <p>{!! Str::limit($item->description, 100) !!}</p>
+                                    <div class="text-md-right">
+                                        <a href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                            class="read-more-line"><span>Read More</span></a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Icon Boxes Image Style -->
                         </div>
-                        <!-- Icon Boxes Image Style -->
-                    </div>
 
-                    <div class="col-sm-6 col-md-6 col-lg-3">
+                    @endforeach
+
+                    {{-- <div class="col-sm-6 col-md-6 col-lg-3">
                         <!-- Icon Boxes Image Style -->
                         <div class="icon-box-with-img">
                             <div class="img">
@@ -296,14 +303,14 @@
                             </div>
                         </div>
                         <!-- Icon Boxes Image Style -->
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
         </section>
         <!-- Welcome Home Style Start -->
 
-        <!-- Counter Style 2 -->
+        {{-- <!-- Counter Style 2 -->
         <section class="wide-tb-100 p-0">
             <div class="container">
                 <div class="row d-flex align-items-center">
@@ -321,7 +328,7 @@
                         <div class="counter-style-box small-box">
                             <div class="counter-txt"><span class="counter">{{ $volunteerCount }}</span>+
                             </div>
-                            <div>Dedicated<br> Volunteers</div>
+                            <div>Dedicated<br> Team</div>
                         </div>
                     </div>
                     <!-- Counter Col End -->
@@ -337,10 +344,10 @@
                 </div>
             </div>
         </section>
-        <!-- Counter Style 2 -->
+        <!-- Counter Style 2 --> --}}
 
         <!-- Causes Grid Start -->
-        <section class="wide-tb-100">
+        {{-- <section class="wide-tb-100">
             <div class="container">
 
                 <div class="row justify-content-between align-items-end">
@@ -358,7 +365,7 @@
                 <div class="owl-carousel owl-theme" id="home-second-causes">
 
                     <!-- Causes Wrap -->
-                    @foreach ($causes as $item)
+                     @foreach ($causes as $item)
                         <div class="item">
                             <div class="causes-wrap">
                                 <div class="img-wrap">
@@ -394,11 +401,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach 
                     <!-- Causes Wrap -->
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Causes Grid Start -->
 
 
@@ -416,7 +423,7 @@
                                 {{ 'We Dream to Create A Bright Future Of The Underprivileged Children' }}
                             @endif
                         </h1>
-                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
+                        <a href="#" class="btn btn-default">Donate Now</a>
                     </div>
                 </div>
             </div>
@@ -488,7 +495,7 @@
                             </div>
 
                             <div class="d-flex">
-                                <a class="btn btn-default mr-3" href="{{ route('volunteers.become') }}">Join Now</a>
+                                {{-- <a class="btn btn-default mr-3" href="{{ route('volunteers.become') }}">Join Now</a> --}}
                                 <div class="about-phone">
                                     <i data-feather="phone-call"></i>
                                     Conatct Us <br> {{ $contact->phone }}
@@ -562,12 +569,12 @@
                 <div class="row justify-content-between align-items-end">
                     <div class="col-lg-4 col-md-6">
                         <h1 class="heading-main">
-                            <small>Volunteer Member</small>
+                            <small>Team Member</small>
                             Our Expert Volunteer
                         </h1>
                     </div>
                     <div class="col-lg-8 col-md-6 text-md-right btn-team">
-                        <a href="{{ route('volunteers') }}" class="btn btn-outline-dark">View All Members</a>
+                        <a href="{{ route('teams') }}" class="btn btn-outline-dark">View All Members</a>
                     </div>
                 </div>
 
@@ -585,7 +592,8 @@
                                     <img src="{{ asset($item->photo) }}" alt="" class="rounded-circle">
                                 </div>
                                 <h4>{{ $item->name }}</h4>
-                                <h5>Volunteer</h5>
+                                <h5>{{ $item->position }}</h5>
+                                <p>{!! $item->detail !!}</p>
                                 <div class="text-md-right">
                                     {{-- <a href="javascript:" class="read-more-line"><span>Read More</span></a> --}}
                                 </div>
@@ -602,7 +610,8 @@
         <section class="wide-tb-100 pattern-green pb-0 home-second-testimonials-wrap">
             <div class="container">
                 <h1 class="heading-main light-mode green">
-                    <small>Our Testimonials</small>
+                    <small>Our Client References
+                            </small>
                     What People Say
                 </h1>
                 <div class="owl-carousel owl-theme nav-light" id="home-second-testimonials">
@@ -642,8 +651,8 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-6 col-9">
                         <h1 class="heading-main">
-                            <small>News & Blogs</small>
-                            Some Of Our Recent Stories & News Blog
+                            <small>Publications</small>
+                            Some Of Our Recent Publication
                         </h1>
                     </div>
                 </div>
@@ -658,14 +667,14 @@
                                         <div class="post-img">
                                             <a
                                                 href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
-                                                    src="{{ asset($item->photo) }}" alt=""></a>
+                                                    src="{{ asset($item->photo) }}" alt="" style="width: 350px; height: 235px;"></a>
                                         </div>
                                         <div class="post-content">
-                                            <div class="post-date">{{ date('d, M, Y', strtotime($item->date)) }}
-                                            </div>
-                                            <h3 class="post-title"><a
+                                            {{-- <div class="post-date">{{ date('d, M, Y', strtotime($item->date)) }}
+                                            </div> --}}
+                                            <h5 class="post-title"><a
                                                     href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
-                                            </h3>
+                                            </h5>
                                             <div class="text-md-right">
                                                 <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
                                                     class="read-more-line"><span>Read
@@ -693,7 +702,7 @@
                     <div class="col-sm-12">
                         <div class="callout-style-side-img d-lg-flex align-items-center top-broken-grid">
                             <div class="img-callout">
-                                <img src="{{ asset('public/frontend/assets/images/callout_side_img.jpg') }}" alt="">
+                                <img src="{{ asset('public/frontend/assets/images/Adult cognitive survey aged.jpg') }}" alt="">
                             </div>
                             <div class="text-callout">
                                 <div class="d-sm-flex align-items-center">
@@ -708,7 +717,7 @@
                                         </h2>
                                     </div>
                                     <div class="icon">
-                                        <a href="{{ route('donations') }}" class="btn btn-default">Donate Now</a>
+                                        <a href="#" class="btn btn-default">Donate Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -737,7 +746,7 @@
                             @foreach ($partners as $item)
                                 <div class="item">
                                     <div class="clients-logo">
-                                        <img src="{{ asset($item->logo) }}" alt="">
+                                        <img src="{{ asset($item->logo) }}" alt="" style="height: 100px;">
                                     </div>
                                 </div>
                             @endforeach

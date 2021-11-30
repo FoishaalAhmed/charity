@@ -52,7 +52,7 @@
                                                     href="{{ route('admin.pages.edit', [$item->id]) }}"><span
                                                         class="fas fa-edit"></span></a>
 
-                                                <form action="{{ route('admin.pages.destroy', [$item->id]) }}"
+                                                {{-- <form action="{{ route('admin.pages.destroy', [$item->id]) }}"
                                                     method="post" style="display: none;"
                                                     id="delete-form-{{ $item->id }}">
                                                     @csrf
@@ -63,7 +63,7 @@
                                                     getElementById('delete-form-{{ $item->id }}').submit();
                                                     }else{
                                                     event.preventDefault();
-                                                    }"><span class="fas fa-trash"></span></a>
+                                                    }"><span class="fas fa-trash"></span></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach

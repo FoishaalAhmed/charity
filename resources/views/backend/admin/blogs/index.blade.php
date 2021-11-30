@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Blog List')
+@section('title', 'Publication List')
 
 @section('backend-content')
     <!-- Main content -->
@@ -11,10 +11,10 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('Blog List') }}</h3>
+                            <h3 class="card-title">{{ __('Publication List') }}</h3>
                             <div class="card-tools">
                                 <a href="{{ route('admin.blogs.create') }}" class="btn btn-sm bg-teal"><i
-                                        class="fas fa-plus-square"></i> {{ __('Create Blog') }}</a>
+                                        class="fas fa-plus-square"></i> {{ __('Create Publication') }}</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -30,7 +30,7 @@
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
                                         <th style="width: 30%">{{ __('Title') }}</th>
-                                        <th style="width: 10%">{{ __('Date') }}</th>
+                                        <th style="width: 10%">{{ __('Year') }}</th>
                                         <th style="width: 35%">{{ __('Content') }}</th>
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
+                                            <td>{{ $item->year }}</td>
                                             <td>{!! Str::limit($item->content, 100) !!}</td>
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""

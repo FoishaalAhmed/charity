@@ -11,10 +11,10 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('Testimonial List') }}</h3>
+                            <h3 class="card-title">{{ __('Client Contact List') }}</h3>
                             <div class="card-tools">
                                 <a href="{{ route('admin.testimonials.create') }}" class="btn btn-sm bg-teal"><i
-                                        class="fas fa-plus-square"></i> {{ __('Create Testimonial') }}</a>
+                                        class="fas fa-plus-square"></i> {{ __('Create Client Reference') }}</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -31,7 +31,7 @@
                                         <th style="width: 5%">{{ __('Sl') }}</th>
                                         <th style="width: 15%">{{ __('Name') }}</th>
                                         <th style="width: 15%">{{ __('Position') }}</th>
-                                        <th style="width: 45%">{{ __('Priority') }}</th>
+                                        <th style="width: 45%">{{ __('Address & Contact') }}</th>
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>

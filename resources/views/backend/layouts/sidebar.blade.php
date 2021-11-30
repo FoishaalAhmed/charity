@@ -91,7 +91,7 @@
                     <a href="#" class="nav-link @if (request()->is('admin/causes') || request()->is('admin/causes/*')) {{ 'active' }} @endif">
                         <i class="fas fa-user-injured nav-icon"></i>
                         <p>
-                            Causes
+                            Services
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -100,13 +100,13 @@
                             <a href="{{ route('admin.causes.create') }}" class="nav-link @if (request()->is('admin/causes/create')) {{ 'active' }} @endif">
                                 <i class="fas fa-plus-square nav-icon"></i>
 
-                                <p>New Cause</p>
+                                <p>New Service</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.causes.index') }}" class="nav-link @if (request()->is('admin/causes')) {{ 'active' }} @endif">
                                 <i class="fas fa-list-alt nav-icon"></i>
-                                <p>Causes</p>
+                                <p>Services</p>
                             </a>
                         </li>
                     </ul>
@@ -115,7 +115,7 @@
                     <a href="#" class="nav-link @if (request()->is('admin/blogs') || request()->is('admin/blogs/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fas fa-blog"></i>
                         <p>
-                            Blogs
+                            Publications
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -123,13 +123,13 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.blogs.create') }}" class="nav-link @if (request()->is('admin/blogs/create')) {{ 'active' }} @endif">
                                 <i class="fas fa-plus-square nav-icon"></i>
-                                <p>New Blog</p>
+                                <p>New Publication</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.blogs.index') }}" class="nav-link @if (request()->is('admin/blogs')) {{ 'active' }} @endif">
                                 <i class="fas fa-list-alt nav-icon"></i>
-                                <p>blogs</p>
+                                <p>Publications</p>
                             </a>
                         </li>
                     </ul>
@@ -138,7 +138,7 @@
                     <a href="#" class="nav-link @if (request()->is('admin/testimonials') || request()->is('admin/testimonials/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fas fa-sticky-note"></i>
                         <p>
-                            Testimonials
+                            Client References
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -147,13 +147,59 @@
                             <a href="{{ route('admin.testimonials.create') }}"
                                 class="nav-link @if (request()->is('admin/testimonials/create')) {{ 'active' }} @endif">
                                 <i class="fas fa-plus-square nav-icon"></i>
-                                <p>New Testimonial</p>
+                                <p>New Client References</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.testimonials.index') }}" class="nav-link @if (request()->is('admin/testimonials')) {{ 'active' }} @endif">
                                 <i class="fas fa-list-alt nav-icon"></i>
-                                <p>Testimonials</p>
+                                <p>Client References</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item @if (request()->is('admin/advisors') || request()->is('admin/advisors/*')) {{ 'menu-open' }} @endif">
+                    <a href="#" class="nav-link @if (request()->is('admin/advisors') || request()->is('admin/advisors/*')) {{ 'active' }} @endif">
+                        <i class="nav-icon fas fa-user-secret"></i>
+                        <p>
+                            Advisors
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.advisors.create') }}" class="nav-link @if (request()->is('admin/advisors/create')) {{ 'active' }} @endif">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>New Advisor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.advisors.index') }}" class="nav-link @if (request()->is('admin/advisors')) {{ 'active' }} @endif">
+                                <i class="fas fa-list-alt nav-icon"></i>
+                                <p>Advisors</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item @if (request()->is('admin/experts') || request()->is('admin/experts/*')) {{ 'menu-open' }} @endif">
+                    <a href="#" class="nav-link @if (request()->is('admin/experts') || request()->is('admin/experts/*')) {{ 'active' }} @endif">
+                        <i class="nav-icon fas fa-user-secret"></i>
+                        <p>
+                            Experts
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.experts.create') }}" class="nav-link @if (request()->is('admin/experts/create')) {{ 'active' }} @endif">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>New Expert</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.experts.index') }}" class="nav-link @if (request()->is('admin/experts')) {{ 'active' }} @endif">
+                                <i class="fas fa-list-alt nav-icon"></i>
+                                <p>Experts</p>
                             </a>
                         </li>
                     </ul>
@@ -181,7 +227,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @if (request()->is('admin/volunteers') || request()->is('admin/volunteers/*')) {{ 'menu-open' }} @endif">
+                {{-- <li class="nav-item @if (request()->is('admin/volunteers') || request()->is('admin/volunteers/*')) {{ 'menu-open' }} @endif">
                     <a href="#" class="nav-link @if (request()->is('admin/volunteers') || request()->is('admin/volunteers/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fas fa-user-secret"></i>
                         <p>
@@ -203,7 +249,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="nav-item @if (request()->is('admin/pages') || request()->is('admin/pages/*')) {{ 'menu-open' }} @endif">
                     <a href="#" class="nav-link @if (request()->is('admin/pages') || request()->is('admin/pages/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fas fa-file"></i>

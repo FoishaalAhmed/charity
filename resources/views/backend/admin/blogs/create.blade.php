@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'New Blog')
+@section('title', 'New Publication')
 @section('backend-content')
     <!-- Main content -->
     <section class="content">
@@ -7,11 +7,11 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('New Blog') }}</h3>
+                    <h3 class="card-title">{{ __('New Publication') }}</h3>
                     <div class="card-tools">
                         <a href="{{ route('admin.blogs.index') }}" class="btn btn-sm bg-teal"><i
                                 class="fas fa-list-alt"></i>
-                            {{ __('Blogs') }}</a>
+                            {{ __('Publications') }}</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Category') }}</label>
@@ -45,7 +45,7 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Title') }}</label>
@@ -57,13 +57,33 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Date') }}</label>
-                                                <input type="text" name="date" class="form-control"
-                                                    placeholder="{{ __('Date') }}" required="" autocomplete="off"
-                                                    value="{{ old('date') }}" id="date" />
+                                                <label>{{ __('Year') }}</label>
+                                                <select name="year" id="year" class="form-control select2"
+                                                    required="" style="width: 100%">
+                                                    <option value="">{{ __('Select Year') }}</option>
+                                                    @php
+                                                        $year = date('Y');
+                                                    @endphp
+                                                    @for ($i = $year; $i >= 1990; $i--)
+                                                        <option value="{{ $i }}" @if (old('year') == $i) {{ 'selected' }} @endif>
+                                                            {{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Link') }}</label>
+                                                <input type="text" name="link" class="form-control"
+                                                    placeholder="{{ __('Link') }}" required="" autocomplete="off"
+                                                    value="{{ old('link') }}" />
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
@@ -136,10 +156,10 @@
                 changeYear: true,
                 changeMonth: true,
                 dateFormat: "dd-mm-yy",
-                yearRange: "-0:+10"
+                yearRange: "-100:+10"
             });
 
-            $('#summernote').summernote();
+            CKEDITOR.replace('summernote')
         });
     </script>
 @endsection

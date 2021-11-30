@@ -139,7 +139,7 @@
 <script>
   $(function () {
     // Summernote
-    $('#summernote').summernote();
+    CKEDITOR.replace('summernote')
   })
   function readPicture(input) {
         if (input.files && input.files[0]) {

@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Blogs')
+@section('title', 'Publications')
 @section('content')
     <!-- Page Breadcrumbs Start -->
     <section class="breadcrumbs-page-wrap">
         <div class="bg-fixed pos-rel breadcrumbs-page">
             <div class="container">
-                <h1>Blogs</h1>
+                <h1>Publications</h1>
                 <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+                        <li class="breadcrumb-item active" aria-current="page">Publications</li>
                     </ol>
                 </nav>
             </div>
@@ -32,13 +32,13 @@
                                 <div class="post-img">
                                     <a
                                         href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
-                                            src="{{ asset($item->photo) }}" alt=""></a>
+                                            src="{{ asset($item->photo) }}" alt="" style="width: 350px; height: 235px;"></a>
                                 </div>
                                 <div class="post-content">
-                                    <div class="post-date">{{ date('d M, Y', strtotime($item->date)) }}</div>
-                                    <h3 class="post-title"><a
+                                    
+                                    <h5 class="post-title"><a
                                             href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
-                                    </h3>
+                                    </h5>
                                     <div class="text-md-right">
                                         <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
                                             class="read-more-line"><span>Read More</span></a>
