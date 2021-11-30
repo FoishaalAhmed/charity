@@ -46,13 +46,34 @@
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Detail') }}</label>
-                                                <textarea id="summernote" name="detail">
-                                    {{ $advisor->detail }}
-                                   </textarea>
+                                                @foreach ($details as $key => $item)
+                                                    <div class="input-group" id="remove-old-{{ $key }}"
+                                                        style="margin-bottom: 10px;">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="{{ __('Detail') }}" name="detail[]"
+                                                            autocomplete="off" value="{{ $item->detail }}">
+                                                        <div class="input-group-addon bg-red">
+                                                            <a style="cursor: pointer;"
+                                                                onclick="removeOldDetailInput({{ $key }})"
+                                                                class="bg-red"><i class="fa fa-trash"></i></a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                <div class="input-group">
+                                                    <input name="detail[]" placeholder="{{ __('Detail') }}"
+                                                        class="form-control" type="text" autocomplete="off">
+                                                    <div class="input-group-addon btn-default btn-success">
+                                                        <a style="cursor: pointer;" onclick="newDetailInput()"
+                                                            class="btn-default btn-success"><i
+                                                                class="fa fa-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                                <span id="detail-input"></span>
                                             </div>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
+                                    <!-- /.col -->
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -108,6 +129,29 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function removeOldDetailInput(id) {
+            $('#remove-old-' + id).remove();
+        }
+
+        var myFuncCalls = 0;
+
+        function newDetailInput() {
+
+            myFuncCalls++;
+
+            var input = '<div class="input-group" id="remove-id-' + myFuncCalls + '" style="margin-top: 10px;">' +
+                '<input name="detail[]" class="form-control" type="text" autocomplete="off" placeholder="Detail">' +
+                '<div class="input-group-addon bg-red">' +
+                '<a style="cursor: pointer;" class="bg-red" onclick="removeDetailInput(' + myFuncCalls +
+                ')"><i class="fa fa-trash"></i></a>' +
+                '</div> </div>';
+            $('#detail-input').append(input);
+        }
+
+        function removeDetailInput(id) {
+            $('#remove-id-' + id).remove();
         }
     </script>
 @endsection

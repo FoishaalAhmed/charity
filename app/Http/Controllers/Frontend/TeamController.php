@@ -23,7 +23,7 @@ class TeamController extends Controller
         } else {
             $teams = Team::orderBy('priority', 'asc')->paginate(16);
         }
-        $advisors = Advisor::all();
+        $advisors = Advisor::with('details')->get();
         $experts = Expert::all();
         $volunteerCount = Team::count();
         $eventCount = Event::count();
@@ -50,6 +50,5 @@ class TeamController extends Controller
         $partners = Partner::latest()->get();
         $help = General::where('name', 'help')->first();
         return view('frontend.reference', compact('help', 'partners', 'testimonials'));
-        
     }
 }

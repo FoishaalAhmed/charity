@@ -75,7 +75,7 @@
         </div>
         <!-- card end-->
         <!-- my work adviser start -->
-        <section>
+        {{-- <section>
             <section class="fu">
                 <section id="future" class="text-center">
                     <div class="container">
@@ -115,6 +115,69 @@
                             @endforeach
                             <!-- col-3 -->
                             <!-- col-4 -->
+                            <div class="col-lg-3 d-block d-lg-flex">
+                                <div class="features-col1">
+                                </div>
+                            </div>
+                        </div>
+                        <!--col end-->
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                </section>
+            </section>
+        </section> --}}
+
+        <section>
+            <section class="fu">
+                <section id="future" class="text-center">
+                    <div class="container">
+                        <div class="text">
+                            <i class="adviser-icon fas fa-award"></i>
+                            <h4>OUR ADVISER</h4>
+                            <p>Y O U &nbsp; W I L L&nbsp; B E &nbsp; M O V I N G&nbsp; I N&nbsp; T H E&nbsp; R I G H
+                                T&nbsp; D I R E C T I O N &nbsp;W I T H&nbsp; T H E M</p>
+                        </div>
+                        <!-- col-1 -->
+                        <div class="row">
+                            <div class="col-lg-3 d-block d-lg-flex">
+                                <div class="features-coll ">
+                                </div>
+                            </div>
+                            <!-- col-2 -->
+                            @foreach ($advisors as $item)
+                                <div class="col-lg-3 d-block d-lg-flex">
+                                    <div class="features-coll ">
+                                        <div class=" mb-6 m-lg-0">
+                                            <img class=" card-img-top " src="{{ asset($item->photo) }}" alt=" ">
+                                            <div class="card-textt">
+                                                <h5>{{ $item->name }}</h5>
+                                                <h6>ADVISER</h6>
+                                            </div>
+                                            <div class="card-text22 text-left text-dark" style="line-height: .5">
+                                                @php
+                                                    $details = $item->details->toArray();
+                                                    $firstFive = array_slice($details, 0, 5);
+                                                    $rest = array_slice($details, 5);
+                                                @endphp
+                                                @foreach ($firstFive as $value)
+                                                    <p>→ {{ $value['detail'] }}
+                                                    </p>
+                                                @endforeach
+                                                <div id="demo<?= $item->id ?>" class="collapse ">
+                                                    @foreach ($rest as  $value2)
+                                                        <p>→ {{ $value2['detail'] }} </p>
+                                                    @endforeach
+                                                </div>
+                                                <a href="#demo<?= $item->id ?>" data-toggle="collapse"
+                                                    style="font-size: 0.8rem;color:white " ;>Read More..</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <!-- col-3 -->
                             <div class="col-lg-3 d-block d-lg-flex">
                                 <div class="features-col1">
                                 </div>

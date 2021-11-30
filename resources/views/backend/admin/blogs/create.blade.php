@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Category') }}</label>
@@ -45,7 +45,7 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Title') }}</label>
@@ -57,12 +57,12 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Year') }}</label>
-                                                <select name="year" id="year" class="form-control select2"
-                                                    required="" style="width: 100%">
+                                                <select name="year" id="year" class="form-control select2" required=""
+                                                    style="width: 100%">
                                                     <option value="">{{ __('Select Year') }}</option>
                                                     @php
                                                         $year = date('Y');
@@ -77,7 +77,7 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Link') }}</label>
@@ -88,7 +88,7 @@
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <!-- /.col -->
+                                    <!-- /.col --> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">

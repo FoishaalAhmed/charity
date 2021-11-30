@@ -24,20 +24,20 @@ class AdvisorRequest extends FormRequest
     public function rules()
     { {
             $rules = [
-
                 'name' => 'required|string|max:255',
-                'detail' => 'nullable|string',
             ];
 
             if ($this->getMethod() == 'POST') {
 
                 return $rules + [
                     'photo'    => 'mimes:jpeg,jpg,png,gif,webp|max:200|required',
+                    'detail.*' => 'required|string',
                 ];
             } else {
 
                 return $rules + [
                     'photo'    => 'mimes:jpeg,jpg,png,gif,webp|max:200|nullable',
+                    'detail.*' => 'nullable|string',
                 ];
             }
         }

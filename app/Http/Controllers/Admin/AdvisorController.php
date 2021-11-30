@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdvisorRequest;
 use App\Models\Advisor;
+use App\Models\AdvisorDetail;
 
 class AdvisorController extends Controller
 {
@@ -35,7 +36,8 @@ class AdvisorController extends Controller
     public function edit($id)
     {
         $advisor = Advisor::findOrFail($id);
-        return view('backend.admin.advisors.edit', compact('advisor'));
+        $details = AdvisorDetail::where('advisor_id', $id)->get();
+        return view('backend.admin.advisors.edit', compact('advisor', 'details'));
     }
 
     public function update(AdvisorRequest $request, $id)

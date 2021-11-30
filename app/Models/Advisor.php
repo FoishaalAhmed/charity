@@ -13,6 +13,11 @@ class Advisor extends Model
         'name', 'photo', 'detail'
     ];
 
+    public function details()
+    {
+        return $this->hasMany('App\Models\AdvisorDetail');
+    }
+
     public function storeAdvisor(Object $request)
     {
         $image = $request->file('photo');
@@ -29,8 +34,17 @@ class Advisor extends Model
         }
 
         $this->name      = $request->name;
-        $this->detail  = $request->detail;
-        $storeAdvisor       = $this->save();
+        $storeAdvisor    = $this->save();
+
+        foreach ($request->detail as $key => $value) {
+            $data[] = [
+                'advisor_id' => $this->id,
+                'detail' => $value,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        }
+        AdvisorDetail::insert($data);
 
         $storeAdvisor
             ? session()->flash('message', 'New Advisor Created Successfully!')
@@ -54,8 +68,18 @@ class Advisor extends Model
         }
 
         $advisor->name      = $request->name;
-        $advisor->detail  = $request->detail;
         $updateAdvisor      = $advisor->save();
+        AdvisorDetail::where('advisor_id', $id)->delete();
+        foreach ($request->detail as $key => $value) {
+            if ($value == null) continue;
+            $data[] = [
+                'advisor_id' => $id,
+                'detail' => $value,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        }
+        AdvisorDetail::insert($data);
 
         $updateAdvisor
             ? session()->flash('message', 'Advisor Info Updated Successfully!')
