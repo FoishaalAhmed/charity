@@ -44,7 +44,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::resource('partners', PartnerController::class)->except(['create', 'edit', 'show']);
     Route::resource('categories', CategoryController::class)->except(['create', 'edit', 'show']);
     Route::resource('sliders', SliderController::class)->except(['create', 'show']);
-    Route::resource('researches', ResearchController::class)->except(['create', 'show']);
+    Route::resource('researches', ResearchController::class)->except(['show']);
     Route::resource('generals', GeneralController::class);
     Route::resource('causes', CauseController::class);
     Route::resource('services', ServiceController::class);

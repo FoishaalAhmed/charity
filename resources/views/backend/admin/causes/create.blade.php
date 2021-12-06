@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    {{-- <div class="col-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Category') }}</label>
@@ -44,8 +44,8 @@
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
-                                    <!-- /.col --> --}}
-                                    <div class="col-md-12">
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Title') }}</label>
@@ -57,30 +57,6 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
-                                    {{-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label>{{ __('Last Date') }}</label>
-                                                <input type="text" name="last_date" class="form-control"
-                                                    placeholder="{{ __('Last Date') }}" required="" autocomplete="off"
-                                                    value="{{ old('last_date') }}" id="date" />
-                                            </div>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col --> --}}
-                                    {{-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label>{{ __('Amount') }}</label>
-                                                <input type="text" name="amount" class="form-control"
-                                                    placeholder="{{ __('Amount') }}" required="" autocomplete="off"
-                                                    value="{{ old('amount') }}" />
-                                            </div>
-                                        </div>
-                                        <!-- /.form-group -->
-                                    </div>
-                                    <!-- /.col --> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">

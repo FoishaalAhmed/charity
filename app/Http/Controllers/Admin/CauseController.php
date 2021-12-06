@@ -20,12 +20,14 @@ class CauseController extends Controller
     public function index()
     {
         $causes = Cause::latest()->get();
+       
         return view('backend.admin.causes.index', compact('causes'));
     }
 
     public function create()
     {
         $categories = Category::orderBy('name', 'asc')->get();
+        
         return view('backend.admin.causes.create', compact('categories'));
     }
 

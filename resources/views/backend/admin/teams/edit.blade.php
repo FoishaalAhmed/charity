@@ -42,6 +42,7 @@
                                                         {{ __('Researcher') }}</option>
                                                     <option value="Advisors" @if ($team->category == 'Advisors') {{ 'selected' }} @endif>
                                                         {{ __('Advisors') }}</option>
+                                                    <option value="Field Stuff" @if ($team->category == 'Field Stuff') {{ 'selected' }} @endif>{{ __('Field Stuff') }}</option>
                                                 </select>
                                             </div>
                                         </div>

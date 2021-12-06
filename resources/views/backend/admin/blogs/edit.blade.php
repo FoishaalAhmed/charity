@@ -33,13 +33,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Category') }}</label>
+                                                <label>{{ __('Research') }}</label>
                                                 <select name="category_id" id="category_id" class="form-control select2"
                                                     required="" style="width: 100%">
-                                                    <option value="">{{ __('Select Category') }}</option>
+                                                    <option value="">{{ __('Select Research') }}</option>
                                                     @foreach ($categories as $item)
-                                                        <option value="{{ $item->id }}" @if ($blog->category_id == $item->id) {{ 'selected' }}  @endif>
-                                                            {{ $item->name }}</option>
+                                                        <option value="{{ $item->id }}" @if ($blog->research_id == $item->id) {{ 'selected' }}  @endif>
+                                                            {{ $item->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

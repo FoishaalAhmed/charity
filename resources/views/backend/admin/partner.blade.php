@@ -28,7 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10%">{{ __('Sl') }}</th>
-                                        <th style="width: 80%">{{ __('Logo') }}</th>
+                                        <th style="width: 60%">{{ __('Name') }}</th>
+                                        <th style="width: 20%">{{ __('Logo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -36,6 +37,7 @@
                                     @foreach ($partners as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
                                             <td>
                                                 <img src="{{ asset($item->logo) }}" alt=""
                                                     style="width: 50px; height: 50px;">
@@ -43,7 +45,8 @@
                                             <td>
                                                 <a class="btn btn-sm bg-teal" href="#" data-toggle="modal"
                                                     data-target="#edit-Modal" data-id="{{ $item->id }}"
-                                                    data-logo="{{ $item->logo }}"><span class="fas fa-edit"></span></a>
+                                                    data-logo="{{ $item->logo }}" data-name="{{ $item->name }}"><span
+                                                        class="fas fa-edit"></span></a>
 
                                                 <form action="{{ route('admin.partners.destroy', [$item->id]) }}"
                                                     method="post" style="display: none;"
@@ -77,6 +80,11 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>{{ __('Name') }}</label>
+                                        <input name="name" placeholder="{{ __('Name') }}" class="form-control"
+                                            required="" type="text">
+                                    </div>
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
                                             <div class="text-center">
@@ -118,6 +126,11 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>{{ __('Name') }}</label>
+                                        <input name="name" placeholder="{{ __('Name') }}" class="form-control"
+                                            required="" type="text" id="name">
+                                    </div>
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
                                             <div class="text-center">
@@ -191,12 +204,14 @@
 
             var e = $(event.relatedTarget);
             var id = e.data('id');
+            var name = e.data('name');
             var logo = e.data('logo');
             var base_url = '{!! url('/') !!}';
             var action = '{{ URL::to('admin/partners/update') }}';
 
             $("#edit-form").attr('action', action);
             $("#id").val(id);
+            $("#name").val(name);
             $('#partnerLogo2').attr('src', base_url + '/' + logo);
 
         });

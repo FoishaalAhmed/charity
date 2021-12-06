@@ -10,11 +10,12 @@ class Partner extends Model
     use HasFactory;
 
     protected $fillable = [
-        'logo',
+        'logo', 'name',
     ];
 
     public static $validateRule = [
-        'logo' => 'mimes:jpeg,jpg,png,gif,webp|max:100|required',
+        'logo' => 'mimes:jpeg,jpg,png,gif,webp|max:100|nullable',
+        'name' => ['required', 'string', 'max: 255'],
     ];
 
     public function storePartner(Object $request)
@@ -27,6 +28,7 @@ class Partner extends Model
         $image_url       = $upload_path . $image_full_name;
         $success         = $image->move($upload_path, $image_full_name);
         $this->logo     = $image_url;
+        $this->name     = $request->name;
         $storePartner    = $this->save();
 
         $storePartner
@@ -38,14 +40,18 @@ class Partner extends Model
     {
         $partner = $this::findOrFail($id);
         $image = $request->file('logo');
-        if (file_exists($partner->logo)) unlink($partner->logo);
-        $image_name      = date('YmdHis');
-        $ext             = strtolower($image->getClientOriginalExtension());
-        $image_full_name = $image_name . '.' . $ext;
-        $upload_path     = 'public/images/partners/';
-        $image_url       = $upload_path . $image_full_name;
-        $success         = $image->move($upload_path, $image_full_name);
-        $partner->logo   = $image_url;
+        if ($image) {
+            if (file_exists($partner->logo)) unlink($partner->logo);
+            $image_name      = date('YmdHis');
+            $ext             = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $ext;
+            $upload_path     = 'public/images/partners/';
+            $image_url       = $upload_path . $image_full_name;
+            $success         = $image->move($upload_path, $image_full_name);
+            $partner->logo   = $image_url;
+        }
+
+        $partner->name   = $request->name;
         $updatePartner   = $partner->save();
 
         $updatePartner

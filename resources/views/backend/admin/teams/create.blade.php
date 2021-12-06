@@ -38,6 +38,8 @@
                                                     <option value="Management" @if (old('category') == 'Management') {{ 'selected' }}  @endif>{{ __('Management') }}</option>
                                                     <option value="Researcher" @if (old('category') == 'Researcher') {{ 'selected' }} @endif>{{ __('Researcher') }}</option>
                                                     <option value="Advisors" @if (old('category') == 'Advisors') {{ 'selected' }} @endif>{{ __('Advisors') }}</option>
+
+                                                    <option value="Field Stuff" @if (old('category') == 'Field Stuff') {{ 'selected' }} @endif>{{ __('Field Stuff') }}</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -9,13 +9,8 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public function categories()
-    {
-        return $this->belongsTo('App\Models\Category');
-    }
-
     protected $fillable = [
-        'category_id', 'title', 'link', 'date', 'content', 'photo',
+        'research_id', 'title', 'link', 'date', 'content', 'photo',
     ];
 
     public function storeBlog(Object $request)
@@ -34,7 +29,7 @@ class Blog extends Model
 
         $this->title = $request->title;
         $this->year = $request->year;
-        $this->category_id = $request->category_id;
+        $this->research_id = $request->category_id;
         $this->content = $request->content;
         $this->link = $request->link;
         $storeBlog = $this->save();
@@ -64,7 +59,7 @@ class Blog extends Model
         $blog->link = $request->link;
         $blog->year = $request->year;
         $blog->content = $request->content;
-        $blog->category_id = $request->category_id;
+        $blog->research_id = $request->category_id;
         $updateBlog = $blog->save();
 
         $updateBlog
@@ -76,7 +71,7 @@ class Blog extends Model
     {
         $blog = $this::findOrFail($id);
         if (file_exists($blog->photo)) unlink($blog->photo);
-        $destroyBlog = $this->delete();
+        $destroyBlog = $blog->delete();
 
         $destroyBlog
             ? session()->flash('message', 'Blog Deleted Successfully!')
