@@ -30,12 +30,13 @@ class TeamController extends Controller
     public function detail($id, $name)
     {
         $team = Team::findOrFail($id);
-        return view('frontend.teamDetail', compact('team'));
+        $partners = Partner::latest()->get();
+        return view('frontend.teamDetail', compact('team', 'partners'));
     }
 
     public function reference()
     {
-        $testimonials = Testimonial::latest()->get();
+        $testimonials = Testimonial::latest()->paginate(10);
         $partners = Partner::latest()->get();
         $help = General::where('name', 'help')->first();
         return view('frontend.reference', compact('help', 'partners', 'testimonials'));

@@ -35,7 +35,7 @@
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"></div>
+        {{-- <div class="preloader"></div> --}}
 
         <!-- Main Header-->
         <header class="main-header">
@@ -75,7 +75,7 @@
                                     <ul class="navigation clearfix">
                                         <li class="@if (request()->is('/')) {{ 'current' }} @endif"><a href="{{ URL::to('/') }}">Home</a>
                                         </li>
-                                        <li class="@if (request()->is('about')) {{ 'current' }} @endif dropdown"><a href="#">About Us</a>
+                                        <li class="@if (request()->is('about') || request()->is('pages/*') || request()->is('teams/*')) {{ 'current' }} @endif dropdown"><a href="#">About Us</a>
                                             <ul>
                                                 <li><a href="{{ route('about') }}">About Us</a></li>
                                                 <li><a href="{{ route('pages', 'mission') }}">Our Mission</a></li>
@@ -116,9 +116,9 @@
 
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="{{ route('blogs') }}">Publication</a>
+                                        <li><a href="{{ route('blogs') }}">Publication</a>
                                         </li>
-                                        <li class="dropdown"><a href="{{ route('references') }}">Referancs</a>
+                                        <li><a href="{{ route('references') }}">Referancs</a>
                                         </li>
                                         <li><a href="{{ route('contacts') }}">Contact</a></li>
                                         <li><a href="{{ route('events') }}">Events & News</a></li>
@@ -324,9 +324,10 @@
     <script src="{{ asset('public/frontend/js/map-script.js') }}"></script>
     <!--End Google Map APi-->
 
+    @section('footer')
+        
+    @show
 
-    <!--Color Switcher-->
-    <script src="js/color-settings.js"></script>
 </body>
 
 <!-- Mirrored from html.efforttech.com/html/charitypoint/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Dec 2021 09:50:56 GMT -->

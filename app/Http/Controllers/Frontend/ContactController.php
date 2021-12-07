@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\General;
+use App\Models\Partner;
 use App\Models\Query;
 use Illuminate\Http\Request;
 use Validator;
@@ -12,9 +12,8 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contact_us = General::where('name', 'contact-us-text')->first();
-        $donation_text = General::where('name', 'donation text')->first();
-        return view('frontend.contact', compact('contact_us', 'donation_text'));
+        $partners = Partner::latest()->get();
+        return view('frontend.contact', compact('partners'));
     }
 
     public function query(Request $request)
