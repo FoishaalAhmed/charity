@@ -81,7 +81,7 @@ class Cause extends Model
     {
         $cause = $this::findOrFail($id);
         if (file_exists($cause->photo)) unlink($cause->photo);
-        $destroyCause = $this->delete();
+        $destroyCause = $cause->delete();
 
         $destroyCause
             ? session()->flash('message', 'Cause Deleted Successfully!')

@@ -23,25 +23,14 @@ class TeamController extends Controller
         } else {
             $teams = Team::orderBy('priority', 'asc')->paginate(16);
         }
-        $advisors = Advisor::with('details')->get();
-        $experts = Expert::all();
-        $volunteerCount = Team::count();
-        $eventCount = Event::count();
-        $donarCount = Donation::where('status', 1)->count();
-        $fundAmount = Donation::where('status', 1)->selectRaw('sum(amount) as total')->first()->total;
         $partners = Partner::latest()->get();
-        $faqs = Faq::latest()->take(3)->get();
-        $question_text = General::where('name', 'frequently-ask-question-text')->first();
-        $expert_text = General::where('name', 'expart-text')->first();
-        return view('frontend.team', compact('volunteerCount', 'eventCount', 'donarCount', 'fundAmount', 'faqs', 'partners', 'question_text', 'teams', 'advisors', 'experts', 'expert_text'));
+        return view('frontend.team', compact('partners', 'teams'));
     }
 
-    public function faq()
+    public function detail($id, $name)
     {
-        $faqs = Faq::latest()->paginate(10);
-        $partners = Partner::latest()->get();
-        $help = General::where('name', 'help')->first();
-        return view('frontend.faq', compact('faqs', 'partners', 'help'));
+        $team = Team::findOrFail($id);
+        return view('frontend.teamDetail', compact('team'));
     }
 
     public function reference()

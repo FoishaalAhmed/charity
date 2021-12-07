@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class Category extends Model
 {
@@ -33,6 +34,18 @@ class Category extends Model
 
         'name' => 'required|string|max:255',
     ];
+
+    public function getCategories()
+    {
+        $categories = $this::join('causes', 'causes.category_id', '=', 'categories.id')
+        ->orderBy('categories.name', 'asc')
+            ->groupBy('causes.category_id')
+            ->select([
+                DB::raw('count(causes.id) as total'), 'categories.name', 'categories.id'
+            ])
+            ->get();
+        return $categories;
+    }
 
     public function storeCategory($request)
     {

@@ -100,9 +100,11 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="#">Services</a>
+                                        <li class="@if (request()->is('services/*')) {{ 'current' }} @endif dropdown"><a href="#">Services</a>
                                             <ul>
-                                                <li><a href="events-list.html">Ongoing Activies</a></li>
+                                                @foreach ($categories as $item)
+                                                    <li><a href="{{ route('causes', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}">{{ $item->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li class="dropdown"><a href="#">Research</a>

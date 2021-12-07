@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\General;
 use Illuminate\Support\ServiceProvider;
@@ -28,8 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $contact = Contact::first();
+        $categories = Category::orderBy('name', 'asc')->select('id', 'name')->get();
         $working_hour = General::where('name', 'working hour')->first();
         $footer_text = General::where('name', 'footer-text')->first();
-        view()->share(['contact' => $contact, 'working_hour' => $working_hour, 'footer_text' => $footer_text]);
+        view()->share(['contact' => $contact, 'working_hour' => $working_hour, 'footer_text' => $footer_text, 'categories' => $categories]);
     }
 }
