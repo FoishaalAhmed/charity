@@ -60,7 +60,7 @@
                         @if ($serviceCategories->isNotEmpty())
                             <div class="sidebar-widget categories-blog">
                                 <div class="sidebar-title">
-                                    <h2>Categories</h2>
+                                    <h2>Service Categories</h2>
                                 </div>
                                 <div class="inner-box">
                                     <ul>

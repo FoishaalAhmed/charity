@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Cause;
-use App\Models\Donation;
 use App\Models\Event;
-use App\Models\General;
 use App\Models\Partner;
 
 class CauseController extends Controller
@@ -27,7 +25,7 @@ class CauseController extends Controller
     {
         $categoryObjet = new Category();
         $causes = Cause::where('category_id', $category_id)->latest()->paginate(6);
-        $events = Event::latest()->take(3)->select('id', 'title')->get();
+        $events = Event::latest()->take(3)->select('id', 'title', 'photo')->get();
         $partners = Partner::latest()->get();
         $serviceCategories = $categoryObjet->getCategories();
         return view('frontend.cause', compact('partners', 'causes', 'events', 'serviceCategories'));

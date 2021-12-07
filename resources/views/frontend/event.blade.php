@@ -2,121 +2,131 @@
 
 @section('title', 'Events')
 @section('content')
-    <!-- Page Breadcrumbs Start -->
-    <section class="breadcrumbs-page-wrap">
-        <div class="bg-fixed pos-rel breadcrumbs-page">
-            <div class="container">
-                <h1>Our Events</h1>
-                <nav aria-label="breadcrumb" class="breadcrumb-wrap">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Our Events</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </section>
-    <!-- Page Breadcrumbs End -->
+    <br /> <br />
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
 
-    <!-- Main Body Content Start -->
-    <main id="body-content">
+                <!--Content Side-->
+                <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="events-list">
 
-        <!-- Event Alternate Style Start -->
-        <section class="wide-tb-100">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-sm-1">
-                    @foreach ($events as $item)
-                        <div class="col mb-5">
-                            <div class="event-wrap-alternate">
-                                <!-- Event Wrap -->
-                                <div class="img-wrap">
-                                    <div class="date-box">
-                                        {{ date('d', strtotime($item->date)) }}
-                                        <span>{{ date('M', strtotime($item->date)) }}</span>
-                                    </div>
-                                    <a
-                                        href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
-                                            src="{{ asset($item->photo) }}" alt=""></a>
-                                    <div class="content-wrap">
-                                        <h3><a
-                                                href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
-                                        </h3>
-                                        <div class="event-details">
-                                            <div><i data-feather="clock"></i> {{ date('h:i A', strtotime($item->time)) }}
+                        <!--Event Block Three-->
+                        @foreach ($events as $item)
+                            <div class="event-block-three">
+                                <div class="inner-box">
+                                    <div class="row clearfix">
+                                        <div class="image-column col-md-5 col-sm-4 col-xs-12">
+                                            <div class="image">
+                                                <img src="{{ asset($item->photo) }}" alt="" />
+                                                <a href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                    class="overlay-box"><span class="icon flaticon-unlink"></span></a>
                                             </div>
-                                            <div><i data-feather="map-pin"></i> {{ $item->center }}</div>
+                                        </div>
+                                        <div class="content-column col-md-7 col-sm-8 col-xs-12">
+                                            <div class="inner-column">
+                                                <div class="post-info">{{ date('h:i A', strtotime($item->time)) }},
+                                                    {{ date('d M, Y', strtotime($item->date)) }} / <span
+                                                        class="theme_color">{{ $item->center }}</span></div>
+                                                <h3><a
+                                                        href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                </h3>
+                                                <div class="text">{!! Str::limit($item->detail, 200) !!}</div>
+                                                <div class="btns-box">
+                                                    <a href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                        class="theme-btn btn-style-four">More
+                                                        Detail</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Event Wrap -->
+                            </div>
+                        @endforeach
+                        <!--Styled Pagination-->
+                        <div class="styled-pagination">
+                            {{ $events->links('includes.pagination') }}
+                        </div>
+                        <!--End Styled Pagination-->
+
+                    </div>
+                </div>
+
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar default-sidebar">
+
+                        <!--Category Blog-->
+                        @if ($serviceCategories->isNotEmpty())
+                            <div class="sidebar-widget categories-blog">
+                                <div class="sidebar-title">
+                                    <h2>Service Categories</h2>
+                                </div>
+                                <div class="inner-box">
+                                    <ul>
+                                        @foreach ($serviceCategories as $item)
+                                            <li><a
+                                                    href="{{ route('causes', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}">{{ $item->name }}
+                                                    <span>{{ $item->total }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+
+
+                        <!-- Popular Posts -->
+                        <div class="sidebar-widget popular-posts">
+                            <div class="inner-box">
+                                @if ($causes->isNotEmpty())
+                                    <div class="sidebar-widget popular-posts">
+                                        <div class="sidebar-title">
+                                            <h2>Update Services</h2>
+                                        </div>
+                                        <div class="inner-box">
+                                            @foreach ($causes as $item)
+                                                <article class="post">
+                                                    <figure class="post-thumb"><a
+                                                            href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                                                src="{{ asset($item->photo) }}" alt=""></a></figure>
+                                                    <div class="text"><a
+                                                            href="{{ route('causes.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                    </div>
+                                                </article>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
+
+                    </aside>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--Clients Section-->
+    <section class="clients-section"
+        style="background-image:url({{ asset('public/frontend/images/background/1.jpg') }})">
+        <div class="auto-container">
+
+            <div class="sponsors-outer">
+                <!--Sponsors Carousel-->
+                <ul class="sponsors-carousel owl-carousel owl-theme">
+                    @foreach ($partners as $item)
+                        <li class="slide-item">
+                            <figure class="image-box"><a href="#"><img src="{{ asset($item->logo) }}" alt=""
+                                        style="width: 250px; height: 130px;"></a></figure>
+                        </li>
                     @endforeach
-                </div>
-                <div class="theme-pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            {{ $events->links() }}
-                        </ul>
-                    </nav>
-                </div>
+                </ul>
             </div>
-        </section>
-        <!-- Event Alternate Style Start -->
 
-        <!-- Callout Style Start -->
-        <section class="wide-tb-150 bg-scroll bg-img-6 pos-rel callout-style-1">
-            <div class="bg-overlay blue opacity-70"></div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <h1 class="heading-main light-mode">
-                            <small>Help Other People</small>
-                            @if ($help != null)
-                                {{ $help->value }}
-                            @else
-                                {{ 'We Dream to Create A Bright Future Of The Underprivileged Children' }}
-                            @endif
-                        </h1>
-                    </div>
-                    <div class="col-sm-12">
-                        <a href="{{ route('donations') }}" class="btn btn-primary">Donate Now</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Callout Style End -->
-
-        <!-- Our Partners Start -->
-        <section class="wide-tb-100">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12">
-                        <h1 class="heading-main">
-                            <small>Global Providers</small>
-                            Our World Wide Partner
-                        </h1>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="owl-carousel owl-theme" id="home-clients">
-
-                            <!-- Client Logo -->
-                            @foreach ($partners as $item)
-                                <div class="item">
-                                    <div class="clients-logo">
-                                        <img src="{{ asset($item->logo) }}" alt="" style="height: 100px">
-                                    </div>
-                                </div>
-                            @endforeach
-                            <!-- Client Logo -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Our Partners End -->
-
-
-    </main>
+        </div>
+    </section>
+    <!--End Clients Section-->
 @endsection
