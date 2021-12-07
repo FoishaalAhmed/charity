@@ -20,23 +20,7 @@ class PageController extends Controller
     public function about()
     {
         $about = Page::where('id', 4)->first();
-        $mission = Page::where('id', 5)->first();
-        $vision = Page::where('id', 6)->first();
-        $history = Page::where('id', 7)->first();
-        $intern = General::where('name', 'intern')->first();
-        $since = General::where('name', 'since')->first();
-        $about_text = General::where('name', 'about-text')->first();
-        $question_text = General::where('name', 'frequently-ask-question-text')->first();
-        $volunteers = Team::orderBy('priority', 'asc')->take(4)->get();
-        $faqs = Faq::latest()->take(3)->get();
-        $volunteerCount = Team::count();
-        $eventCount = Event::count();
-        $donarCount = Donation::where('status', 1)->count();
-        $fundAmount = Donation::where('status', 1)->selectRaw('sum(amount) as total')->first()->total;
-        $testimonials = Testimonial::latest()->take(6)->get();
-        $help = General::where('name', 'help')->first();
-        $partners = Partner::latest()->get();
-        return view('frontend.about', compact('about', 'intern', 'mission', 'vision', 'history', 'since', 'about_text', 'volunteers', 'question_text', 'faqs', 'volunteerCount', 'eventCount', 'donarCount', 'fundAmount', 'testimonials', 'help', 'partners'));
+        return view('frontend.about', compact('about'));
     }
 
     public function search(Request $request)

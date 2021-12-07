@@ -15,20 +15,17 @@
         type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{ asset('public/frontend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/responsive.css') }}" rel="stylesheet">
-
     <!--Color Switcher Mockup-->
     <link href="{{ asset('public/frontend/css/color-switcher-design.css') }}" rel="stylesheet">
-
     <!--Color Themes-->
     <link id="theme-color-file" href="{{ asset('public/frontend/css/color-themes/default-theme.css') }}"
         rel="stylesheet">
-
-
     <link rel="shortcut icon" href="{{ asset('public/frontend/images/favicon.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('public/frontend/images/favicon.png') }}" type="image/x-icon">
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
@@ -50,14 +47,14 @@
                         <!--Logo Box-->
                         <div class="logo-box">
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}" style="height: 80; width: 80px;"
-                                        alt=""></a>
+                                <a href="index.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}"
+                                        style="height: 80; width: 80px;" alt=""></a>
                             </div>
                         </div>
 
                         <!--Btn Outer-->
                         <div class="btn-outer">
-                            <a href="donate.html" class="theme-btn btn-style-one">Donate</a>
+                            <a href="#" class="theme-btn btn-style-one">Donate</a>
                         </div>
 
                         <!--Nav Outer-->
@@ -76,20 +73,29 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="#">Home</a> </li>
-                                        <li class="dropdown"><a href="#">About Us</a>
+                                        <li class="@if (request()->is('/')) {{ 'current' }} @endif"><a href="{{ URL::to('/') }}">Home</a>
+                                        </li>
+                                        <li class="@if (request()->is('about')) {{ 'current' }} @endif dropdown"><a href="#">About Us</a>
                                             <ul>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="mission.html">Our Mission</a></li>
-                                                <li><a href="vision.html">Our vision</a></li>
-                                                <li><a href="history.html">Our History</a></li>
+                                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                                <li><a href="{{ route('pages', 'mission') }}">Our Mission</a></li>
+                                                <li><a href="{{ route('pages', 'vision') }}">Our vision</a></li>
+                                                <li><a href="{{ route('pages', 'history') }}">Our History</a></li>
                                                 <li class="dropdown"><a href="#">People</a>
                                                     <ul>
-                                                        <li><a href="management.html">Management</a></li>
-                                                        <li><a href="filed.html">Filed Staff</a></li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'Management']) }}">Management</a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'Field Stuff']) }}">Filed
+                                                                Staff</a></li>
 
-                                                        <li><a href="researcher.html">Researcher</a></li>
-                                                        <li><a href="adviser.html">Advisor</a></li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'Researcher']) }}">Researcher</a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'Advisors']) }}">Advisor</a>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -101,14 +107,19 @@
                                         </li>
                                         <li class="dropdown"><a href="#">Research</a>
                                             <ul>
-                                                <li><a href="events-grid.html">Past Studies</a></li>
+                                                <li><a href="{{ route('research', 'past-studies') }}">Past
+                                                        Studies</a></li>
+                                                <li><a href="{{ route('research', 'ongoing-activities') }}">ongoing
+                                                        Studies</a></li>
 
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="#">Publication</a> </li>
-                                        <li class="dropdown"><a href="#">Referancs</a> </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="events-list.html">Events & News</a></li>
+                                        <li class="dropdown"><a href="{{ route('blogs') }}">Publication</a>
+                                        </li>
+                                        <li class="dropdown"><a href="{{ route('references') }}">Referancs</a>
+                                        </li>
+                                        <li><a href="{{ route('contacts') }}">Contact</a></li>
+                                        <li><a href="{{ route('events') }}">Events & News</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -159,7 +170,8 @@
                         <div class="footer-column col-md-4 col-sm-6 col-xs-12">
                             <div class="footer-widget">
                                 <div class="logo">
-                                    <a href="index-2.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}" alt="" style="width: 240px; height: 85px;"/></a>
+                                    <a href="index-2.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}"
+                                            alt="" style="width: 240px; height: 85px;" /></a>
                                 </div>
                                 <div class="text">Core values are the fundamental beliefs of a person or
                                     organization. The core values are the guiding prin ples that dictate behavior and
@@ -211,7 +223,8 @@
 
                                 <article class="post">
                                     <figure class="post-thumb"><a href="blog-single.html"><img
-                                                src="{{ asset('public/frontend/images/resource/news-thumb-1.jpg') }}" alt=""></a></figure>
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-1.jpg') }}"
+                                                alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">Child Education in
                                             South-Africa!!</a></div>
                                     <div class="post-info">Jul 17, 2017 / Business</div>
@@ -219,7 +232,8 @@
 
                                 <article class="post">
                                     <figure class="post-thumb"><a href="blog-single.html"><img
-                                                src="{{ asset('public/frontend/images/resource/news-thumb-2.jpg') }}" alt=""></a></figure>
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-2.jpg') }}"
+                                                alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">Clean Water Provide by Poor
                                             People!!</a></div>
                                     <div class="post-info">Jul 17, 2017 / Business</div>
@@ -227,7 +241,8 @@
 
                                 <article class="post">
                                     <figure class="post-thumb"><a href="blog-single.html"><img
-                                                src="{{ asset('public/frontend/images/resource/news-thumb-3.jpg') }}" alt=""></a></figure>
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-3.jpg') }}"
+                                                alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">We help the hunger
                                             People!!</a></div>
                                     <div class="post-info">Jul 17, 2017 / Business</div>
