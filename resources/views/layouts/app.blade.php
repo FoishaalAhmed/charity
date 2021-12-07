@@ -1,394 +1,317 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <!-- xxx Basics xxx -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- xxx Change With Your Information xxx -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
-    @section('header')
-    @endsection
     <title>@yield('title')</title>
-    <meta name="author" content="Mannat Studio">
-    <meta name="description" content="Gracious is a Responsive HTML5 Template for Charity and NGO related services.">
-    <meta name="keywords"
-        content="Gracious, responsive, html5, charity, charity agency, charity foundation, charity template, church, donate, donation, fundraiser, fundraising, mosque, ngo, non-profit, nonprofit, organization, volunteer">
+    <!-- Stylesheets -->
+    <link href="{{ asset('public/frontend/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/frontend/plugins/revolution/css/settings.css') }}" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION SETTINGS STYLES -->
+    <link href="{{ asset('public/frontend/plugins/revolution/css/layers.css') }}" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION LAYERS STYLES -->
+    <link href="{{ asset('public/frontend/plugins/revolution/css/navigation.css') }}" rel="stylesheet"
+        type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
+    <link href="{{ asset('public/frontend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/frontend/css/responsive.css') }}" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/frontend/assets/images/favicon.ico') }}">
-    <!-- Animate CSSS -->
-    <link href="{{ asset('public/frontend/assets/library/animate/animate.min.css') }}" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('public/frontend/assets/library/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Icofont CSS -->
-    <link href="{{ asset('public/frontend/assets/library/icofont/icofont.min.css') }}" rel="stylesheet">
-    <!-- Owl Carousel CSS -->
-    <link href="{{ asset('public/frontend/assets/library/owlcarousel/css/owl.carousel.min.css') }}" rel="stylesheet">
-    <!-- Select Dropdown CSS -->
-    <link href="{{ asset('public/frontend/assets/library/select2/css/select2.min.css') }}" rel="stylesheet">
-    <!-- Magnific Popup CSS -->
-    <link href="{{ asset('public/frontend/assets/library/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
-    <!-- Main Theme CSS -->
-    <link href="{{ asset('public/frontend/assets/css/style.css') }}" rel="stylesheet">
-    <!-- Home SLider CSS -->
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/home-main.css') }}">
+    <!--Color Switcher Mockup-->
+    <link href="{{ asset('public/frontend/css/color-switcher-design.css') }}" rel="stylesheet">
 
-    <!-- Jquery Library JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery/jquery.min.js') }}"></script>
+    <!--Color Themes-->
+    <link id="theme-color-file" href="{{ asset('public/frontend/css/color-themes/default-theme.css') }}"
+        rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+
+    <link rel="shortcut icon" href="{{ asset('public/frontend/images/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('public/frontend/images/favicon.png') }}" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
 <body>
 
-    <!-- Page loader Start -->
-    {{-- <div id="pageloader">
-        <div class="loader-item">
-            <div class="loader">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Page loader End -->
+    <div class="page-wrapper">
 
-    <!-- Header Start -->
-    <header class="header-style-fullwidth">
-        <div class="top-bar-right d-flex align-items-center text-md-left">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col d-flex align-items-center contact-info">
-                        <div>
-                            <i data-feather="phone"></i> <a
-                                href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a>
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Main Header-->
+        <header class="main-header">
+
+            <!-- Main Box -->
+            <div class="main-box">
+                <div class="auto-container">
+                    <div class="outer-container clearfix">
+                        <!--Logo Box-->
+                        <div class="logo-box">
+                            <div class="logo">
+                                <a href="index.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}" style="height: 80; width: 80px;"
+                                        alt=""></a>
+                            </div>
                         </div>
-                        <div>
-                            <i data-feather="mail"></i> <a
-                                href="mailto:{{ $contact->email }}">{{ $contact->email }}</a>
+
+                        <!--Btn Outer-->
+                        <div class="btn-outer">
+                            <a href="donate.html" class="theme-btn btn-style-one">Donate</a>
                         </div>
-                        <div>
-                            <i data-feather="clock"></i> {{ $working_hour->value }}
+
+                        <!--Nav Outer-->
+                        <div class="nav-outer clearfix">
+                            <!-- Main Menu -->
+                            <nav class="main-menu">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                        data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li class="current"><a href="#">Home</a> </li>
+                                        <li class="dropdown"><a href="#">About Us</a>
+                                            <ul>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="mission.html">Our Mission</a></li>
+                                                <li><a href="vision.html">Our vision</a></li>
+                                                <li><a href="history.html">Our History</a></li>
+                                                <li class="dropdown"><a href="#">People</a>
+                                                    <ul>
+                                                        <li><a href="management.html">Management</a></li>
+                                                        <li><a href="filed.html">Filed Staff</a></li>
+
+                                                        <li><a href="researcher.html">Researcher</a></li>
+                                                        <li><a href="adviser.html">Advisor</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Services</a>
+                                            <ul>
+                                                <li><a href="events-list.html">Ongoing Activies</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Research</a>
+                                            <ul>
+                                                <li><a href="events-grid.html">Past Studies</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Publication</a> </li>
+                                        <li class="dropdown"><a href="#">Referancs</a> </li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="events-list.html">Events & News</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!-- Main Menu End-->
+
+                            <!--Search Box-->
+                            <div class="search-box-outer">
+                                <div class="dropdown">
+                                    <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                                            class="fa fa-search"></span></button>
+                                    <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
+                                        <li class="panel-outer">
+                                            <div class="form-container">
+                                                <form method="post"
+                                                    action="http://html.efforttech.com/html/charitypoint/blog.html">
+                                                    <div class="form-group">
+                                                        <input type="search" name="field-name" value=""
+                                                            placeholder="Search Here" required>
+                                                        <button type="submit" class="search-btn"><span
+                                                                class="fa fa-search"></span></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
+                        <!--Nav Outer End-->
                     </div>
-
-                    <div class="col-md-auto">
-                        <div class="social-icons">
-                            <a href="{{ $contact->facebook }}"><i class="icofont-facebook"></i></a>
-                            <a href="{{ $contact->twitter }}"><i class="icofont-twitter"></i></a>
-                            <a href="{{ $contact->instagram }}"><i class="icofont-instagram"></i></a>
-                            <a href="{{ $contact->youtube }}"><i class="icofont-youtube-play"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Navigation Start -->
-        <nav class="navbar navbar-expand-lg header-fullpage">
-            <div class="container text-nowrap">
-                <div class="d-flex align-items-center w-100 col p-0 logo-brand">
-                    <a class="navbar-brand rounded-bottom light-bg" href="{{ URL::to('/') }}">
-                        <img src="{{ asset('public/images/logo.jpg') }}" alt="" style="width: 100px">
-                    </a>
-                </div>
-                <!-- Topbar Buttons Start -->
-                <div class="d-inline-flex request-btn order-lg-last col-auto p-0 align-items-center">
-                    <a class="btn-outline-primary btn ml-3" href="#" id="search_home"><i data-feather="search"></i></a>
-
-                    <!--<a class="nav-link btn btn-default ml-3 donate-btn" href="{{ route('donations') }}">Donate</a>-->
-
-                    <!-- Toggle Button Start -->
-                    <button class="navbar-toggler x collapsed" type="button" data-toggle="collapse"
-                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Toggle Button End -->
-                </div>
-                <!-- Topbar Buttons End -->
-
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ URL::to('/') }}" id="dropdown03" aria-haspopup="true"
-                                aria-expanded="false">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=""></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href=""
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('pages', 'mission') }}">Our Mission</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('pages', 'vision') }}">Our Vision</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('pages', 'history') }}">Our History</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('causes') }}" aria-haspopup="true"
-                                aria-expanded="false">Services</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Research Studies <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"
-                                        href="{{ route('research', 'completed-studies') }}">Completed Studies</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="{{ route('research', 'ongoing-activities') }}">Ongoing Activities</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ route('blogs') }}" aria-haspopup="true"
-                                aria-expanded="false">Publication</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ route('references') }}" aria-haspopup="true"
-                                aria-expanded="false">Client References</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href=""
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teams <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('teams', ['category' => 'Management']) }}">Management Teams</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('teams',['category' => 'Researcher']) }}">Researcher Teams</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('teams', ['category' => 'Advisors']) }}">Advisor Teams</a></li>
-                            </ul>
-                        </li>
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ route('teams') }}" aria-haspopup="true"
-                                aria-expanded="false">Teams</a>
-                        </li> --}}
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-mob" href="{{ URL::to('/') }}" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">More Info <i
-                                    class="icofont-rounded-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('teams') }}">Teams</a></li>
-                                <li><a class="dropdown-item" href="{{ route('volunteers') }}">Volunteers</a></li>
-                                <li><a class="dropdown-item" href="{{ route('volunteers.become') }}">Become
-                                        Volunteers</a></li>
-                                <li><a class="dropdown-item" href="{{ route('donations') }}">Donation</a></li>
-                                <li><a class="dropdown-item" href="{{ route('faqs') }}">Our Faq's</a></li>
-                            </ul>
-                        </li> --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacts') }}">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('events') }}" aria-haspopup="true"
-                                aria-expanded="false">Events & News</a>
-                        </li>
-
-
-                    </ul>
-                    <!-- Main Navigation End -->
                 </div>
             </div>
-        </nav>
-        <!-- Main Navigation End -->
-    </header>
-    <!-- Header Start -->
+        </header>
+        <!--End Main Header -->
+        @section('content')
 
-    @yield('content')
+        @show
+        <!--Main Footer-->
+        <footer class="main-footer">
+            <div class="auto-container">
+                <!--Widgets Section-->
+                <div class="widgets-section">
+                    <div class="row clearfix">
 
-    <!-- Main Footer Start -->
-    <footer class="wide-tb-70 pb-0 mb-spacer-md footer-second">
-        <div class="container bg-effect pos-rel">
-            <div class="row">
-                <!-- Column First -->
-                <div class="col-lg-4 col-md-12">
-                    <div class="logo-footer">
-                        <img src="{{ asset('public/frontend/assets/images/logo_white.svg') }}" alt="">
-                    </div>
-                    <p>
-                        @if ($footer_text != null)
-                            {{ $footer_text->value }}
-                        @else
-                            {{ 'This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet' }}
-                        @endif
-                    </p>
-
-                    <div class="footer-widget-contact">
-                        <ul class="list-unstyled">
-                            <li>
-                                <div><i data-feather="map-pin"></i> </div>
-                                <div>{{ $contact->address }}</div>
-                            </li>
-                            <li>
-                                <div><i data-feather="phone"></i> </div>
-                                <div><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></div>
-                            </li>
-                            <li>
-                                <div><i data-feather="mail"></i> </div>
-                                <div><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></div>
-                            </li>
-                            <li>
-                                <div><i data-feather="clock"></i> </div>
-                                <div>{{ $working_hour->value }}</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="social-icons">
-                        <ul class="list-unstyled list-group list-group-horizontal">
-                            <li><a href="{{ $contact->facebook }}"><i class="icofont-facebook"></i></a></li>
-                            <li><a href="{{ $contact->twitter }}"><i class="icofont-twitter"></i></a></li>
-                            <li><a href="{{ $contact->instagram }}"><i class="icofont-instagram"></i></a></li>
-                            <li><a href="{{ $contact->youtube }}"><i class="icofont-youtube-play"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Column First -->
-
-                <!-- Column Second -->
-                <div class="col-lg-7 offset-lg-1 col-md-12">
-                    <div class="footer-subscribe">
-                        <h3>Newsletter</h3>
-                        <h2>Get Update Every Week</h2>
-                        <div class="input-wrap">
-                            <input type="text" name="name" placeholder="Enter Your Email">
-                            <button type="submit" class="btn btn-secondary">Subscribe now</button>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3>Our Photostream</h3>
-                            <ul id="basicuse" class="photo-thumbs"></ul>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="footer-widget-menu">
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ route('about') }}"><i class="icofont-simple-right"></i> <span>About Us</span></a></li>
-                                    <li><a href="{{ route('pages', 'history') }}"><i class="icofont-simple-right"></i> <span>Our History</span></a>
-                                    </li>
-                                    <li><a href="{{ route('pages', 'vision') }}"><i class="icofont-simple-right"></i> <span>Our Vision</span></a>
-                                    </li>
-                                    <li><a href="{{ route('pages', 'mission') }}"><i class="icofont-simple-right"></i> <span>Our Mission</span></a>
-                                    </li>
-                                    <li><a href="{{ route('causes') }}"><i class="icofont-simple-right"></i> <span>Our Services</span></a>
-                                    </li>
-                                    
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                            <div class="footer-widget">
+                                <div class="logo">
+                                    <a href="index-2.html"><img src="{{ asset('public/frontend/images/logo.jpg') }}" alt="" style="width: 240px; height: 85px;"/></a>
+                                </div>
+                                <div class="text">Core values are the fundamental beliefs of a person or
+                                    organization. The core values are the guiding prin ples that dictate behavior and
+                                    action suas labore saperet has there any quote for write lorem percit
+                                    latineu.<br /><br /></div>
+                                <ul class="list-style-two">
+                                    <li><span class="icon flaticon-location-pin"></span>14 Tottenham Court Road,
+                                        NewYark.</li>
+                                    <li><span class="icon flaticon-technology-1"></span>1(784)-775-97-377</li>
+                                    <li><span class="icon flaticon-symbol"></span>info@yoursite.com</li>
                                 </ul>
                             </div>
+                        </div>
 
-                            <div class="give-us-call">
-                                <i data-feather="phone"></i>
-                                <h4>Give us a call</h4>
-                                <h3><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></h3>
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                            <div class="footer-widget info-widget">
+                                <h2>USE FULL LINKS</h2>
+                                <div class="row clearfix">
+                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                        <ul class="footer-list">
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Overview</a></li>
+                                            <li><a href="#">Our Team</a></li>
+                                            <li><a href="#">Innovation</a></li>
+                                            <li><a href="#">Contact us </a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Events</a></li>
+                                            <li><a href="#">Portfolio</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                        <ul class="footer-list">
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Overview</a></li>
+                                            <li><a href="#">Our Team</a></li>
+                                            <li><a href="#">Innovation</a></li>
+                                            <li><a href="#">Contact us </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-4 col-sm-12 col-xs-12">
+                            <div class="footer-widget news-widget">
+                                <h2>Latest News</h2>
 
-                </div>
-                <!-- Column Second -->
-            </div>
-        </div>
+                                <article class="post">
+                                    <figure class="post-thumb"><a href="blog-single.html"><img
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-1.jpg') }}" alt=""></a></figure>
+                                    <div class="text"><a href="blog-single.html">Child Education in
+                                            South-Africa!!</a></div>
+                                    <div class="post-info">Jul 17, 2017 / Business</div>
+                                </article>
 
-        <div class="copyright-wrap">
-            <div class="container pos-rel">
-                <div class="row text-md-start text-center">
-                    <div class="col-sm-12 col-md-auto copyright-text">
-                        © Copyright <span class="txt-blue">Econs Bangladesh</span> 2021. | Created by <a
-                            href="https://ictbanglabd.com/contact" rel="nofollow">ICTBANGLABD</a>
-                    </div>
-                    <div class="col-sm-12 col-md-auto ml-md-auto text-md-right text-center copyright-links">
-                        <a href="{{ route('pages', 'terms-condition') }}">Terms & Condition</a> | <a
-                            href="{{ route('pages', 'privacy-policy') }}">Privacy Policy</a> | <a
-                            href="{{ route('pages', 'legal') }}">Legal</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Main Footer End -->
+                                <article class="post">
+                                    <figure class="post-thumb"><a href="blog-single.html"><img
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-2.jpg') }}" alt=""></a></figure>
+                                    <div class="text"><a href="blog-single.html">Clean Water Provide by Poor
+                                            People!!</a></div>
+                                    <div class="post-info">Jul 17, 2017 / Business</div>
+                                </article>
 
-    <!-- Search Popup Start -->
-    <div class="overlay overlay-hugeinc">
-        <form class="form-inline mt-2 mt-md-0" method="get" action="{{ route('search') }}">
-            @csrf
-            <div class="form-inner">
-                <div class="form-inner-div d-inline-flex align-items-center no-gutters">
-                    <div class="col-auto">
-                        <i class="icofont-search"></i>
-                    </div>
-                    <div class="col">
-                        <input class="form-control w-100 p-0" type="text" placeholder="Search" aria-label="Search"
-                            name="search">
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="overlay-close link-oragne"><i class="icofont-close-line"></i></a>
+                                <article class="post">
+                                    <figure class="post-thumb"><a href="blog-single.html"><img
+                                                src="{{ asset('public/frontend/images/resource/news-thumb-3.jpg') }}" alt=""></a></figure>
+                                    <div class="text"><a href="blog-single.html">We help the hunger
+                                            People!!</a></div>
+                                    <div class="post-info">Jul 17, 2017 / Business</div>
+                                </article>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
-        </form>
+            <!--Footer Bottom-->
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="column col-md-6 col-sm-8 col-xs-12">
+                            <div class="copyright">Copyright &copy; 2017 Charity Point. All rights reserved</div>
+                        </div>
+                        <div class="social-column col-md-6 col-sm-4 col-xs-12">
+                            <ul class="social-icon-one style-two">
+                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                                <li><a href="#"><span class="fa fa-behance"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
     </div>
-    <!-- Search Popup End -->
+    <!--End pagewrapper-->
 
-    <!-- Back To Top Start -->
-    <a id="mkdf-back-to-top" href="#" class="off"><i data-feather="corner-right-up"></i></a>
-    <!-- Back To Top End -->
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('public/frontend/assets/library/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Feather Icon JS -->
-    <script src="{{ asset('public/frontend/assets/library/feather-icons/feather.min.js') }}"></script>
-    <!-- Owl Carousel JS -->
-    <script src="{{ asset('public/frontend/assets/library/owlcarousel/js/owl.carousel.min.js') }}"></script>
-    <!-- Select2 Dropdown JS -->
-    <script src="{{ asset('public/frontend/assets/library/select2/js/select2.min.js') }}"></script>
-    <!-- Magnific Popup JS -->
-    <script src="{{ asset('public/frontend/assets/library/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <!-- jflickrfeed Images JS -->
-    <script src="{{ asset('public/frontend/assets/library/jflickrfeed/jflickrfeed.min.js') }}"></script>
-    <!-- Way Points JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery-waypoints/jquery.waypoints.min.js') }}"></script>
-    <!-- Count Down JS -->
-    <script src="{{ asset('public/frontend/assets/library/countdown/jquery.countdown.min.js') }}"></script>
-    <!-- Appear JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery-appear/jquery.appear.js') }}"></script>
-    <!-- Jquery Easing JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery-easing/jquery.easing.min.js') }}"></script>
-    <!-- Counter JS -->
-    <script src="{{ asset('public/frontend/assets/library/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <!-- Theme Custom -->
-    <script src="{{ asset('public/frontend/assets/js/site-custom.js') }}"></script>
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
 
-    <!-- Home Slider (Only For Home pages) -->
-    <script src="{{ asset('public/frontend/assets/js/home-slider.js') }}"></script>
-    <script src="{{ asset('public/frontend/assets/js/countdown.js') }}"></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61652da90564a690"></script>
 
-    @section('footer')
 
-    @show
+    <script src="{{ asset('public/frontend/js/jquery.js') }}"></script>
+    <!--Revolution Slider-->
+    <script src="{{ asset('public/frontend/plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/plugins/revolution/js/extensions/revolution.extension.video.min.js') }}">
+    </script>
+    <script src="{{ asset('public/frontend/js/main-slider-script.js') }}"></script>
 
+    <script src="{{ asset('public/frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/isotope.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/jquery.fancybox.pack.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/jquery.fancybox-media.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/owl.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/wow.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/appear.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/script.js') }}"></script>
+    <!--Google Map APi Key-->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script>
+    <script src="{{ asset('public/frontend/js/map-script.js') }}"></script>
+    <!--End Google Map APi-->
+
+
+    <!--Color Switcher-->
+    <script src="js/color-settings.js"></script>
 </body>
+
+<!-- Mirrored from html.efforttech.com/html/charitypoint/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Dec 2021 09:50:56 GMT -->
 
 </html>
