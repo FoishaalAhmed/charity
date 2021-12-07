@@ -36,9 +36,12 @@ class EventController extends Controller
 
     public function research($type)
     {
-        $researchObject = new Research();
+        $categoryObjet = new Category();
         $type = ucwords(str_replace('-', ' ', $type));
-        $researches = $researchObject->getAllResearchByType($type);
-        return view('frontend.research', compact('researches', 'type'));
+        $researches = Research::where('type', $type)->latest()->paginate(6);
+        $partners = Partner::latest()->get();
+        $events = Event::latest()->take(3)->select('id', 'title', 'photo')->get();
+        $serviceCategories = $categoryObjet->getCategories();
+        return view('frontend.research', compact('researches', 'type', 'partners', 'events', 'serviceCategories'));
     }
 }
