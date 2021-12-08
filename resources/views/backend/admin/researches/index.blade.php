@@ -25,8 +25,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 25%">{{ __('Service') }}</th>
-                                        <th style="width: 25%">{{ __('Type') }}</th>
+                                        <th style="width: 15%">{{ __('Service') }}</th>
+                                        <th style="width: 20%">{{ __('Title') }}</th>
+                                        <th style="width: 15%">{{ __('Type') }}</th>
                                         <th style="width: 35%">{{ __('Detail') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
@@ -35,6 +36,7 @@
                                     @foreach ($researches as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->cause }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->type }}</td>
                                             <td>{!! Str::limit($item->detail) !!}</td>

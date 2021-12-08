@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Cause extends Model
 {
@@ -17,6 +18,18 @@ class Cause extends Model
     public function donations()
     {
         return $this->hasMany('App\Models\Donation');
+    }
+
+    public function getResearchServices()
+    {
+        $services = $this::join('research', 'causes.id', '=', 'research.cause_id')
+            ->orderBy('causes.title', 'asc')
+            ->groupBy('research.cause_id')
+            ->select([
+                DB::raw('count(research.id) as total'), 'causes.title', 'causes.id'
+            ])
+            ->get();
+        return $services;
     }
 
     protected $fillable = [

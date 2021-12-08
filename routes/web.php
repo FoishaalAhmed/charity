@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\DashboardController as FrontendDashboardContro
 use App\Http\Controllers\Frontend\DonationController;
 use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\ResearchController;
 use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +21,13 @@ Route::get('services/{id}/{category}', [CauseController::class, 'category'])->na
 Route::get('services/details/{id}/{title}', [CauseController::class, 'detail'])->name('causes.show');
 Route::get('events', [EventController::class, 'index'])->name('events');
 Route::get('events/{id}/{title}', [EventController::class, 'detail'])->name('events.show');
-Route::get('research/{type}', [EventController::class, 'research'])->name('research');
+Route::get('research/{type}', [ResearchController::class, 'research'])->name('research');
+Route::get('research/{id}/{title}', [ResearchController::class, 'detail'])->name('research.show');
+Route::get('research/researcher/{research_id}/{name}', [ResearchController::class, 'researcher'])->name('research.researcher');
+Route::get('research/partner/{partner_id}/{name}', [ResearchController::class, 'partner'])->name('research.partner');
 Route::get('publications', [BlogController::class, 'index'])->name('blogs');
 Route::get('publications/{id}/{title}', [BlogController::class, 'detail'])->name('blogs.show');
-Route::get('category-blogs/{category_id}/{name}', [BlogController::class, 'category'])->name('blogs.category');
+Route::get('research-publications/{research_id}/{title}', [BlogController::class, 'research'])->name('blogs.research');
 Route::get('contacts', [ContactController::class, 'index'])->name('contacts');
 Route::post('send-query', [ContactController::class, 'query'])->name('send.query');
 Route::get('donations', [DonationController::class, 'index'])->name('donations');

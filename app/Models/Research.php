@@ -23,7 +23,7 @@ class Research extends Model
     {
         $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
             ->orderBy('research.id', 'desc')
-            ->select('research.*', 'causes.title')
+            ->select('research.*', 'causes.title as cause')
             ->get();
         return $researches;
     }
@@ -117,7 +117,7 @@ class Research extends Model
         ResearchTeam::insert($team_data);
 
         if ($request->partner != null) {
-            ResearchTeam::where('research_id', $research->id)->delete();
+            PartnerResearch::where('research_id', $research->id)->delete();
             foreach ($request->partner as $key => $value) {
                 $partner_data[] = [
                     'research_id' => $research->id,

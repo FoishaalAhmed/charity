@@ -2,64 +2,124 @@
 
 @section('title', 'Publications')
 @section('content')
-    <!-- Page Breadcrumbs Start -->
-    <section class="breadcrumbs-page-wrap">
-        <div class="bg-fixed pos-rel breadcrumbs-page">
-            <div class="container">
-                <h1>Publications</h1>
-                <nav aria-label="breadcrumb" class="breadcrumb-wrap">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Publications</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </section>
-    <!-- Page Breadcrumbs End -->
+    <br />
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
 
-    <!-- Main Body Content Start -->
-    <main id="body-content">
+                <!--Content Side-->
+                <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="events-list">
 
-        <!-- Blog Post Start -->
-        <section class="wide-tb-100">
-            <div class="container">
-                <div class="row">
-                    <!-- Blog Wrap -->
-                    @foreach ($blogs as $item)
-                        <div class="col-md-6 col-lg-4 col-sm-12 mb-0">
-                            <div class="post-wrap">
-                                <div class="post-img">
-                                    <a
-                                        href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
-                                            src="{{ asset($item->photo) }}" alt="" style="width: 350px; height: 235px;"></a>
-                                </div>
-                                <div class="post-content">
-                                    
-                                    <h5 class="post-title"><a
-                                            href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
-                                    </h5>
-                                    <div class="text-md-right">
-                                        <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
-                                            class="read-more-line"><span>Read More</span></a>
+                        <!--Event Block Three-->
+                        @foreach ($blogs as $item)
+                            <div class="event-block-three">
+                                <div class="inner-box">
+                                    <div class="row clearfix">
+                                        <div class="image-column col-md-5 col-sm-4 col-xs-12">
+                                            <div class="image">
+                                                <img src="{{ asset($item->photo) }}" alt=""
+                                                    style="width: 345px; height: 235px;" />
+                                                <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                    class="overlay-box"><span class="icon flaticon-unlink"></span></a>
+                                            </div>
+                                        </div>
+                                        <div class="content-column col-md-7 col-sm-8 col-xs-12">
+                                            <div class="inner-column">
+                                                <h3><a
+                                                        href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                </h3>
+                                                <div class="text">
+                                                    {{ Str::limit(strip_tags($item->description, 200)) }}</div>
+                                                <div class="btns-box">
+                                                    <a href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                        class="theme-btn btn-style-four">More
+                                                        Detail</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
+                        <!--Styled Pagination-->
+                        <div class="styled-pagination">
+                            {{ $blogs->links('includes.pagination') }}
                         </div>
-                    @endforeach
-                    <!-- Blog Wrap -->
+                        <!--End Styled Pagination-->
+
+                    </div>
                 </div>
 
-                <div class="theme-pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            {{ $blogs->links() }}
-                        </ul>
-                    </nav>
+                <!--Sidebar Side-->
+                <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar default-sidebar">
+
+                        <!--Category Blog-->
+                        @if ($researchBlogs->isNotEmpty())
+                            <div class="sidebar-widget categories-blog">
+                                <div class="sidebar-title">
+                                    <h2>Research Publication</h2>
+                                </div>
+                                <div class="inner-box">
+                                    <ul>
+                                        @foreach ($researchBlogs as $item)
+                                            <li><a
+                                                    href="{{ route('blogs.research', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}
+                                                    <span>{{ $item->total }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+
+                        <!-- Popular Posts -->
+                        @if ($events->isNotEmpty())
+                            <div class="sidebar-widget popular-posts">
+                                <div class="sidebar-title">
+                                    <h2>Update Events & News</h2>
+                                </div>
+                                <div class="inner-box">
+                                    @foreach ($events as $item)
+                                        <article class="post">
+                                            <figure class="post-thumb"><a
+                                                    href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                                        src="{{ asset($item->photo) }}" alt=""></a></figure>
+                                            <div class="text"><a
+                                                    href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                            </div>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </aside>
                 </div>
+
             </div>
-        </section>
-        <!-- Blog Post End -->
+        </div>
+    </div>
 
-    </main>
+
+    <!--Clients Section-->
+    <section class="clients-section"
+        style="background-image:url({{ asset('public/frontend/images/background/1.jpg') }})">
+        <div class="auto-container">
+
+            <div class="sponsors-outer">
+                <!--Sponsors Carousel-->
+                <ul class="sponsors-carousel owl-carousel owl-theme">
+                    @foreach ($partners as $item)
+                        <li class="slide-item">
+                            <figure class="image-box"><a href="#"><img src="{{ asset($item->logo) }}" alt=""
+                                        style="width: 250px; height: 130px;"></a></figure>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <!--End Clients Section-->
 @endsection

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Blog extends Model
 {
@@ -12,6 +13,18 @@ class Blog extends Model
     protected $fillable = [
         'research_id', 'title', 'link', 'date', 'content', 'photo',
     ];
+
+    public function getResearchBlogs()
+    {
+        $blogs = $this::join('research', 'blogs.research_id', '=', 'research.id')
+            ->orderBy('research.title', 'asc')
+            ->groupBy('blogs.research_id')
+            ->select([
+                DB::raw('count(research.id) as total'), 'research.title', 'research.id'
+            ])
+            ->get();
+        return $blogs;
+    }
 
     public function storeBlog(Object $request)
     {
