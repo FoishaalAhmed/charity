@@ -30,8 +30,6 @@
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
                                         <th style="width: 75%">{{ __('Title') }}</th>
-                                        {{-- <th style="width: 10%">{{ __('Last Date') }}</th> --}}
-                                        {{-- <th style="width: 15%">{{ __('Amount') }}</th> --}}
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
@@ -41,8 +39,6 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
-                                            {{-- <td>{{ date('d-m-Y', strtotime($item->last_date)) }}</td> --}}
-                                            {{-- <td>{{ $item->amount }}</td> --}}
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height: 50px;">

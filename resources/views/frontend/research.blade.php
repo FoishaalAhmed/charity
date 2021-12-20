@@ -21,19 +21,19 @@
                                             <div class="image">
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 345px; height: 235px;" />
-                                                <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}"
                                                     class="overlay-box"><span class="icon flaticon-unlink"></span></a>
                                             </div>
                                         </div>
                                         <div class="content-column col-md-7 col-sm-8 col-xs-12">
                                             <div class="inner-column">
                                                 <h3><a
-                                                        href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                        href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}">{{ $item->name }}</a>
                                                 </h3>
                                                 <div class="text">
                                                     {{ Str::limit(strip_tags($item->detail, 400)) }}</div>
                                                 <div class="btns-box">
-                                                    <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"
+                                                    <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}"
                                                         class="theme-btn btn-style-four">More
                                                         Detail</a>
                                                 </div>
@@ -55,24 +55,6 @@
                 <!--Sidebar Side-->
                 <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <aside class="sidebar default-sidebar">
-
-                        <!--Category Blog-->
-                        @if ($researchServices->isNotEmpty())
-                            <div class="sidebar-widget categories-blog">
-                                <div class="sidebar-title">
-                                    <h2>Research Services</h2>
-                                </div>
-                                <div class="inner-box">
-                                    <ul>
-                                        @foreach ($researchServices as $item)
-                                            <li><a
-                                                    href="{{ route('causes', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}
-                                                    <span>{{ $item->total }}</span></a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        @endif
 
                         <!-- Popular Posts -->
                         @if ($events->isNotEmpty())

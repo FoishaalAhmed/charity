@@ -57,7 +57,7 @@
             <!--Contact Form-->
             <div class="contact-form">
                 <div id="sucessmessage"> </div>
-                <form method="post" action="http://html.efforttech.com/html/charitypoint/sendemail.php" id="contact-form">
+                <form method="post" action="" id="contact-form">
                     @csrf
                     <div class="row clearfix">
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">

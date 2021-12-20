@@ -29,7 +29,7 @@
                                 data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']"
                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
                                 style="z-index: 7; white-space: nowrap;text-transform:left;">
-                                <h1>{{ $sliders[0]->title_one }}</h1>
+                                <h1 style="color: white">{{ $sliders[0]->title_one }}</h1>
                             </div>
 
                             <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
@@ -40,7 +40,7 @@
                                 data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']"
                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
                                 style="z-index: 7; white-space: nowrap;text-transform:left;">
-                                <div class="text">{{ $sliders[0]->title_two }}
+                                <div class="text" style="color: white">{{ $sliders[0]->title_two }}
                                 </div>
                             </div>
                         </li>
@@ -64,7 +64,7 @@
                                 data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']"
                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
                                 style="z-index: 7; white-space: nowrap;text-transform:left;">
-                                <h1>{{ $sliders[0]->title_one }}</h1>
+                                <h1 style="color: white">{{ $sliders[0]->title_one }}</h1>
                             </div>
 
                             <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
@@ -75,7 +75,7 @@
                                 data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']"
                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
                                 style="z-index: 7; white-space: nowrap;text-transform:left;">
-                                <div class="text">{{ $sliders[0]->title_two }}
+                                <div class="text" style="color: white">{{ $sliders[0]->title_two }}
                                 </div>
                             </div>
                         </li>
@@ -97,7 +97,7 @@
                         <div class="inner-box">
                             <div class="upper-box">
                                 <div class="icon-box"><i class="fas fa-history"></i></div>
-                                <h3><a href="{{ route('pages', 'history') }}">{{ ucfirst($page1->name) }}</a></h3>
+                                <h3><a href="{{ route('pages', 'history') }}" style="margin-left: 50px;">{{ ucfirst($page1->name) }}</a></h3>
                             </div>
                             <div class="text">{{ Str::limit(strip_tags($page1->content), 70) }}</div>
                             <a href="{{ route('pages', 'history') }}" class="theme-btn btn-style-two">Read More</a>
@@ -111,7 +111,7 @@
                         <div class="inner-box">
                             <div class="upper-box">
                                 <div class="icon-box"><i class="fas fa-eye"></i></div>
-                                <h3><a href="{{ route('pages', 'vision') }}">{{ ucfirst($page2->name) }}</a></h3>
+                                <h3><a href="{{ route('pages', 'vision') }}" style="margin-left: 50px;">{{ ucfirst($page2->name) }}</a></h3>
                             </div>
                             <div class="text">{{ Str::limit(strip_tags($page2->content), 70) }}</div>
                             <a href="{{ route('pages', 'vision') }}" class="theme-btn btn-style-two">Read More</a>
@@ -125,7 +125,7 @@
                         <div class="inner-box">
                             <div class="upper-box">
                                 <div class="icon-box"><i class="fas fa-bullseye"></i></div>
-                                <h3><a href="{{ route('pages', 'mission') }}">{{ ucfirst($page3->name) }}</a></h3>
+                                <h3><a href="{{ route('pages', 'mission') }}" style="margin-left: 50px;">{{ ucfirst($page3->name) }}</a></h3>
                             </div>
                             <div class="text">{{ Str::limit(strip_tags($page3->content), 70) }}</div>
                             <a href="{{ route('pages', 'mission') }}" class="theme-btn btn-style-two">Read More</a>
@@ -144,7 +144,7 @@
             <div class="auto-container">
                 <!--Sec Title-->
                 <div class="sec-title">
-                    <h2>Welcome to Econs</h2>
+                    <h2>Welcome to ECONS</h2>
                 </div>
                 <div class="row clearfix">
                     <!--Video Column-->

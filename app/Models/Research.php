@@ -14,27 +14,37 @@ class Research extends Model
     ];
 
     public static $validateRule = [
-        'service_id' => ['required', 'numeric'],
+        'category_id' => ['required', 'numeric'],
         'type' => ['required', 'string', 'max:50'],
         'detail' => ['required', 'string'],
     ];
 
     public function getAllResearch()
     {
-        $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
+        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
             ->orderBy('research.id', 'desc')
-            ->select('research.*', 'causes.title as cause')
+            ->select('research.*', 'categories.name')
             ->get();
         return $researches;
     }
 
     public function getAllResearchByType($type)
     {
-        $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
+        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
             ->where('research.type', $type)
-            ->orderBy('causes.title', 'asc')
-            ->select('research.*', 'causes.title')
-            ->get();
+            ->orderBy('categories.name', 'asc')
+            ->select('research.*', 'categories.name')
+            ->paginate(6);
+        return $researches;
+    }
+
+    public function getAllResearchByResearchers($researchers)
+    {
+        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
+            ->whereIn('research.id', $researchers)
+            ->orderBy('categories.name', 'asc')
+            ->select('research.*', 'categories.name')
+            ->paginate(6);
         return $researches;
     }
 
@@ -49,7 +59,7 @@ class Research extends Model
         $success         = $image->move($upload_path, $image_full_name);
         $this->photo     = $image_url;
 
-        $this->cause_id = $request->service_id;
+        $this->category_id = $request->category_id;
         $this->type = $request->type;
         $this->title = $request->title;
         $this->timeline = $request->timeline;
@@ -89,7 +99,7 @@ class Research extends Model
     {
         $image = $request->file('photo');
         if ($image) {
-            if (file_exists($research->photo)) unlink($research->photo) ;
+            if (file_exists($research->photo)) unlink($research->photo);
             $image_name      = date('YmdHis');
             $ext             = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $ext;
@@ -99,7 +109,7 @@ class Research extends Model
             $research->photo     = $image_url;
         }
 
-        $research->cause_id = $request->service_id;
+        $research->category_id = $request->category_id;
         $research->type = $request->type;
         $research->title = $request->title;
         $research->timeline = $request->timeline;

@@ -41,4 +41,11 @@ class TeamController extends Controller
         $help = General::where('name', 'help')->first();
         return view('frontend.reference', compact('help', 'partners', 'testimonials'));
     }
+
+    public function referenceDetail($id, $name)
+    {
+        $reference = Testimonial::findOrFail($id);
+        $partners = Partner::latest()->get();
+        return view('frontend.referenceDetail', compact('reference', 'partners'));
+    }
 }

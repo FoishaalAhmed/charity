@@ -31,13 +31,13 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>{{ __('Service') }}</label>
-                                            <select name="service_id" id="service_id" class="form-control select2"
+                                            <label>{{ __('Category') }}</label>
+                                            <select name="category_id" id="category_id" class="form-control select2"
                                                 required="" style="width: 100%">
-                                                <option value="">{{ __('Select service') }}</option>
-                                                @foreach ($services as $item)
-                                                    <option value="{{ $item->id }}" @if ($research->cause_id == $item->id) {{ 'selected' }}  @endif>
-                                                        {{ $item->title }}</option>
+                                                <option value="">{{ __('Select Category') }}</option>
+                                                @foreach ($categories as $item)
+                                                    <option value="{{ $item->id }}" @if ($research->category_id == $item->id) {{ 'selected' }}  @endif>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -76,9 +76,8 @@
                                                 required="" multiple style="width: 100%">
                                                 <option value="">{{ __('Select service') }}</option>
                                                 @foreach ($researchers as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        @if (in_array($item->id, $researcher)) {{ 'selected' }} @endif
-                                                > {{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}" @if (in_array($item->id, $researcher)) {{ 'selected' }} @endif>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -90,9 +89,8 @@
                                                 style="width: 100%">
                                                 <option value="">{{ __('Select service') }}</option>
                                                 @foreach ($partners as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        @if (in_array($item->id, $partner)) {{ 'selected' }} @endif
-                                                > {{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}" @if (in_array($item->id, $partner)) {{ 'selected' }} @endif>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -111,8 +109,9 @@
                                 <div class="card card-primary card-outline">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
-                                            <img class="profile-user-img img-fluid img-circle" src="{{ asset($research->photo) }}"
-                                                alt="User profile picture" id="userPhoto">
+                                            <img class="profile-user-img img-fluid img-circle"
+                                                src="{{ asset($research->photo) }}" alt="User profile picture"
+                                                id="userPhoto">
                                         </div>
                                         <br>
                                         <input type="file" name="photo" onchange="readPicture(this)" style="width: 100%">

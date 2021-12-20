@@ -38,13 +38,25 @@ class Category extends Model
     public function getCategories()
     {
         $categories = $this::join('causes', 'causes.category_id', '=', 'categories.id')
-        ->orderBy('categories.name', 'asc')
+            ->orderBy('categories.name', 'asc')
             ->groupBy('causes.category_id')
             ->select([
                 DB::raw('count(causes.id) as total'), 'categories.name', 'categories.id'
             ])
             ->get();
         return $categories;
+    }
+
+    public function getResearchCategories()
+    {
+        $services = $this::join('research', 'categories.id', '=', 'research.category_id')
+            ->orderBy('categories.name', 'asc')
+            ->groupBy('research.category_id')
+            ->select([
+                DB::raw('count(research.id) as total'), 'categories.name', 'categories.id'
+            ])
+            ->get();
+        return $services;
     }
 
     public function storeCategory($request)

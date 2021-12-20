@@ -48,13 +48,28 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.researches.index') }}" class="nav-link @if (request()->is('admin/researches')) {{ 'active' }} @endif">
+                <li class="nav-item @if (request()->is('admin/researches') || request()->is('admin/researches/*')) {{ 'menu-open' }} @endif">
+                    <a href="#" class="nav-link @if (request()->is('admin/researches') || request()->is('admin/researches/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fab fa-researchgate"></i>
                         <p>
-                            Research
+                            Researches
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.researches.create') }}" class="nav-link @if (request()->is('admin/researches/create')) {{ 'active' }} @endif">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>New Research</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.researches.index') }}" class="nav-link @if (request()->is('admin/researches')) {{ 'active' }} @endif">
+                                <i class="fas fa-list-alt nav-icon"></i>
+                                <p>Researches</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.categories.index') }}" class="nav-link @if (request()->is('admin/categories')) {{ 'active' }} @endif">

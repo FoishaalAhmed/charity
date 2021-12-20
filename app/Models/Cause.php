@@ -20,18 +20,6 @@ class Cause extends Model
         return $this->hasMany('App\Models\Donation');
     }
 
-    public function getResearchServices()
-    {
-        $services = $this::join('research', 'causes.id', '=', 'research.cause_id')
-            ->orderBy('causes.title', 'asc')
-            ->groupBy('research.cause_id')
-            ->select([
-                DB::raw('count(research.id) as total'), 'causes.title', 'causes.id'
-            ])
-            ->get();
-        return $services;
-    }
-
     protected $fillable = [
         'category_id', 'title', 'last_date', 'description', 'photo', 'amount',
     ];

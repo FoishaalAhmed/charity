@@ -16,28 +16,18 @@
                                 <!--Image Column-->
                                 <div class="image-column col-md-4 col-sm-4 col-xs-12">
                                     <div class="image">
-                                        <img src="{{ asset($team->photo) }}" alt="" />
+                                        <img src="{{ asset($reference->photo) }}" alt="" />
                                     </div>
                                 </div>
                                 <div class="content-column col-md-8 col-sm-8 col-xs-12">
-                                    <h3>{{ $team->name }}</h3>
-                                    <div class="designation">{{ $team->position }}</div>
+                                    <h3>{{ $reference->name }}</h3>
+                                    <div class="designation">{{ $reference->position }}</div>
                                     <div class="text">
-                                        {!! $team->detail !!}
-                                        {!! $team->more_detail !!}
+                                        {!! $reference->message !!}
                                     </div>
                                 </div>
                             </div>
                             <!--Volunter Share Options-->
-                            <div class="volunter-share-options clearfix">
-                                <div class="pull-right">
-                                    <ul class="social-icon-three">
-                                        <li><a href="{{ $team->facebook }}"><span class="fab fa-facebook-square"></span></a></li>
-                                        <li><a href="{{ $team->twitter }}"><span class="fab fa-twitter-square"></span></a></li>
-                                        <li><a href="{{ $team->instagram }}"><span class="fab fa-instagram-square"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
 
                         </div>
                     </div>

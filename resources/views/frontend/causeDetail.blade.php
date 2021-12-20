@@ -9,7 +9,7 @@
             <div class="row clearfix">
 
                 <!--Content Side / Causes Single-->
-                <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="causes-single">
                         <div class="inner-box">
                             <div class="image">
@@ -28,7 +28,7 @@
                 </div>
 
                 <!--Sidebar Side-->
-                <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                {{-- <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <aside class="sidebar default-sidebar">
 
                         <!--Category Blog-->
@@ -71,7 +71,7 @@
                         @endif
 
                     </aside>
-                </div>
+                </div> --}}
 
             </div>
         </div>

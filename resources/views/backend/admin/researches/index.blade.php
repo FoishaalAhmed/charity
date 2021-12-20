@@ -9,6 +9,8 @@
                 <div class="card-header">
                     <h3 class="card-title">{{ __('Research') }}</h3>
                     <div class="card-tools">
+                        <a href="{{ route('admin.researches.create') }}" class="btn btn-sm bg-teal"><i
+                                class="fas fa-plus"></i> {{ __('New Research') }}</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -25,7 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 15%">{{ __('Service') }}</th>
+                                        <th style="width: 15%">{{ __('Category') }}</th>
                                         <th style="width: 20%">{{ __('Title') }}</th>
                                         <th style="width: 15%">{{ __('Type') }}</th>
                                         <th style="width: 35%">{{ __('Detail') }}</th>
@@ -36,7 +38,7 @@
                                     @foreach ($researches as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $item->cause }}</td>
+                                            <td>{{ $item->name }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->type }}</td>
                                             <td>{!! Str::limit($item->detail) !!}</td>

@@ -36,6 +36,7 @@ Route::get('donations/causes/{id}/{title}', [DonationController::class, 'cause']
 Route::get('teams', [TeamController::class, 'index'])->name('teams');
 Route::get('team-detail/{id}/{name}', [TeamController::class, 'detail'])->name('teams.detail');
 Route::get('references', [TeamController::class, 'reference'])->name('references');
+Route::get('references/{id}/{name}', [TeamController::class, 'referenceDetail'])->name('references.show');
 
 Route::group(['middleware' => ['auth']], function () {
 
