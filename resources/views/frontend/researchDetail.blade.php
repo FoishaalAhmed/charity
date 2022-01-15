@@ -85,11 +85,11 @@
                                     @foreach ($publications as $item)
                                         <article class="post">
                                             <figure class="post-thumb"><a
-                                                    href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
+                                                    href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}"><img
                                                         src="{{ asset($item->photo) }}" alt=""></a></figure>
                                             <div class="text">
                                                 <a
-                                                    href="{{ route('events.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
+                                                    href="{{ route('blogs.show', [$item->id, strtolower(str_replace(' ', '-', $item->title))]) }}">{{ $item->title }}</a>
                                             </div>
                                         </article>
                                     @endforeach

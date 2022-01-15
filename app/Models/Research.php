@@ -14,36 +14,36 @@ class Research extends Model
     ];
 
     public static $validateRule = [
-        'category_id' => ['required', 'numeric'],
+        'service_id' => ['required', 'numeric'],
         'type' => ['required', 'string', 'max:50'],
         'detail' => ['required', 'string'],
     ];
 
     public function getAllResearch()
     {
-        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
+        $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
             ->orderBy('research.id', 'desc')
-            ->select('research.*', 'categories.name')
+            ->select('research.*', 'causes.title as cause')
             ->get();
         return $researches;
     }
 
     public function getAllResearchByType($type)
     {
-        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
+        $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
             ->where('research.type', $type)
-            ->orderBy('categories.name', 'asc')
-            ->select('research.*', 'categories.name')
+            ->orderBy('causes.title', 'asc')
+            ->select('research.*', 'causes.title as cause')
             ->paginate(6);
         return $researches;
     }
 
     public function getAllResearchByResearchers($researchers)
     {
-        $researches = $this::join('categories', 'research.category_id', '=', 'categories.id')
+        $researches = $this::join('causes', 'research.cause_id', '=', 'causes.id')
             ->whereIn('research.id', $researchers)
-            ->orderBy('categories.name', 'asc')
-            ->select('research.*', 'categories.name')
+            ->orderBy('causes.title', 'asc')
+            ->select('research.*', 'causes.title as cause')
             ->paginate(6);
         return $researches;
     }
@@ -59,21 +59,23 @@ class Research extends Model
         $success         = $image->move($upload_path, $image_full_name);
         $this->photo     = $image_url;
 
-        $this->category_id = $request->category_id;
+        $this->cause_id = $request->service_id;
         $this->type = $request->type;
         $this->title = $request->title;
         $this->timeline = $request->timeline;
         $this->detail = $request->detail;
         $storeResearch = $this->save();
 
-        foreach ($request->researcher as $key => $value) {
-            $team_data[] = [
-                'research_id' => $this->id,
-                'team_id' => $value,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
+        if ($request->researcher != null) {
 
+            foreach ($request->researcher as $key => $value) {
+                $team_data[] = [
+                    'research_id' => $this->id,
+                    'team_id' => $value,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
             ResearchTeam::insert($team_data);
         }
 
@@ -109,25 +111,27 @@ class Research extends Model
             $research->photo     = $image_url;
         }
 
-        $research->category_id = $request->category_id;
+        $research->cause_id = $request->service_id;
         $research->type = $request->type;
         $research->title = $request->title;
         $research->timeline = $request->timeline;
         $research->detail = $request->detail;
         $updateResearch = $research->save();
         ResearchTeam::where('research_id', $research->id)->delete();
-        foreach ($request->researcher as $key => $value) {
-            $team_data[] = [
-                'research_id' => $research->id,
-                'team_id' => $value,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
+        if ($request->researcher != null) {
+            foreach ($request->researcher as $key => $value) {
+                $team_data[] = [
+                    'research_id' => $research->id,
+                    'team_id' => $value,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            ResearchTeam::insert($team_data);
         }
-        ResearchTeam::insert($team_data);
 
+        PartnerResearch::where('research_id', $research->id)->delete();
         if ($request->partner != null) {
-            PartnerResearch::where('research_id', $research->id)->delete();
             foreach ($request->partner as $key => $value) {
                 $partner_data[] = [
                     'research_id' => $research->id,

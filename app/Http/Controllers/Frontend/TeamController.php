@@ -12,6 +12,7 @@ use App\Models\Partner;
 use App\Models\Advisor;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\Reference;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -47,5 +48,20 @@ class TeamController extends Controller
         $reference = Testimonial::findOrFail($id);
         $partners = Partner::latest()->get();
         return view('frontend.referenceDetail', compact('reference', 'partners'));
+    }
+    
+    public function testimonial()
+    {
+        $testimonials = Reference::latest()->paginate(10);
+        $partners = Partner::latest()->get();
+        $help = General::where('name', 'help')->first();
+        return view('frontend.testimonial', compact('help', 'partners', 'testimonials'));
+    }
+
+    public function testimonialDetail($id, $name)
+    {
+        $testimonial = Reference::findOrFail($id);
+        $partners = Partner::latest()->get();
+        return view('frontend.testimonialDetail', compact('testimonial', 'partners'));
     }
 }

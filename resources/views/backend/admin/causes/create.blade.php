@@ -45,13 +45,43 @@
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col --> --}}
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>{{ __('Title') }}</label>
                                                 <input type="text" name="title" class="form-control"
                                                     placeholder="{{ __('Title') }}" required="" autocomplete="off"
                                                     value="{{ old('title') }}" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Priority') }}</label>
+                                                <input type="number" name="priority" class="form-control"
+                                                    placeholder="{{ __('Priority') }}" required="" autocomplete="off"
+                                                    value="{{ old('priority') }}" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Research') }}</label>
+                                                <select name="research_id[]" id="research_id" class="form-control select2" required="" style="width: 100%" multiple>
+                                                    <option value="">{{ __('Select Research') }}</option>
+                                                    @foreach ($researches as $item)
+                                                        <option value="{{ $item->id }}" @if (old('research_id'))
+                                                        @if (in_array($item->id, old('research_id'))) {{ 'selected' }} @endif
+                                                @endif>
+                                                            {{ $item->title }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- /.form-group -->

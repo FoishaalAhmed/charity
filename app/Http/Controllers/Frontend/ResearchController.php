@@ -38,14 +38,13 @@ class ResearchController extends Controller
 
     public function partner($id, $name)
     {
-        $causeObject = new Cause();
+        $researchObject = new Research();
         $type = 'Partner';
         $partners = PartnerResearch::where('partner_id', $id)->pluck('research_id')->toArray();
-        $researches = Research::whereIn('id', $partners)->latest()->paginate(6);
+        $researches = $researchObject->getAllResearchByResearchers($partners);
         $partners = Partner::latest()->get();
-        $researchServices = $causeObject->getResearchServices();
         $events = Event::latest()->take(3)->select('id', 'title', 'photo')->get();
-        return view('frontend.research', compact('researches', 'type', 'partners', 'researchServices', 'events'));
+        return view('frontend.research', compact('researches', 'type', 'partners', 'events'));
     }
 
     public function researcher($id, $name)

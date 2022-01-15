@@ -42,8 +42,22 @@ class Cause extends Model
         $this->last_date = date('Y/m/d', strtotime($request->last_date));
         $this->category_id = $request->category_id;
         $this->description = $request->description;
+        $this->priority = $request->priority;
         $this->amount = $request->amount;
         $storeCause = $this->save();
+
+        if ($request->research_id != null) {
+
+            foreach ($request->research_id as $key => $value) {
+                $research_data[] = [
+                    'research_id' => $value,
+                    'cause_id' => $this->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            CauseResearch::insert($research_data);
+        }
 
         $storeCause
             ? session()->flash('message', 'New Cause Created Successfully!')
@@ -71,7 +85,22 @@ class Cause extends Model
         $cause->description = $request->description;
         $cause->amount = $request->amount;
         $cause->category_id = $request->category_id;
+        $cause->priority = $request->priority;
         $updateCause = $cause->save();
+
+        CauseResearch::where('cause_id', $id)->delete();
+
+        if ($request->research_id != null) {
+            foreach ($request->research_id as $key => $value) {
+                $research_data[] = [
+                    'research_id' => $value,
+                    'cause_id' => $id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            CauseResearch::insert($research_data);
+        }
 
         $updateCause
             ? session()->flash('message', 'Cause Updated Successfully!')

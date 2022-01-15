@@ -32,12 +32,12 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ __('Category') }}</label>
-                                            <select name="category_id" id="category_id" class="form-control select2"
+                                            <select name="service_id" id="service_id" class="form-control select2"
                                                 required="" style="width: 100%">
                                                 <option value="">{{ __('Select Category') }}</option>
-                                                @foreach ($categories as $item)
-                                                    <option value="{{ $item->id }}" @if ($research->category_id == $item->id) {{ 'selected' }}  @endif>
-                                                        {{ $item->name }}</option>
+                                                @foreach ($services as $item)
+                                                    <option value="{{ $item->id }}" @if ($research->cause_id == $item->id) {{ 'selected' }}  @endif>
+                                                        {{ $item->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -72,9 +72,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ __('Researcher') }}</label>
-                                            <select name="researcher[]" id="researcher" class="form-control select2"
-                                                required="" multiple style="width: 100%">
-                                                <option value="">{{ __('Select service') }}</option>
+                                            <select name="researcher[]" id="researcher" class="form-control select2" multiple style="width: 100%">
+                                                <option value="">{{ __('Select Researcher') }}</option>
                                                 @foreach ($researchers as $item)
                                                     <option value="{{ $item->id }}" @if (in_array($item->id, $researcher)) {{ 'selected' }} @endif>
                                                         {{ $item->name }}</option>
@@ -87,7 +86,7 @@
                                             <label>{{ __('Partner') }}</label>
                                             <select name="partner[]" id="partner" class="form-control select2" multiple
                                                 style="width: 100%">
-                                                <option value="">{{ __('Select service') }}</option>
+                                                <option value="">{{ __('Select Partner') }}</option>
                                                 @foreach ($partners as $item)
                                                     <option value="{{ $item->id }}" @if (in_array($item->id, $partner)) {{ 'selected' }} @endif>
                                                         {{ $item->name }}</option>

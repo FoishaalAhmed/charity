@@ -29,7 +29,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">{{ __('Sl') }}</th>
-                                        <th style="width: 75%">{{ __('Title') }}</th>
+                                        <th style="width: 60%">{{ __('Title') }}</th>
+                                        <th style="width: 15%">{{ __('Priority') }}</th>
                                         <th style="width: 10%">{{ __('Photo') }}</th>
                                         <th style="width: 10%">{{ __('Action') }}</th>
                                     </tr>
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
+                                            <td>{{ $item->priority }}</td>
                                             <td>
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 50px; height: 50px;">

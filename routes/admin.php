@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolunteerController;
 use App\Http\Controllers\Admin\ExpertController;
+use App\Http\Controllers\Admin\ReferenceController;
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 'auth']], function () {
 
@@ -31,6 +32,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => ['admin', 
     Route::get('queries/show/{id}', [QueryController::class, 'show'])->name('queries.show');
     Route::delete('queries/destroy/{id}', [QueryController::class, 'destroy'])->name('queries.destroy');
 
+    Route::resource('references', ReferenceController::class);
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('experts', ExpertController::class);
     Route::resource('events', EventController::class);

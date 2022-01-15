@@ -88,8 +88,7 @@
                                                                 href="{{ route('teams', ['category' => 'Management']) }}">Management</a>
                                                         </li>
                                                         <li><a
-                                                                href="{{ route('teams', ['category' => 'Field Stuff']) }}">Filed
-                                                                Staff</a></li>
+                                                                href="{{ route('teams', ['category' => 'Field Staff']) }}">Field Staff</a></li>
 
                                                         <li><a
                                                                 href="{{ route('teams', ['category' => 'Researcher']) }}">Researcher</a>
@@ -119,9 +118,18 @@
 
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route('blogs') }}">Publication</a>
+                                        <li><a href="{{ route('blogs') }}">Publications</a>
                                         </li>
-                                        <li><a href="{{ route('references') }}">Referances</a>
+                                        {{-- <li><a href="{{ route('references') }}">Referances</a>
+                                        </li>
+                                        <li><a href="{{ route('testimonials') }}">Testimonials</a>
+                                        </li> --}}
+                                        <li class="dropdown"><a href="#">Testimonials</a>
+                                            <ul>
+                                                <li><a href="{{ route('references') }}">Referances</a></li>
+                                                <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
+
+                                            </ul>
                                         </li>
                                         <li><a href="{{ route('contacts') }}">Contact</a></li>
                                         <li><a href="{{ route('events') }}">Events & News</a></li>

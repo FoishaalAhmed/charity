@@ -30,6 +30,7 @@ class CauseRequest extends FormRequest
             'amount' => 'nullable|numeric',
             'last_date'        => 'nullable|date',
             'description' => 'required|string',
+            'priority' => 'required|numeric|min: 1',
         ];
 
         if ($this->getMethod() == 'POST') {

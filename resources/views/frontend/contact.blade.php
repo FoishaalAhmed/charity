@@ -93,7 +93,7 @@
         <!--Map Outer-->
         <div class="map-outer">
             <!--Map Canvas-->
-            {!! $contact->map !!}
+            <iframe src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7993279028196!2d90.36461541498144!3d23.754534384587448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf50f2463fd1%3A0x31f14f3fc8866d53!2zSG91c2UgIyAzLCAzIEJsb2NrICMgRSwg4Kai4Ka-4KaV4Ka-IDEyMDc!5e0!3m2!1sbn!2sbd!4v1640493339505!5m2!1sbn!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
     <!--End Map Section-->

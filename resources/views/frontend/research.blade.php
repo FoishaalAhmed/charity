@@ -21,19 +21,19 @@
                                             <div class="image">
                                                 <img src="{{ asset($item->photo) }}" alt=""
                                                     style="width: 345px; height: 235px;" />
-                                                <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}"
+                                                <a href="{{ route('research.show', [$item->id, strtolower(str_replace([' ', '/'], '-', $item->title))]) }}"
                                                     class="overlay-box"><span class="icon flaticon-unlink"></span></a>
                                             </div>
                                         </div>
                                         <div class="content-column col-md-7 col-sm-8 col-xs-12">
                                             <div class="inner-column">
                                                 <h3><a
-                                                        href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}">{{ $item->name }}</a>
+                                                        href="{{ route('research.show', [$item->id, strtolower(str_replace([' ', '/'], '-', $item->title))]) }}">{{ $item->title }}</a>
                                                 </h3>
                                                 <div class="text">
                                                     {{ Str::limit(strip_tags($item->detail, 400)) }}</div>
                                                 <div class="btns-box">
-                                                    <a href="{{ route('research.show', [$item->id, strtolower(str_replace(' ', '-', $item->name))]) }}"
+                                                    <a href="{{ route('research.show', [$item->id, strtolower(str_replace([' ', '/'], '-', $item->title))]) }}"
                                                         class="theme-btn btn-style-four">More
                                                         Detail</a>
                                                 </div>

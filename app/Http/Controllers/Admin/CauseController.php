@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CauseRequest;
 use App\Models\Category;
 use App\Models\Cause;
+use App\Models\CauseResearch;
+use App\Models\Research;
 use Illuminate\Http\Request;
 
 class CauseController extends Controller
@@ -19,7 +21,7 @@ class CauseController extends Controller
 
     public function index()
     {
-        $causes = Cause::latest()->get();
+        $causes = Cause::orderBy('priority', 'asc')->get();
        
         return view('backend.admin.causes.index', compact('causes'));
     }
@@ -27,8 +29,8 @@ class CauseController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name', 'asc')->get();
-        
-        return view('backend.admin.causes.create', compact('categories'));
+        $researches = Research::orderBy('title', 'asc')->select('id', 'title')->get();
+        return view('backend.admin.causes.create', compact('categories', 'researches'));
     }
 
     public function store(CauseRequest $request)
@@ -41,7 +43,9 @@ class CauseController extends Controller
     {
         $cause = Cause::findOrFail($id);
         $categories = Category::orderBy('name', 'asc')->get();
-        return view('backend.admin.causes.edit', compact('categories', 'cause'));
+        $researches = Research::orderBy('title', 'asc')->select('id', 'title')->get();
+        $researchIds = CauseResearch::where('cause_id', $id)->pluck('research_id')->toArray();
+        return view('backend.admin.causes.edit', compact('categories', 'cause', 'researches', 'researchIds'));
     }
 
     public function update(CauseRequest $request, $id)

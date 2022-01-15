@@ -38,7 +38,7 @@
                                     @foreach ($researches as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->cause }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->type }}</td>
                                             <td>{!! Str::limit($item->detail) !!}</td>

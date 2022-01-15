@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $contact = Contact::first();
-        $services = Cause::orderBy('title', 'asc')->select('id', 'title')->get();
+        $services = Cause::orderBy('priority', 'asc')->select('id', 'title')->get();
         $working_hour = General::where('name', 'working hour')->first();
         $footer_text = General::where('name', 'footer-text')->first();
         $footerEvents = Event::latest()->take(3)->select('id', 'title', 'photo')->get();

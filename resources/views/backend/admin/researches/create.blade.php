@@ -31,12 +31,12 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ __('Category') }}</label>
-                                            <select name="category_id" id="category_id" class="form-control select2"
+                                            <select name="service_id" id="service_id" class="form-control select2"
                                                 required="" style="width: 100%">
                                                 <option value="">{{ __('Select Category') }}</option>
-                                                @foreach ($categories as $item)
-                                                    <option value="{{ $item->id }}" @if (old('category_id') == $item->id) {{ 'selected' }}  @endif>
-                                                        {{ $item->name }}</option>
+                                                @foreach ($services as $item)
+                                                    <option value="{{ $item->id }}" @if (old('service_id') == $item->id) {{ 'selected' }}  @endif>
+                                                        {{ $item->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -71,8 +71,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ __('Researcher') }}</label>
-                                            <select name="researcher[]" id="researcher" class="form-control select2"
-                                                required="" multiple style="width: 100%">
+                                            <select name="researcher[]" id="researcher" class="form-control select2" multiple style="width: 100%">
                                                 @foreach ($researchers as $item)
                                                     <option value="{{ $item->id }}" @if (old('researcher'))
                                                         @if (in_array($item->id, old('researcher'))) {{ 'selected' }} @endif

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Cause;
 use App\Models\Partner;
 use App\Models\PartnerResearch;
@@ -29,11 +28,10 @@ class ResearchController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('name', 'asc')->get();
         $services = Cause::orderBy('title', 'asc')->get();
         $researchers = Team::where('category', 'Researcher')->orderBy('name', 'asc')->select('id', 'name')->get();
         $partners = Partner::orderBy('name', 'asc')->select('id', 'name')->get();
-        return view('backend.admin.researches.create', compact('categories', 'services', 'researchers', 'partners'));
+        return view('backend.admin.researches.create', compact('services', 'researchers', 'partners'));
     }
 
     public function store(Request $request)
@@ -45,13 +43,12 @@ class ResearchController extends Controller
 
     public function edit(Research $research)
     {
-        $categories = Category::orderBy('name', 'asc')->get();
         $services = Cause::orderBy('title', 'asc')->get();
         $researchers = Team::where('category', 'Researcher')->orderBy('name', 'asc')->select('id', 'name')->get();
         $partners = Partner::orderBy('name', 'asc')->select('id', 'name')->get();
         $researcher = ResearchTeam::where('research_id', $research->id)->pluck('team_id')->toArray();
         $partner = PartnerResearch::where('research_id', $research->id)->pluck('partner_id')->toArray();
-        return view('backend.admin.researches.edit', compact('categories', 'services', 'researchers', 'partners', 'research', 'researcher', 'partner'));
+        return view('backend.admin.researches.edit', compact('services', 'researchers', 'partners', 'research', 'researcher', 'partner'));
     }
 
     public function update(Request $request, Research $research)

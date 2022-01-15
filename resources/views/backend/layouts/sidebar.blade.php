@@ -173,6 +173,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item @if (request()->is('admin/references') || request()->is('admin/references/*')) {{ 'menu-open' }} @endif">
+                    <a href="#" class="nav-link @if (request()->is('admin/references') || request()->is('admin/references/*')) {{ 'active' }} @endif">
+                        <i class="nav-icon fas fa-sticky-note"></i>
+                        <p>
+                            Testimonials
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.references.create') }}"
+                                class="nav-link @if (request()->is('admin/references/create')) {{ 'active' }} @endif">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>New Testimonial</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.references.index') }}" class="nav-link @if (request()->is('admin/references')) {{ 'active' }} @endif">
+                                <i class="fas fa-list-alt nav-icon"></i>
+                                <p>Testimonials</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item @if (request()->is('admin/advisors') || request()->is('admin/advisors/*')) {{ 'menu-open' }} @endif">
                     <a href="#" class="nav-link @if (request()->is('admin/advisors') || request()->is('admin/advisors/*')) {{ 'active' }} @endif">
                         <i class="nav-icon fas fa-user-secret"></i>
