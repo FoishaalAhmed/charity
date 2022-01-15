@@ -38,7 +38,13 @@
                                                     <option value="Management" @if (old('category') == 'Management') {{ 'selected' }}  @endif>{{ __('Management') }}</option>
                                                     <option value="Researcher" @if (old('category') == 'Researcher') {{ 'selected' }} @endif>{{ __('Researcher') }}</option>
                                                     <option value="Advisors" @if (old('category') == 'Advisors') {{ 'selected' }} @endif>{{ __('Advisors') }}</option>
+
                                                     <option value="Field Staff" @if (old('category') == 'Field Staff') {{ 'selected' }} @endif>{{ __('Field Staff') }}</option>
+
+                                                    <option value="IT" @if (old('category') == 'IT') {{ 'selected' }} @endif>{{ __('IT') }}</option>
+
+                                                    <option value="Media" @if (old('category') == 'Media') {{ 'selected' }} @endif>{{ __('Media') }}</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -84,10 +90,22 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>{{ __('Facebook') }}</label>
+                                                <label>{{ __('Facebook ID') }}</label>
                                                 <input type="text" name="facebook" class="form-control"
-                                                    placeholder="{{ __('Facebook') }}" autocomplete="off"
+                                                    placeholder="{{ __('Facebook ID') }}" autocomplete="off"
                                                     value="{{ old('facebook') }}" id="facebook" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Facebook Page/Group') }}</label>
+                                                <input type="text" name="page" class="form-control"
+                                                    placeholder="{{ __('Facebook Page/Group') }}" autocomplete="off"
+                                                    value="{{ old('page') }}" id="page" />
                                             </div>
                                         </div>
                                         <!-- /.form-group -->

@@ -88,13 +88,20 @@
                                                                 href="{{ route('teams', ['category' => 'Management']) }}">Management</a>
                                                         </li>
                                                         <li><a
-                                                                href="{{ route('teams', ['category' => 'Field Staff']) }}">Field Staff</a></li>
+                                                                href="{{ route('teams', ['category' => 'Field Staff']) }}">Field
+                                                                Staff</a></li>
 
                                                         <li><a
                                                                 href="{{ route('teams', ['category' => 'Researcher']) }}">Researcher</a>
                                                         </li>
                                                         <li><a
                                                                 href="{{ route('teams', ['category' => 'Advisors']) }}">Advisor</a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'IT']) }}">IT</a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{{ route('teams', ['category' => 'Media']) }}">Media</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -249,13 +256,15 @@
                 <div class="auto-container">
                     <div class="row clearfix">
                         <div class="column col-md-6 col-sm-8 col-xs-12">
-                            <div class="copyright">Copyright &copy; {{ date('Y') }} ECONS. All rights reserved</div>
+                            <div class="copyright">Copyright &copy; {{ date('Y') }} ECONS. All rights reserved
+                            </div>
                         </div>
                         <div class="social-column col-md-6 col-sm-4 col-xs-12">
                             <ul class="social-icon-one style-two">
                                 <li><a href="{{ $contact->facebook }}"><span class="fab fa-facebook"></span></a></li>
                                 <li><a href="{{ $contact->twitter }}"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="{{ $contact->instagram }}"><span class="fab fa-instagram"></span></a></li>
+                                <li><a href="{{ $contact->instagram }}"><span class="fab fa-instagram"></span></a>
+                                </li>
                                 <li><a href="{{ $contact->youtube }}"><span class="fab fa-youtube"></span></a></li>
                             </ul>
                         </div>

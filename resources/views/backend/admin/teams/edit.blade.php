@@ -42,7 +42,13 @@
                                                         {{ __('Researcher') }}</option>
                                                     <option value="Advisors" @if ($team->category == 'Advisors') {{ 'selected' }} @endif>
                                                         {{ __('Advisors') }}</option>
-                                                    <option value="Field Staff" @if ($team->category == 'Field Staff') {{ 'selected' }} @endif>{{ __('Field Staff') }}</option>
+                                                    <option value="Field Staff" @if ($team->category == 'Field Staff') {{ 'selected' }} @endif>
+                                                        {{ __('Field Staff') }}</option>
+                                                    <option value="IT" @if ($team->category == 'IT') {{ 'selected' }} @endif>{{ __('IT') }}
+                                                    </option>
+
+                                                    <option value="Media" @if ($team->category == 'Media') {{ 'selected' }} @endif>{{ __('Media') }}
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -92,6 +98,18 @@
                                                 <input type="text" name="facebook" class="form-control"
                                                     placeholder="{{ __('Facebook') }}" autocomplete="off"
                                                     value="{{ $team->facebook }}" id="facebook" />
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>{{ __('Facebook Page/Group') }}</label>
+                                                <input type="text" name="page" class="form-control"
+                                                    placeholder="{{ __('Facebook Page/Group') }}" autocomplete="off"
+                                                    value="{{ $team->page }}" id="page" />
                                             </div>
                                         </div>
                                         <!-- /.form-group -->

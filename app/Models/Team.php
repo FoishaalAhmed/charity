@@ -10,7 +10,7 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'facebook', 'twitter', 'instagram', 'photo', 'position', 'priority', 'detail', 'more_detail'
+        'name', 'facebook', 'page', 'twitter', 'instagram', 'photo', 'position', 'priority', 'detail', 'more_detail'
     ];
 
     public function storeTeam(Object $request)
@@ -31,6 +31,7 @@ class Team extends Model
         $this->category  = $request->category;
         $this->name      = $request->name;
         $this->facebook  = $request->facebook;
+        $this->page  = $request->page;
         $this->twitter   = $request->twitter;
         $this->instagram = $request->instagram;
         $this->position  = $request->position;
@@ -63,6 +64,7 @@ class Team extends Model
         $team->category  = $request->category;
         $team->name      = $request->name;
         $team->facebook  = $request->facebook;
+        $team->page      = $request->page;
         $team->twitter   = $request->twitter;
         $team->instagram = $request->instagram;
         $team->position  = $request->position;

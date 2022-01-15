@@ -78,7 +78,6 @@
                                             <div class="col-md-12">
                                                 <label>{{ __('Research') }}</label>
                                                 <select name="research_id[]" id="research_id" class="form-control select2" required="" style="width: 100%" multiple>
-                                                    <option value="">{{ __('Select Research') }}</option>
                                                     @foreach ($researches as $item)
                                                         <option value="{{ $item->id }}"
                                                         @if (in_array($item->id, $researchIds)) {{ 'selected' }} @endif>
